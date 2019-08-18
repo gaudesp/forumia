@@ -59,4 +59,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  protected
+
+  def update_resource(resource, params)
+    if params[:password]
+      resource.password = params[:password]
+      resource.password_confirmation = params[:password_confirmation]
+    end
+
+    resource.update_without_password(params)
+  end
+
 end

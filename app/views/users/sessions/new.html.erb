@@ -12,7 +12,8 @@
     <div class="card-body card-body-l">
       <%= f.input :username, prepend: fa_icon("user"), placeholder: "Nom d'utilisateur" %>
       <%= f.input :password, prepend: fa_icon("key"), placeholder: "Mot de passe" %>
-      <%= f.button :submit, value: "Se connecter", class: "btn-primary btn-size" %>
+      <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean, wrapper: :custom_boolean_switch %>
+      <%= f.button :submit, value: "Se connecter", class: "btn-success btn-size" %>
     </div>
   </div>
 

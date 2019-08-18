@@ -26,8 +26,11 @@
                 <%= fa_icon "user-plus" %> Inscription
               <% end %>
             <% else %>
+            <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+              <%= fa_icon "cog" %> Paramètre
+            <% end %>
               <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-                <%= fa_icon "sign-out-alt" %> Se déconnecter
+                <%= fa_icon "sign-out-alt" %> Déconnexion
               <% end %>
             <% end %>
           </div>

@@ -1,8 +1,8 @@
 body {
     padding-top: 56px;
 }
-.field-error {
-  border: 1px solid #dc3545!important;
+.custom-control-label {
+  cursor: pointer;
 }
 /*Comment List styles*/
 .comment-list .row {
@@ -262,7 +262,6 @@ a:hover {
 
 .card-body-l2 {
   background-color: #f7f9fb!important;
-  min-height: 160px!important;
   border-radius: 0 0 8px 8px!important;
 }
 
