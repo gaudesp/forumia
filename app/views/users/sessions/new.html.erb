@@ -8,8 +8,8 @@
   <% end %>
 
   <div class="card mb-4">
-    <h5 class="card-header card-header-l2"><i class="fas fa-link mr-2"></i> Inscription</h5>
-    <div class="card-body card-body-l2">
+    <h5 class="card-header card-header-l"><%= fa_icon "link", class: "mr-1" %> Connexion</h5>
+    <div class="card-body card-body-l">
       <%= f.input :username, prepend: fa_icon("user"), placeholder: "Nom d'utilisateur" %>
       <%= f.input :password, prepend: fa_icon("key"), placeholder: "Mot de passe" %>
       <%= f.button :submit, value: "Se connecter", class: "btn-primary btn-size" %>

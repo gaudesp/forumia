@@ -15,7 +15,8 @@
   <% end %>
 
   <div class="card mb-4">
-    <h5 class="card-header card-header-l2"><i class="fas fa-link mr-2"></i> Inscription</h5>
+    <h5 class="card-header card-header-l2"><%= fa_icon "user-plus", class: "mr-1" %> Inscription</h5>
+    
     <div class="card-body card-body-l2">
       <%= f.input :username, prepend: fa_icon("user"), placeholder: "Nom d'utilisateur" %>
       <%= f.input :email, prepend: fa_icon("at"), placeholder: "Adresse email" %>

@@ -20,10 +20,10 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% if !current_user %>
               <%= link_to new_user_session_path, class: "dropdown-item" do %>
-                <%= fa_icon "sign-in-alt" %> Se connecter
+                <%= fa_icon "sign-in-alt" %> Connexion
               <% end %>
               <%= link_to new_user_registration_path, class: "dropdown-item" do %>
-                <%= fa_icon "user-plus" %> S'inscrire
+                <%= fa_icon "user-plus" %> Inscription
               <% end %>
             <% else %>
               <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
