@@ -18,8 +18,18 @@
           <%= fa_icon "user-circle", class: "icon-md mr-1" %> Mon compte
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="login.html"><%= fa_icon "sign-in-alt" %> Connexion</a>
-            <a class="dropdown-item" href="register.html"><%= fa_icon "user-plus" %> Inscription</a>
+            <% if !current_user %>
+              <%= link_to new_user_session_path, class: "dropdown-item" do %>
+                <%= fa_icon "sign-in-alt" %> Se connecter
+              <% end %>
+              <%= link_to new_user_registration_path, class: "dropdown-item" do %>
+                <%= fa_icon "user-plus" %> S'inscrire
+              <% end %>
+            <% else %>
+              <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+                <%= fa_icon "sign-out-alt" %> Se déconnecter
+              <% end %>
+            <% end %>
           </div>
         </li>
       </ul>

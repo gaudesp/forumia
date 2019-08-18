@@ -1,0 +1,19 @@
+<%= simple_form_for resource, as: resource_name, url: session_path(resource_name), wrapper: :input_group do |f| %>
+
+  <% if !params[:commit] %>
+    <div class="alert alert-info">
+      <%= fa_icon "info-circle", class: "mr-1" %> 
+      Vous n'avez pas encore de compte ? <b><%= link_to "Inscrivez-vous !", new_user_registration_path %></b>
+    </div>
+  <% end %>
+
+  <div class="card mb-4">
+    <h5 class="card-header card-header-l2"><i class="fas fa-link mr-2"></i> Inscription</h5>
+    <div class="card-body card-body-l2">
+      <%= f.input :username, prepend: fa_icon("user"), placeholder: "Nom d'utilisateur" %>
+      <%= f.input :password, prepend: fa_icon("key"), placeholder: "Mot de passe" %>
+      <%= f.button :submit, value: "Se connecter", class: "btn-primary btn-size" %>
+    </div>
+  </div>
+
+<% end %>

@@ -1,6 +1,9 @@
 body {
     padding-top: 56px;
 }
+.field-error {
+  border: 1px solid #dc3545!important;
+}
 /*Comment List styles*/
 .comment-list .row {
   margin-bottom: 0px;
