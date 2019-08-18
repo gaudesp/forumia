@@ -1,12 +1,11 @@
-<%= simple_form_for resource, as: resource_name, url: registration_path(resource_name), wrapper: :input_group, html: { method: :put } do |f| %>
+<%= simple_form_for resource, 
+  as: resource_name,
+  url: registration_path(resource_name),
+  wrapper: :input_group,
+  html: { method: :put, autocomplete: 'off' } do |f| %>
 
-  <% if f.error_notification %>
-    <div class="alert alert-danger">
-      <%= fa_icon "exclamation-circle", class: "mr-1" %>
-      Veuillez résoudre les erreurs ci-dessous
-    </div>
-  <% end %>
-
+  <%= render partial: "users/shared/error_messages", locals: { f: f } %>
+  
   <div class="card mb-4">
     <h5 class="card-header card-header-l"><%= fa_icon "address-card", class: "mr-1" %> Général</h5>
     
@@ -24,6 +23,6 @@
     </div>
   </div>
 
-  <%= f.button :submit, value: "Mettre à jour", class: "btn-secondary btn-block" %>
+  <%= f.button :submit, value: "Mettre à jour", class: "btn-secondary btn-block" %><br />
 
 <% end %>

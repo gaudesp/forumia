@@ -7,12 +7,7 @@
     </div>
   <% end %>
 
-  <% if f.error_notification %>
-    <div class="alert alert-danger">
-      <%= fa_icon "exclamation-circle", class: "mr-1" %>
-      Veuillez résoudre les erreurs ci-dessous
-    </div>
-  <% end %>
+  <%= render partial: "users/shared/error_messages", locals: { f: f } %>
 
   <div class="card mb-4">
     <h5 class="card-header card-header-l2"><%= fa_icon "user-plus", class: "mr-1" %> Inscription</h5>
