@@ -5,7 +5,7 @@
   html: { method: :put, autocomplete: 'off' } do |f| %>
 
   <%= render partial: "users/shared/error_messages", locals: { f: f } %>
-  
+
   <div class="card mb-4">
     <h5 class="card-header card-header-l"><%= fa_icon "address-card", class: "mr-1" %> Général</h5>
     
@@ -14,7 +14,7 @@
       <%= f.input :email, prepend: fa_icon("at"), placeholder: "Adresse email" %>
     </div>
   </div>
-
+  
   <div class="card mb-4">
     <h5 class="card-header card-header-l2"><%= fa_icon "user-secret", class: "mr-1" %> Authentification</h5>
     <div class="card-body card-body-l2">

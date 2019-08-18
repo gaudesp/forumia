@@ -2,26 +2,21 @@
   <h5 class="card-header card-header-r"><i class="fas fa-comments mr-2"></i> Forums</h5>
   <div class="card-body card-body-r card-body-ul">
   <ul class="list-group">
-    <a href="blabla-general.html" class="list-group-item"><i class="fas fa-chevron-circle-right mr-2"></i> Blabla général</a>
-    <a href="Suggestions-reclamations.html" class="list-group-item list-group-item-b"><i class="fas fa-chevron-circle-right mr-2"></i> Suggestions & Réclamations</a>
+    <a href="blabla-general.html" class="list-group-item"><i class="fas fa-chevron-circle-right mr-2"></i> Morbi nec est sit amet</a>
+    <a href="Suggestions-reclamations.html" class="list-group-item list-group-item-b"><i class="fas fa-chevron-circle-right mr-2"></i> Duis semper rutrum molestie</a>
   </ul>
   </div>
   </div>
 
   <div class="card my-4">
-    <h5 class="card-header card-header-r"><i class="fas fa-globe mr-2"></i> En ligne (10)</h5>
+    <h5 class="card-header card-header-r"><i class="fas fa-globe mr-2"></i> En ligne (<%= @users_online.count %>)</h5>
     <div class="card-body card-body-r">
-      <span class="badge badge-primary">Izys</span>
-      <span class="badge badge-secondary">UnCactus</span>
-      <span class="badge badge-secondary">Alien</span>
-      <span class="badge badge-success">Astropilot</span>
-      <span class="badge badge-danger">dadamdr</span>
-      <span class="badge badge-secondary">BADASS</span>
-      <span class="badge badge-warning">Nox</span>
-      <span class="badge badge-secondary">MacBook</span>
-      <span class="badge badge-secondary">Eminem</span>
-      <span class="badge badge-secondary">Max</span>
-      et 6 visiteurs.
+      <% if @users_online.count == 0 %>
+        Aucun utilisateur n'est connecté.
+      <% end %>
+      <% @users_online.each do |u| %>
+        <span class="badge badge-secondary"><%= u.username %></span>
+      <% end %>
     </div>
   </div>
 
@@ -29,9 +24,9 @@
   <h5 class="card-header card-header-r"><i class="fas fa-newspaper mr-2"></i> Derniers articles</h5>
   <div class="card-body card-body-r card-body-ul">
     <ul class="list-group">
-      <a href="article.html" class="list-group-item"><i class="fas fa-arrow-right mr-2"></i> Ouverture de ForuMia version beta...</a>
-      <a href="article.html" class="list-group-item"><i class="fas fa-arrow-right mr-2"></i> Ouverture de ForuMia version beta...</a>
-      <a href="article.html" class="list-group-item list-group-item-b"><i class="fas fa-arrow-right mr-2"></i> Ouverture de ForuMia version beta...</a>
+      <a href="article.html" class="list-group-item"><i class="fas fa-arrow-right mr-2"></i> Lorem ipsum dolor sit amet</a>
+      <a href="article.html" class="list-group-item"><i class="fas fa-arrow-right mr-2"></i> Lorem ipsum dolor sit amet</a>
+      <a href="article.html" class="list-group-item list-group-item-b"><i class="fas fa-arrow-right mr-2"></i> Lorem ipsum dolor sit amet</a>
     </ul>
   </div>
 </div>
