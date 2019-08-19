@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable
 
+  enum genders: [ :male, :female, :unknown ]
+
   validates_presence_of :username, message: "Vous devez choisir un nom d'utilisateur", on: :create
   validates_uniqueness_of :username, case_sensitive: false, message: "Ce nom d'utilisateur n'est pas disponible", on: :create
   validates_length_of :username, in: 3..16, message: "Le nom d'utilisateur doit être compris entre 3 et 16 caractères", on: :create

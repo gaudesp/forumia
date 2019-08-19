@@ -25,6 +25,8 @@
       <%= f.input :avatar, prepend: fa_icon("id-card-alt"), placeholder: "Photo de profil (lien noelshack)" %>
       <%= f.input :background, prepend: fa_icon("image"), placeholder: "Photo de couverture (lien noelshack)" %>
       <%= f.input :music, prepend: fa_icon("music"), placeholder: "Musique (lien youtube)" %>
+      <%= f.input :country, collection: ISO3166::Country.countries.sort_by(&:name).collect { |c| [ c.name, "#{c.name} #{c.emoji_flag}" ] }, as: :select, wrapper: :input_group_select, prepend: fa_icon("globe-europe"), include_blank: "Pays" %>
+      <%= f.input :gender, :label_method => lambda { |gender| t("simple_form.options.user.gender.#{gender[0]}") }, collection: User.genders, as: :select, wrapper: :input_group_select, prepend: fa_icon("venus-mars"), include_blank: "Genre" %>
     </div>
   </div>
 

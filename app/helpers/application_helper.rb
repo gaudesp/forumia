@@ -20,6 +20,14 @@ module ApplicationHelper
     return date.strftime("%d/%m/%Y")
   end
 
+  def display_gender(gender)
+    case gender
+      when 0 then "Homme"
+      when 1 then "Femme"
+      else "Autre"
+    end
+  end
+
   def display_distance_between(date)
     return distance_of_time_in_words(date, Time.now)
   end

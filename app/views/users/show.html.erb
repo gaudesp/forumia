@@ -18,22 +18,23 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
-            <p><%= fa_icon "clock", class: "mr-1" %> Membre depuis <%= display_distance_between(@user.created_at) %></p>
-            <p><%= fa_icon "birthday-cake", class: "mr-1" %> Est âgé de <%= display_distance_between(@user.birthdate) %></p>
-            <p><%= fa_icon "comment-dots", class: "mr-1" %> A posté 0 message</p>
+            <p><%= fa_icon "calendar", class: "mr-1" %> <strong>Membre depuis :</strong> <%= display_distance_between(@user.created_at) %></p>
+            <p><%= fa_icon "birthday-cake", class: "mr-1" %> <strong>Date de naissance :</strong> <%= display_date(@user.birthdate) %></p>
+            <p><%= fa_icon "comment-dots", class: "mr-1" %> <strong>Nombre de messages postés :</strong> 0</p>
         </div>
     </div>
     <div class="col-lg-6">
         <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
-            <p><%= fa_icon "clock", class: "mr-1" %> Membre depuis <%= display_distance_between(@user.created_at) %></p>
-            <p><%= fa_icon "birthday-cake", class: "mr-1" %> Est âgé de <%= display_distance_between(@user.birthdate) %></p>
-            <p><%= fa_icon "comment-dots", class: "mr-1" %> A posté 0 message</p>
+            <p><%= fa_icon "clock", class: "mr-1" %> <strong>Dernière activité :</strong> <%= display_distance_between(@user.last_seen_at) %></p>
+            <p><%= fa_icon "globe-europe", class: "mr-1" %> <strong>Pays :</strong> <%= @user.country.present? ? @user.country : "Non renseigné" %></p>
+            <p><%= fa_icon "venus-mars", class: "mr-1" %> <strong>Genre :</strong> <%= @user.gender.present? ? display_gender(@user.gender) : "Non renseigné" %></p>
         </div>
     </div>
 </div>
 
 <% if @user.description.present? %>
     <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
+        <label><strong><%= fa_icon "comment-alt", class: "mr-1" %> Description</strong></label>
         <p><%= @user.description %></p>
     </div>
 <% end %>

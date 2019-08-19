@@ -1,5 +1,11 @@
 fr:
   simple_form:
+    options:
+      user:
+        gender:
+          male: Homme
+          female: Femelle
+          unknown: Autre
     "yes": 'Oui'
     "no": 'Non'
     required:

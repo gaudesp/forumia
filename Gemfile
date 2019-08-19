@@ -42,7 +42,8 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'font_awesome5_rails'
 gem 'devise'
-gem "video_info"
+gem 'video_info'
+gem 'countries'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
