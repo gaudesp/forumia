@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+
   before_action :set_last_seen_at 
   before_action :get_users_logged_in
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -11,8 +13,9 @@ class ApplicationController < ActionController::Base
   
   def configure_permitted_parameters
     added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
+    updated_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :birthdate, :description, :avatar, :music, :background]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: updated_attrs
   end
 
   private

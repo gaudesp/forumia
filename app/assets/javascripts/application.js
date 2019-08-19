@@ -19,6 +19,6 @@
 //= require bootstrap
 //= require select2-full
 
-$( "#dropdown" ).select2({
-    theme: "bootstrap"
-});
+// $(document).on('turbolinks:load', function() {
+
+// });

@@ -15,6 +15,14 @@ class User < ApplicationRecord
   validates_presence_of :password, message: "Vous devez choisir un mot de passe", on: :create
   validates_presence_of :password_confirmation, message: "Vous devez confirmer votre mot de passe", on: :create
   validates_confirmation_of :password, message: "Les deux mots de passes ne correspondent pas"
+  
+  validates_length_of :description, maximum: 1000, too_long: "Cette description est trop longue", allow_blank: true, on: :update
+  
+  validates_format_of :avatar, with: /\A^(http(s)?:\/\/)?((w){3}.)?image.noelshack.com?\/.+.(?:jpg|gif|png)\Z/i, message: "Vous devez renseigner un lien noelshack", allow_blank: true, on: :update
+  
+  validates_format_of :background, with: /\A^(http(s)?:\/\/)?((w){3}.)?image.noelshack.com?\/.+.(?:jpg|gif|png)\Z/i, message: "Vous devez renseigner un lien noelshack", allow_blank: true, on: :update
+
+  validates_format_of :music, with: /\A^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$\Z/i, message: "Vous devez renseigner un lien youtube", allow_blank: true, on: :update
 
   attr_readonly :username, on: :update
 
