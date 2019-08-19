@@ -1,0 +1,40 @@
+<div class="bg-white overflow-hidden radius-top">
+    <div class="px-4 pt-0 pb-3 bg-background" style="background-image: url(<%= display_background(@user) %>);">
+        <div class="media align-items-end profile-header">
+            <div class="profile mr-3">
+            <img src="<%= display_avatar(@user, "profile") %>" width="130" class="avatar-img rounded mb-2 img-thumbnail">
+            </div>
+            <div class="media-body mb-3">
+                <a class="float-right" id="stop" href="#"><%= fa_icon "pause" %></a>
+                <h4 class="mt-0 mb-2"><%= @user.username %></h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="border-grey radius-bottom bg-light p-4 d-flex justify-content-end text-center"></div>
+
+
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
+            <p><%= fa_icon "clock", class: "mr-1" %> Membre depuis <%= display_distance_between(@user.created_at) %></p>
+            <p><%= fa_icon "birthday-cake", class: "mr-1" %> Est âgé de <%= display_distance_between(@user.birthdate) %></p>
+            <p><%= fa_icon "comment-dots", class: "mr-1" %> A posté 0 message</p>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
+            <p><%= fa_icon "clock", class: "mr-1" %> Membre depuis <%= display_distance_between(@user.created_at) %></p>
+            <p><%= fa_icon "birthday-cake", class: "mr-1" %> Est âgé de <%= display_distance_between(@user.birthdate) %></p>
+            <p><%= fa_icon "comment-dots", class: "mr-1" %> A posté 0 message</p>
+        </div>
+    </div>
+</div>
+
+<% if @user.description.present? %>
+    <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
+        <p><%= @user.description %></p>
+    </div>
+<% end %>
+<%= display_music(@user) %>

@@ -12,13 +12,24 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap
 //= require select2-full
 
-// $(document).on('turbolinks:load', function() {
-
-// });
+$(document).ready(function() {
+  $('[data-toggle="tooltip"]').tooltip();
+  var isPlaying = true
+  $('#stop').on('click', function() {
+    if ( isPlaying == true) {
+      $('#popup-youtube-player').get(0).contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
+      isPlaying = false;
+      $(this).children("i").attr("class", "fas fa-play");
+    } else {
+      $('#popup-youtube-player').get(0).contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}','*');
+      isPlaying = true;
+      $(this).children("i").attr("class", "fas fa-pause");
+    }
+  })
+})

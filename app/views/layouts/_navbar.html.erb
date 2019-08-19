@@ -29,6 +29,9 @@
                 <%= fa_icon "user-plus" %> Inscription
               <% end %>
             <% else %>
+            <%= link_to user_path(current_user.username), class: "dropdown-item" do %>
+              <%= fa_icon "address-card" %> Profil
+            <% end %>
             <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
               <%= fa_icon "cog" %> Paramètre
             <% end %>

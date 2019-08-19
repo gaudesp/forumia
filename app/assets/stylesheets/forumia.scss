@@ -582,6 +582,16 @@ a#navbarDropdown.nav-link.dropdown-toggle::after {
   border: 0.0625rem solid #bcd2e9;
   background: #eef5fc;
 }
+.profile-header {
+  transform: translateY(5rem);
+}
+
+.bg-background {
+  width: 100%;
+  height: 155px;
+  background: no-repeat;
+  background-size: 100%;
+}
 
 @media screen and (max-width: 992px) {
   .hide {
@@ -603,6 +613,27 @@ a#navbarDropdown.nav-link.dropdown-toggle::after {
   .fix-m {
     margin-left: 70px!important;
   }
+
+  .bg-background {
+    background-size: auto;
+  }
+}
+
+.border-grey {
+  border: 1px solid #ddd!important;
+}
+
+.radius-top {
+  border-radius: 4px 4px 0 0;
+}
+
+.radius-bottom {
+  border-radius: 0 0 4px 4px;
+}
+
+.avatar-img {
+  height: 130px!important;
+  width: 130px!important;
 }
 
 @media screen and (max-width: 440px) {
