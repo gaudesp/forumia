@@ -15,7 +15,10 @@
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= fa_icon "user-circle", class: "icon-md mr-1" %> <%= current_user ? current_user.username : "Mon compte" %>
+            <%= display_avatar(current_user) %>
+            <span class="account-nav <%= "username-nav" if current_user %>">
+              <%= current_user ? current_user.username : "Mon compte" %>
+            </span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% if !current_user %>

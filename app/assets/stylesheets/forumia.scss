@@ -167,8 +167,33 @@ a:hover {
   color: #216a94!important;
 }
 
+a#navbarDropdown.nav-link.dropdown-toggle::after {
+  display: none!important;
+}
+
+.navbar {
+  height: 58px!important;
+}
+
+.avatar {
+  height: 45px!important;
+  width: 45px!important;
+  margin-top: -8.5px;
+  float: right;
+  border-radius: 50%;
+}
+
 .icon-md {
-  font-size: 22px!important;
+  font-size: 45px!important;
+  border-radius: 50%;
+  margin-top: -8.5px;
+  float: right;
+}
+
+.account-nav {
+  padding-right: 10px!important;
+  margin-top: 2px!important;
+  float: left;
 }
 
 .btn-size {

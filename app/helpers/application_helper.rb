@@ -20,4 +20,9 @@ module ApplicationHelper
     return date.strftime("%d/%m/%Y")
   end
 
+  def display_avatar(user)
+    return fa_icon("user-circle", class: "icon-md") if !user || !user.avatar.present?
+    image_tag(user.avatar, class: "avatar")
+  end
+
 end
