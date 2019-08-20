@@ -19,7 +19,7 @@
     <div class="col-lg-6">
         <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
             <p><%= fa_icon "calendar", class: "mr-1" %> <strong>Membre depuis :</strong> <%= display_distance_between(@user.created_at) %></p>
-            <p><%= fa_icon "birthday-cake", class: "mr-1" %> <strong>Date de naissance :</strong> <%= display_date(@user.birthdate) %></p>
+            <p><%= fa_icon "birthday-cake", class: "mr-1" %> <strong>Date de naissance :</strong> <%= @user.birthdate.present? ? display_date(@user.birthdate) : "Non renseigné" %></p>
             <p><%= fa_icon "comment-dots", class: "mr-1" %> <strong>Nombre de messages postés :</strong> 0</p>
         </div>
     </div>
