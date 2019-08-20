@@ -51,4 +51,8 @@ module ApplicationHelper
     return "<iframe id='popup-youtube-player' width='0' height='0' src='http://www.youtube.com/embed/#{VideoInfo.new(user.music).video_id}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&autoplay=1' frameborder='0' allowfullscreen='true' allowscriptaccess='always'></iframe>".html_safe if user.music.present?
   end
 
+  def display_player(user)
+    return link_to "#", class: "float-right", id: "stop" do fa_icon "pause" end if user.music.present?
+  end
+
 end
