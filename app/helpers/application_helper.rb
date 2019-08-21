@@ -43,7 +43,7 @@ module ApplicationHelper
   end
 
   def display_background(user)
-    return "https://c0.lestechnophiles.com/www.numerama.com/content/uploads/2016/02/nuit-etoile-filante.jpg?resize=600,150" if !user || !user.background.present?
+    return "https://image.noelshack.com/fichiers/2019/34/3/1566384422-photo-1554135216-0802998080d7.jpeg" if !user || !user.background.present?
     user.background
   end
 
@@ -52,7 +52,7 @@ module ApplicationHelper
   end
 
   def display_player(user)
-    return link_to "#", class: "float-right", id: "stop" do fa_icon "pause" end if user.music.present?
+    return link_to "#", class: "float-right player", id: "stop" do fa_icon "pause" end if user.music.present?
   end
 
 end

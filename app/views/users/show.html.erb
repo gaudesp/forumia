@@ -1,30 +1,31 @@
 <div class="bg-white overflow-hidden radius-top">
-    <div class="px-4 pt-0 pb-3 bg-background" style="background-image: url(<%= display_background(@user) %>);">
+    <div class="px-4 pt-0 pb-3 bg-background background-header" style="background-image: url(<%= display_background(@user) %>);">
         <div class="media align-items-end profile-header">
             <div class="profile mr-3">
-            <img src="<%= display_avatar(@user, "profile") %>" width="130" class="avatar-img rounded mb-2 img-thumbnail">
+            <img src="<%= display_avatar(@user, "profile") %>" width="130" class="avatar-img img-thumbnail">
             </div>
             <div class="media-body mb-3">
                 <%= display_player(@user) %>
-                <h4 class="mt-0 mb-2"><%= @user.username %></h4>
+                <h5 class="mt-0 mb-2"><%= @user.username %></h5>
             </div>
         </div>
     </div>
 
-    <div class="border-grey radius-bottom bg-light p-4 d-flex justify-content-end text-center"></div>
+    <div class="profile-bar border-grey radius-bottom bg-light d-flex justify-content-end text-center"></div>
 
 
 </div>
+
 <div class="row">
     <div class="col-lg-6">
-        <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
+        <div class="mt-4 card rounded border-grey bg-light card-profile">
             <p><%= fa_icon "calendar", class: "mr-1" %> <strong>Membre depuis :</strong> <%= display_distance_between(@user.created_at) %></p>
             <p><%= fa_icon "birthday-cake", class: "mr-1" %> <strong>Date de naissance :</strong> <%= @user.birthdate.present? ? display_date(@user.birthdate) : "Non renseigné" %></p>
             <p><%= fa_icon "comment-dots", class: "mr-1" %> <strong>Nombre de messages postés :</strong> 0</p>
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
+        <div class="mt-4 card rounded border-grey bg-light card-profile">
             <p><%= fa_icon "clock", class: "mr-1" %> <strong>Dernière activité :</strong> <%= display_distance_between(@user.last_seen_at) %></p>
             <p><%= fa_icon "globe-europe", class: "mr-1" %> <strong>Pays :</strong> <%= @user.country.present? ? @user.country : "Non renseigné" %></p>
             <p><%= fa_icon "venus-mars", class: "mr-1" %> <strong>Genre :</strong> <%= @user.gender.present? ? display_gender(@user.gender) : "Non renseigné" %></p>
@@ -38,4 +39,9 @@
         <p><%= @user.description %></p>
     </div>
 <% end %>
-<%= display_music(@user) %>
+
+<% if @user.music.present? %>
+    <%= display_music(@user) %>
+<% else %>
+    <div class="mb-4"></div>
+<% end %>
