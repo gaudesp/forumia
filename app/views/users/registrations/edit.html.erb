@@ -20,10 +20,10 @@
   <div class="card mb-4">
     <h5 class="card-header card-header-l2"><%= fa_icon "address-card", class: "mr-1" %> Profil</h5>
     <div class="card-body card-body-l2">
-      <%= f.input :birthdate, wrapper: :input_group_select, prepend: fa_icon("birthday-cake"), start_year: Time.current.year-80, end_year: Time.current.year-10 %>
+      <%= f.input :birthdate, as: :date, include_blank: true, wrapper: :input_group_select, prepend: fa_icon("birthday-cake"), start_year: Time.current.year-80, end_year: Time.current.year-10, order: %i(day month year), input_html: { value: Time.current } %>
       <%= f.input :description, prepend: fa_icon("comment-alt"), placeholder: "Description" %>
-      <%= f.input :avatar, prepend: fa_icon("id-card-alt"), placeholder: "Photo de profil (lien noelshack)" %>
-      <%= f.input :background, prepend: fa_icon("image"), placeholder: "Photo de couverture (lien noelshack)" %>
+      <%= f.input :avatar, hint: "Pour une résolution optimale, votre photo de profil doit faire 130x130 pixel", prepend: fa_icon("id-card-alt"), placeholder: "Photo de profil (lien noelshack)" %>
+      <%= f.input :background, hint: "Pour une résolution optimale, votre photo de couverture doit faire 705x170 pixel", prepend: fa_icon("image"), placeholder: "Photo de couverture (lien noelshack)" %>
       <%= f.input :music, prepend: fa_icon("music"), placeholder: "Musique (lien youtube)" %>
       <%= f.input :country, collection: ISO3166::Country.countries.sort_by(&:name).collect { |c| [ c.name, "#{c.name} #{c.emoji_flag}" ] }, as: :select, wrapper: :input_group_select, prepend: fa_icon("globe-europe"), include_blank: "Pays" %>
       <%= f.input :gender, :label_method => lambda { |gender| t("simple_form.options.user.gender.#{gender[0]}") }, collection: User.genders, as: :select, wrapper: :input_group_select, prepend: fa_icon("venus-mars"), include_blank: "Genre" %>

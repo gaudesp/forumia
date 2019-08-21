@@ -499,6 +499,10 @@ a#navbarDropdown.nav-link.dropdown-toggle::after {
     display: inline!important;
     padding: 0.25rem 0.5rem!important;
   }
+
+  .avatar {
+    margin-top: -10px;
+  }
 }
 
 @media screen and (max-width: 768px) {
