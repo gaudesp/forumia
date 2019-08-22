@@ -22,8 +22,8 @@
     <div class="card-body card-body-l2">
       <%= f.input :birthdate, as: :date, include_blank: true, wrapper: :input_group_select, prepend: fa_icon("birthday-cake"), start_year: Time.current.year-80, end_year: Time.current.year-10, order: %i(day month year), input_html: { value: Time.current } %>
       <%= f.input :description, prepend: fa_icon("comment-alt"), placeholder: "Description" %>
-      <%= f.input :avatar, label: "Photo de profil", as: :file, wrapper: :custom_file, hint: "Résolution optimale : 130x130 pixel", prepend: fa_icon("id-card-alt") %>
-      <%= f.input :background, label: "Photo de couverture", as: :file, wrapper: :custom_file, hint: "Résolution optimale : 705x170 pixel", prepend: fa_icon("image") %>
+      <%= f.input :avatar, label: "Photo de profil", as: :file, wrapper: :custom_file, hint: "Taille optimale : 130x130 pixel", prepend: fa_icon("id-card-alt") %>
+      <%= f.input :background, label: "Photo de couverture", as: :file, wrapper: :custom_file, hint: "Taille optimale : 705x170 pixel", prepend: fa_icon("image") %>
       <%= f.input :music, prepend: fa_icon("music"), placeholder: "Musique (lien youtube)" %>
       <%= f.input :country, collection: ISO3166::Country.countries.sort_by(&:name).collect { |c| [ c.name, "#{c.name} #{c.emoji_flag}" ] }, as: :select, wrapper: :input_group_select, prepend: fa_icon("globe-europe"), include_blank: "Pays" %>
       <%= f.input :gender, :label_method => lambda { |gender| t("simple_form.options.user.gender.#{gender[0]}") }, collection: User.genders, as: :select, wrapper: :input_group_select, prepend: fa_icon("venus-mars"), include_blank: "Genre" %>
