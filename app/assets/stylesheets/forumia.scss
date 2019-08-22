@@ -4,6 +4,9 @@ body {
 .custom-control-label {
   cursor: pointer;
 }
+.custom-file-input ~ .custom-file-label::after {
+  content: "Parcourir";
+}
 /*Comment List styles*/
 .comment-list .row {
   margin-bottom: 0px;

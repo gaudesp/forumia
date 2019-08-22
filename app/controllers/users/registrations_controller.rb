@@ -20,9 +20,34 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+
+    if params[:user][:avatar].present?
+      response = RestClient.post('https://www.noelshack.com/api.php', :fichier => File.new(params[:user][:avatar].tempfile, 'rb')).body
+      if response.include? "www.noelshack.com"
+        regex_url = response.split('/')[3].split('-')
+        correct_url = "https://image.noelshack.com/fichiers/#{regex_url[0..2].join('/')}/#{regex_url[3..-1].join('-')}"
+        @user.update(avatar: correct_url)
+      else
+        flash[:error].now = (response + " pour cette photo de profil").remove "!"
+        render :edit
+      end
+    end
+
+    if params[:user][:background].present?
+      response = RestClient.post('https://www.noelshack.com/api.php', :fichier => File.new(params[:user][:background].tempfile, 'rb')).body
+      if response.include? "www.noelshack.com"
+        regex_url = response.split('/')[3].split('-')
+        correct_url = "https://image.noelshack.com/fichiers/#{regex_url[0..2].join('/')}/#{regex_url[3..-1].join('-')}"
+        @user.update(background: correct_url)
+      else
+        flash[:error].now = (response + " pour cette photo de profil").remove "!"
+        render :edit
+      end
+    end
+
+  end
 
   # DELETE /resource
   # def destroy

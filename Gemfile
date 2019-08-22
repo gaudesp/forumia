@@ -45,6 +45,7 @@ gem 'devise'
 gem 'video_info'
 gem 'countries'
 gem 'rollbar'
+gem 'rest-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
