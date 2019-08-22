@@ -34,7 +34,7 @@ module ApplicationHelper
 
   def display_avatar(user, page = nil)
     if page == "profile"
-      return "https://image.noelshack.com/fichiers/2019/34/4/1566466131-default-background.png" if !user || !user.avatar.present?
+      return "https://image.noelshack.com/fichiers/2019/34/4/1566466264-anonymous-user.png" if !user || !user.avatar.present?
       user.avatar
     else
       return fa_icon("user-circle", class: "icon-md") if !user || !user.avatar.present?
@@ -43,7 +43,7 @@ module ApplicationHelper
   end
 
   def display_background(user)
-    return "https://image.noelshack.com/fichiers/2019/34/3/1566384422-photo-1554135216-0802998080d7.jpeg" if !user || !user.background.present?
+    return "https://image.noelshack.com/fichiers/2019/34/4/1566466131-default-background.png" if !user || !user.background.present?
     user.background
   end
 
