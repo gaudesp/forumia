@@ -33,6 +33,12 @@
     </div>
 </div>
 
+<% if @user.music.present? %>
+    <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
+        <p><%= fa_icon "music", class: "mr-1" %> <strong>Musique :</strong> <%= VideoInfo.new(@user.music).title %></p>
+    </div>
+<% end %>
+
 <% if @user.description.present? %>
     <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
         <label><strong><%= fa_icon "comment-alt", class: "mr-1" %> Description</strong></label>
