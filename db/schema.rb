@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_203022) do
+ActiveRecord::Schema.define(version: 2019_08_22_090952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_203022) do
     t.string "avatar"
     t.string "music"
     t.string "background"
-    t.decimal "coin", precision: 8, scale: 2
+    t.decimal "coin", precision: 8, scale: 2, default: "0.0"
     t.bigint "role_id"
     t.datetime "last_seen_at"
     t.string "country"
