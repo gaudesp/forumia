@@ -34,7 +34,7 @@ module ApplicationHelper
 
   def display_avatar(user, page = nil)
     if page == "profile"
-      return "http://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png" if !user || !user.avatar.present?
+      return "https://image.noelshack.com/fichiers/2019/34/4/1566466131-default-background.png" if !user || !user.avatar.present?
       user.avatar
     else
       return fa_icon("user-circle", class: "icon-md") if !user || !user.avatar.present?
