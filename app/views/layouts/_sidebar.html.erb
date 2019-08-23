@@ -15,7 +15,7 @@
         Aucun utilisateur n'est connecté.
       <% end %>
       <% @users_online.each do |u| %>
-        <%= link_to u.username, user_path(u.username), class: "badge badge-secondary" %>
+        <%= link_to display_role_user(u), user_path(u.username) %>
       <% end %>
     </div>
   </div>

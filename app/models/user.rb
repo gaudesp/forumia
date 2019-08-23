@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable
+
+  belongs_to :role, optional: true
 
   enum genders: [ :male, :female, :unknown ]
 
@@ -24,6 +24,8 @@ class User < ApplicationRecord
 
   attr_readonly :username, on: :update
 
+  before_create :set_default_role
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if username = conditions.delete(:username)
@@ -31,6 +33,10 @@ class User < ApplicationRecord
     else
       where(conditions).first
     end
+  end
+
+  def set_default_role
+    self.role = Role.find(1)
   end
 
 end

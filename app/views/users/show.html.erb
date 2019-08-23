@@ -19,16 +19,18 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="mt-4 card rounded border-grey bg-light card-profile">
-            <p><%= fa_icon "calendar", class: "mr-1" %> <strong>Membre depuis :</strong> <%= display_distance_between(@user.created_at) %></p>
+            <p><%= fa_icon "graduation-cap", class: "mr-1" %> <strong>Role :</strong> <%= display_role_grade(@user.role) %></p>
+            <p><%= fa_icon "venus-mars", class: "mr-1" %> <strong>Genre :</strong> <%= @user.gender.present? ? display_gender(@user.gender) : "Non renseigné" %></p>
+            <p><%= fa_icon "globe-europe", class: "mr-1" %> <strong>Pays :</strong> <%= @user.country.present? ? @user.country : "Non renseigné" %></p>
             <p><%= fa_icon "birthday-cake", class: "mr-1" %> <strong>Date de naissance :</strong> <%= @user.birthdate.present? ? display_date(@user.birthdate) : "Non renseigné" %></p>
-            <p><%= fa_icon "comment-dots", class: "mr-1" %> <strong>Nombre de messages postés :</strong> 0</p>
         </div>
     </div>
     <div class="col-lg-6">
         <div class="mt-4 card rounded border-grey bg-light card-profile">
+            <p><%= fa_icon "coins", class: "mr-1" %> <strong>Argent :</strong> <%= @user.coin %></p>
             <p><%= fa_icon "clock", class: "mr-1" %> <strong>Dernière activité :</strong> <%= display_distance_between(@user.last_seen_at) %></p>
-            <p><%= fa_icon "globe-europe", class: "mr-1" %> <strong>Pays :</strong> <%= @user.country.present? ? @user.country : "Non renseigné" %></p>
-            <p><%= fa_icon "venus-mars", class: "mr-1" %> <strong>Genre :</strong> <%= @user.gender.present? ? display_gender(@user.gender) : "Non renseigné" %></p>
+            <p><%= fa_icon "calendar", class: "mr-1" %> <strong>Membre depuis :</strong> <%= display_distance_between(@user.created_at) %></p>
+            <p><%= fa_icon "comment-dots", class: "mr-1" %> <strong>Nombre de messages postés :</strong> 0</p>
         </div>
     </div>
 </div>

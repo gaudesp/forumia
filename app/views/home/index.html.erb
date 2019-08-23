@@ -35,7 +35,7 @@
       <div class="card-body card-body-l2" id="last-users">
         <% @users.each do |u| %>
           <div class="float-right">le <%= display_date u.created_at %></div>
-          <%= link_to u.username, user_path(u.username), class: "badge badge-secondary" %><br />
+          <%= link_to display_role_user(u), user_path(u.username) %><br />
         <% end %>
       </div>
     </div>

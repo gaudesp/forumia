@@ -27,6 +27,14 @@ module ApplicationHelper
       else "Autre"
     end
   end
+  
+  def display_role_grade(role)
+    return "<span class='badge p-1' style='color:#fff;background-color:#{role.color}'>#{fa_icon(role.icon)} #{role.label}</span>".html_safe
+  end
+  
+  def display_role_user(user)
+    return "<span class='badge p-1' style='color:#fff;background-color:#{user.role.color}'>#{user.username}</span>".html_safe
+  end
 
   def display_distance_between(date)
     return distance_of_time_in_words(date, Time.now)
