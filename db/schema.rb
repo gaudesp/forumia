@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_23_100712) do
+ActiveRecord::Schema.define(version: 2019_08_25_092634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,18 @@ ActiveRecord::Schema.define(version: 2019_08_23_100712) do
     t.boolean "kill_user", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "create_forum", default: false
+    t.boolean "update_forum", default: false
+    t.boolean "delete_forum", default: false
+    t.boolean "undelete_forum", default: false
+    t.boolean "kill_forum", default: false
+    t.boolean "create_role", default: false
+    t.boolean "update_role", default: false
+    t.boolean "delete_role", default: false
+    t.boolean "undelete_role", default: false
+    t.boolean "kill_role", default: false
+    t.boolean "update_permission", default: false
+    t.integer "priority_permission"
   end
 
   create_table "roles", force: :cascade do |t|

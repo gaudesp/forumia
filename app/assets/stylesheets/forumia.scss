@@ -473,6 +473,10 @@ a#navbarDropdown.nav-link.dropdown-toggle::after {
   padding-bottom: 0!important;
 }
 
+.navbar ul {
+  flex-direction: unset!important;
+}
+
 @media screen and (max-width: 1199px) {
   .card-profile {
     min-height: 168px!important;
@@ -480,6 +484,9 @@ a#navbarDropdown.nav-link.dropdown-toggle::after {
 }
 
 @media screen and (max-width: 991px) {
+  .navbar ul li {
+    margin-right: 10px!important;
+  }
   .card-profile {
     min-height: auto!important;
   }

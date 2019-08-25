@@ -3,8 +3,14 @@
     <%= link_to "ForuMia", root_path, class: "navbar-brand" %>
     <ul class="nav navbar-nav mr-auto">
       <li class="nav-item zoom nav-zoom active">
-        <%= link_to root_path, class: "nav-link" do %>
+        <%= link_to home_index_path, class: "nav-link" do %>
           <%= fa_icon "home" %> <span>Accueil</span>
+        <% end %>
+        </a>
+      </li>
+      <li class="nav-item zoom nav-zoom active">
+        <%= link_to staff_index_path, class: "nav-link" do %>
+          <%= fa_icon "users" %> <span>Staff</span>
         <% end %>
         </a>
       </li>
