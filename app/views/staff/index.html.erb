@@ -2,12 +2,14 @@
   <div class="card mb-4">
     <h5 class="card-header card-header-l3"><%= fa_icon role.icon, class: "mr-1" %> <%= role.label %></h5>
     <div class="card-body card-body-l3">
+      <%= "Aucun #{role.label.downcase} n'a été ajouté." if role.users.count == 0 %>
       <% role.users.each do |user| %>
         <p>
-          <img src="<%= display_avatar(user, 'profile') %>" class="rounded-circle img-responsive img-fluid mr-3" alt="Cinque Terre" width="60" height="60">
+          <img src="<%= display_avatar(user, 'profile') %>" class="rounded-circle mr-3" alt="Cinque Terre" width="60" height="60">
           <%= display_role_user(user) %>
         </p>
       <% end %>
     </div>
   </div>
 <% end %>
+
