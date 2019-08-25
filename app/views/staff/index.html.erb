@@ -4,10 +4,12 @@
     <div class="card-body card-body-l3">
       <%= "Aucun #{role.label.downcase} n'a été ajouté." if role.users.count == 0 %>
       <% role.users.each do |user| %>
-        <p>
-          <img src="<%= display_avatar(user, 'profile') %>" class="rounded-circle mr-3" alt="Cinque Terre" width="60" height="60">
-          <%= display_role_user(user) %>
-        </p>
+        <%= link_to user_path(user.username) do %>
+          <p>
+            <img src="<%= display_avatar(user, 'profile') %>" class="rounded-circle mr-3" alt="Cinque Terre" width="60" height="60">
+            <%= display_role_user(user) %>
+          </p>
+        <% end %>
       <% end %>
     </div>
   </div>
