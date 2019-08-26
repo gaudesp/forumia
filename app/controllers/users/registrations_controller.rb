@@ -31,7 +31,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @user.update(avatar: correct_url)
       else
         flash.now[:error] = (response + " pour cette photo de profil").remove "!"
-        render :edit
       end
     end
 
@@ -43,7 +42,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @user.update(background: correct_url)
       else
         flash.now[:error] = (response + " pour cette photo de profil").remove "!"
-        render :edit
       end
     end
 
