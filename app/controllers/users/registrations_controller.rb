@@ -30,7 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         correct_url = "https://image.noelshack.com/fichiers/#{regex_url[0..2].join('/')}/#{regex_url[3..-1].join('-')}"
         @user.update(avatar: correct_url)
       else
-        flash[:error].now = (response + " pour cette photo de profil").remove "!"
+        flash.now[:error] = (response + " pour cette photo de profil").remove "!"
         render :edit
       end
     end
@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         correct_url = "https://image.noelshack.com/fichiers/#{regex_url[0..2].join('/')}/#{regex_url[3..-1].join('-')}"
         @user.update(background: correct_url)
       else
-        flash[:error].now = (response + " pour cette photo de profil").remove "!"
+        flash.now[:error] = (response + " pour cette photo de profil").remove "!"
         render :edit
       end
     end
