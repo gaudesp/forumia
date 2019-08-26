@@ -30,7 +30,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         correct_url = "https://image.noelshack.com/fichiers/#{regex_url[0..2].join('/')}/#{regex_url[3..-1].join('-')}"
         @user.update(avatar: correct_url)
       else
-        flash.now[:error] = (response + " pour cette photo de profil").remove "!"
+        @user.update(avatar: current_user.avatar)
+        flash[:error] = "Votre photo de profil n'a pas été mise à jour car elle n'était pas valide"
       end
     end
 
@@ -41,7 +42,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         correct_url = "https://image.noelshack.com/fichiers/#{regex_url[0..2].join('/')}/#{regex_url[3..-1].join('-')}"
         @user.update(background: correct_url)
       else
-        flash.now[:error] = (response + " pour cette photo de profil").remove "!"
+        @user.update(background: current_user.background)
+        flash[:error] = "Votre photo de couverture n'a pas été mise à jour car elle n'était pas valide"
       end
     end
 
