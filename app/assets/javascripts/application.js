@@ -23,6 +23,7 @@ $(document).on('turbolinks:load', function() {
   $('[data-toggle="tooltip"]').tooltip();
   $('body').toggleClass(localStorage.toggled);
 })
+
 function darkLight() {
   if (localStorage.toggled != 'dark') {
     $('body').toggleClass('dark', true);
@@ -32,3 +33,4 @@ function darkLight() {
     localStorage.toggled = "";
   }
 }
+

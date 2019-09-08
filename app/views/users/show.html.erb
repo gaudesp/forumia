@@ -1,5 +1,5 @@
 <header class="py-4 bg-image-full rounded-top rounded-bottom-0" style="background-image: url(<%= display_background(@user) %>);">
-  <img class="img-fluid d-block ml-4 rounded" width="130" src="<%= display_avatar(@user, "profile") %>" alt="">
+  <img class="img-fluid d-block ml-4 rounded" width="130" height="130" src="<%= display_avatar(@user, "profile") %>" alt="">
 </header>
 
 <div class="card rounded-top-0 mb-4">
@@ -70,9 +70,8 @@
 <% if @user.music.present? %>
   <div class="card mb-4">
     <div class="card-body">
-    <%= display_music(@user) %>
       <label><%= fa_icon "music", class: "mr-1" %> <strong>Musique :</strong></label><br />
-      <%= VideoInfo.new(@user.music).title %>
+      <%= display_music(@user) %>
     </div>
   </div>
 <% end %>
