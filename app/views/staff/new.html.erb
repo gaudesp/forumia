@@ -30,13 +30,13 @@
     <%= p.input :delete_forum, as: :boolean, wrapper: :custom_boolean_switch %>
     <%= p.input :undelete_forum, as: :boolean, wrapper: :custom_boolean_switch %>
     <%= p.input :kill_forum, as: :boolean, wrapper: :custom_boolean_switch %>
-    <%= p.input :create_role, as: :boolean, wrapper: :custom_boolean_switch %>
+    <%= p.input :create_staff, as: :boolean, wrapper: :custom_boolean_switch %>
     <%= p.input :update_role, as: :boolean, wrapper: :custom_boolean_switch %>
     <%= p.input :delete_role, as: :boolean, wrapper: :custom_boolean_switch %>
     <%= p.input :undelete_role, as: :boolean, wrapper: :custom_boolean_switch %>
     <%= p.input :kill_role, as: :boolean, wrapper: :custom_boolean_switch %>
     <%= p.input :update_permission, as: :boolean, wrapper: :custom_boolean_switch %>
-    <%= p.input :priority_permission, as: :boolean, wrapper: :custom_boolean_switch %>
+    <%= p.input :priority_permission, as: :integer %>
   <% end %>
   <%= f.submit %>
 <% end %>

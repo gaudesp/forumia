@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_07_150138) do
+ActiveRecord::Schema.define(version: 2019_09_08_151851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2019_09_07_150138) do
     t.boolean "delete_forum", default: false
     t.boolean "undelete_forum", default: false
     t.boolean "kill_forum", default: false
-    t.boolean "create_role", default: false
     t.boolean "update_role", default: false
     t.boolean "delete_role", default: false
     t.boolean "undelete_role", default: false
@@ -58,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_09_07_150138) do
     t.boolean "create_message", default: false
     t.boolean "update_message", default: false
     t.boolean "update_user", default: false
+    t.boolean "create_staff", default: false
     t.index ["role_id"], name: "index_permissions_on_role_id"
   end
 

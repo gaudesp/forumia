@@ -63,7 +63,7 @@ class StaffController < ApplicationController
                                                          :delete_forum,
                                                          :undelete_forum,
                                                          :kill_forum,
-                                                         :create_role,
+                                                         :create_staff,
                                                          :update_role,
                                                          :delete_role,
                                                          :undelete_role,
