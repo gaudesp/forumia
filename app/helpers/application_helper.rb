@@ -56,11 +56,7 @@ module ApplicationHelper
   end
 
   def display_music(user)
-    return "<iframe id='popup-youtube-player' width='0' height='0' src='https://www.youtube.com/embed/#{VideoInfo.new(user.music).video_id}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&autoplay=1' frameborder='0' allowfullscreen='true' allowscriptaccess='always'></iframe>".html_safe if user.music.present?
-  end
-
-  def display_player(user)
-    return content_tag :span, class: "float-right pointer mr-3", id: "stop" do fa_icon "pause" end if user.music.present?
+    return "<iframe class='float-right' id='popup-youtube-player' width='50' height='50' src='https://www.youtube.com/embed/#{VideoInfo.new(user.music).video_id}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&autoplay=1' frameborder='0' allowfullscreen='true' allowscriptaccess='always'></iframe>".html_safe if user.music.present?
   end
 
 end

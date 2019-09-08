@@ -4,7 +4,6 @@
 
 <div class="card rounded-top-0 mb-4">
   <span class="font-weight-bold ml-4 mt-2 mb-2">
-    <%= display_player(@user) %>
     Nox
   </span>
 </div>
@@ -59,16 +58,8 @@
 
 </div>
 
-<% if @user.music.present? %>
-  <div class="card mb-4">
-    <div class="card-body">
-      <%= fa_icon "music", class: "mr-1" %> <strong>Musique :</strong> <%= VideoInfo.new(@user.music).title %>
-    </div>
-  </div>
-<% end %>
-
 <% if @user.description.present? %>
-<div class="card">
+<div class="card mb-4">
   <div class="card-body">
       <label><strong><%= fa_icon "comment-alt", class: "mr-1" %> Description</strong></label><br />
       <%= @user.description %>
@@ -77,7 +68,11 @@
 <% end %>
 
 <% if @user.music.present? %>
+  <div class="card mb-4">
+    <div class="card-body">
     <%= display_music(@user) %>
-<% else %>
-    <div class="mb-4"></div>
+      <label><%= fa_icon "music", class: "mr-1" %> <strong>Musique :</strong></label><br />
+      <%= VideoInfo.new(@user.music).title %>
+    </div>
+  </div>
 <% end %>

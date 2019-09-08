@@ -20,23 +20,8 @@
 //= require turbolinks
 
 $(document).on('turbolinks:load', function() {
-  $('body').toggleClass(localStorage.toggled);
   $('[data-toggle="tooltip"]').tooltip();
-  var isPlaying = true
-  if ( isPlaying == true) {
-    $('#popup-youtube-player').get(0).contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}','*');
-  }
-  $('#stop').on('click', function() {
-    if ( isPlaying == true) {
-      $('#popup-youtube-player').get(0).contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
-      isPlaying = false;
-      $(this).children("i").attr("class", "fas fa-play");
-    } else {
-      $('#popup-youtube-player').get(0).contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}','*');
-      isPlaying = true;
-      $(this).children("i").attr("class", "fas fa-pause");
-    }
-  })
+  $('body').toggleClass(localStorage.toggled);
 })
 function darkLight() {
   if (localStorage.toggled != 'dark') {
