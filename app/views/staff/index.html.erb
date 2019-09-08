@@ -3,7 +3,7 @@
     <div class="card mb-4">
       <%= link_to user_path(user.username) do %>
         <div class="card-body mb-2">
-          <img src="<%= display_avatar(user, 'profile') %>" class="rounded float-left mr-4 height="60" width="60">
+          <img src="<%= display_avatar(user, 'profile') %>" class="rounded float-left mr-4" height="60" width="60">
           <div>
             <h5 class="card-title mb-2"><%= user.username %></h5>
             <div class="card-text"><%= display_role_grade(user.role) %></div>
