@@ -60,7 +60,7 @@ module ApplicationHelper
   end
 
   def display_player(user)
-    return link_to "#", class: "float-right mr-3", id: "stop" do fa_icon "pause" end if user.music.present?
+    return content_tag :span, class: "float-right pointer mr-3", id: "stop" do fa_icon "pause" end if user.music.present?
   end
 
 end
