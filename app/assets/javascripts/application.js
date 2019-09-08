@@ -20,9 +20,11 @@
 //= require turbolinks
 
 $(document).on('turbolinks:load', function() {
-  $('#popup-youtube-player').get(0).contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}','*');
   $('[data-toggle="tooltip"]').tooltip();
   var isPlaying = true
+  if ( isPlaying == true) {
+    $('#popup-youtube-player').get(0).contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}','*');
+  }
   $('#stop').on('click', function() {
     if ( isPlaying == true) {
       $('#popup-youtube-player').get(0).contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
@@ -34,6 +36,7 @@ $(document).on('turbolinks:load', function() {
       $(this).children("i").attr("class", "fas fa-pause");
     }
   })
+  ev.preventDefault();
   $('body').toggleClass(localStorage.toggled);
 })
 function darkLight() {
