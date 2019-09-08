@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_25_092634) do
+ActiveRecord::Schema.define(version: 2019_09_07_150138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,16 +52,21 @@ ActiveRecord::Schema.define(version: 2019_08_25_092634) do
     t.boolean "kill_role", default: false
     t.boolean "update_permission", default: false
     t.integer "priority_permission"
+    t.integer "role_id"
+    t.boolean "create_topic", default: false
+    t.boolean "update_topic", default: false
+    t.boolean "create_message", default: false
+    t.boolean "update_message", default: false
+    t.boolean "update_user", default: false
+    t.index ["role_id"], name: "index_permissions_on_role_id"
   end
 
   create_table "roles", force: :cascade do |t|
     t.string "label"
     t.string "color"
     t.string "icon"
-    t.bigint "permission_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["permission_id"], name: "index_roles_on_permission_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -88,6 +93,6 @@ ActiveRecord::Schema.define(version: 2019_08_25_092634) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "roles", "permissions", on_delete: :cascade
+  add_foreign_key "permissions", "roles", on_delete: :cascade
   add_foreign_key "users", "roles", on_delete: :cascade
 end

@@ -1,5 +1,5 @@
 class Permission < ApplicationRecord
-  has_many :roles
+  belongs_to :role, optional: true
   
 
   

@@ -1,17 +1,15 @@
 <% @roles.each do |role| %>
-  <div class="card mb-4">
-    <h5 class="card-header card-header-l3"><%= fa_icon role.icon, class: "mr-1" %> <%= role.label %></h5>
-    <div class="card-body card-body-l3">
-      <%= "Aucun #{role.label.downcase} n'a été ajouté." if role.users.count == 0 %>
-      <% role.users.each do |user| %>
-        <%= link_to user_path(user.username) do %>
-          <p>
-            <img src="<%= display_avatar(user, 'profile') %>" class="rounded-circle mr-3" alt="Cinque Terre" width="60" height="60">
-            <%= display_role_user(user) %>
-          </p>
-        <% end %>
+  <% role.users.each do |user| %>
+    <div class="card mb-4">
+      <%= link_to user_path(user.username) do %>
+        <div class="card-body mb-2">
+          <img src="<%= display_avatar(user, 'profile') %>" class="rounded float-left mr-4 height="60" width="60">
+          <div>
+            <h5 class="card-title mb-2"><%= user.username %></h5>
+            <div class="card-text"><%= display_role_grade(user.role) %></div>
+          </div>
+        </div>
       <% end %>
     </div>
-  </div>
+  <% end %>
 <% end %>
-

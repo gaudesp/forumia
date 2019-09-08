@@ -1,51 +1,79 @@
-<div class="bg-white overflow-hidden radius-top">
-    <div class="px-4 pt-0 pb-3 bg-background background-header" style="background-image: url(<%= display_background(@user) %>);">
-        <div class="media align-items-end profile-header">
-            <div class="profile mr-3">
-            <img src="<%= display_avatar(@user, "profile") %>" width="130" class="avatar-img img-thumbnail">
-            </div>
-            <div class="media-body mb-3">
-                <%= display_player(@user) %>
-                <h5 class="mt-0 mb-2"><%= @user.username %></h5>
-            </div>
-        </div>
-    </div>
+<header class="py-4 bg-image-full rounded-top rounded-bottom-0" style="background-image: url(<%= display_background(@user) %>);">
+  <img class="img-fluid d-block ml-4 rounded" width="130" src="<%= display_avatar(@user, "profile") %>" alt="">
+</header>
 
-    <div class="profile-bar border-grey radius-bottom bg-light d-flex justify-content-end text-center"></div>
-
-
+<div class="card rounded-top-0 mb-4">
+  <span class="font-weight-bold ml-4 mt-2 mb-2">
+    <%= display_player(@user) %>
+    Nox
+  </span>
 </div>
 
 <div class="row">
-    <div class="col-lg-6">
-        <div class="mt-4 card rounded border-grey bg-light card-profile">
-            <p><%= fa_icon "graduation-cap", class: "mr-1" %> <strong>Role :</strong> <%= display_role_grade(@user.role) %></p>
-            <p><%= fa_icon "venus-mars", class: "mr-1" %> <strong>Genre :</strong> <%= @user.gender.present? ? display_gender(@user.gender) : "Non renseigné" %></p>
-            <p><%= fa_icon "globe-europe", class: "mr-1" %> <strong>Pays :</strong> <%= @user.country.present? ? @user.country : "Non renseigné" %></p>
-            <p><%= fa_icon "birthday-cake", class: "mr-1" %> <strong>Date de naissance :</strong> <%= @user.birthdate.present? ? display_date(@user.birthdate) : "Non renseigné" %></p>
-        </div>
+
+  <div class="col-md-6">
+    <div class="card mb-4">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span class="float-right"><%= display_role_grade(@user.role) %></span>
+            <%= fa_icon "graduation-cap", class: "mr-1" %> <strong>Role</strong>
+          </li>
+          <li class="list-group-item">
+            <span class="float-right"><%= @user.gender.present? ? display_gender(@user.gender) : "Non renseigné" %></span>
+            <%= fa_icon "venus-mars", class: "mr-1" %> <strong>Genre</strong>
+          </li>
+          <li class="list-group-item">
+            <span class="float-right"><%= @user.country.present? ? @user.country : "Non renseigné" %></span>
+            <%= fa_icon "globe-europe", class: "mr-1" %> <strong>Pays</strong>
+          </li>
+          <li class="list-group-item">
+            <span class="float-right"><%= @user.birthdate.present? ? display_date(@user.birthdate) : "Non renseigné" %></span>
+            <%= fa_icon "birthday-cake", class: "mr-1" %> <strong>Date de naissance</strong>
+          </li>
+        </ul>
     </div>
-    <div class="col-lg-6">
-        <div class="mt-4 card rounded border-grey bg-light card-profile">
-            <p><%= fa_icon "coins", class: "mr-1" %> <strong>Argent :</strong> <%= @user.coin %></p>
-            <p><%= fa_icon "clock", class: "mr-1" %> <strong>Dernière activité :</strong> <%= display_distance_between(@user.last_seen_at) %></p>
-            <p><%= fa_icon "calendar", class: "mr-1" %> <strong>Membre depuis :</strong> <%= display_distance_between(@user.created_at) %></p>
-            <p><%= fa_icon "comment-dots", class: "mr-1" %> <strong>Nombre de messages postés :</strong> 0</p>
-        </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card mb-4">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span class="float-right"><%= @user.coin %></span>
+            <%= fa_icon "coins", class: "mr-1" %> <strong>Argent</strong>
+          </li>
+          <li class="list-group-item">
+            <span class="float-right"><%= display_distance_between(@user.last_seen_at) %></span>
+            <%= fa_icon "clock", class: "mr-1" %> <strong>Dernière activité</strong>
+          </li>
+          <li class="list-group-item">
+            <span class="float-right"><%= display_distance_between(@user.created_at) %></span>
+            <%= fa_icon "calendar", class: "mr-1" %> <strong>Membre depuis</strong>
+          </li>
+          <li class="list-group-item">
+            <span class="float-right">0</span>
+            <%= fa_icon "comment-dots", class: "mr-1" %> <strong>Messages postés</strong>
+          </li>
+        </ul>
     </div>
+  </div>
+
 </div>
 
 <% if @user.music.present? %>
-    <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
-        <p><%= fa_icon "music", class: "mr-1" %> <strong>Musique :</strong> <%= VideoInfo.new(@user.music).title %></p>
+  <div class="card mb-4">
+    <div class="card-body">
+      <%= fa_icon "music", class: "mr-1" %> <strong>Musique :</strong> <%= VideoInfo.new(@user.music).title %>
     </div>
+  </div>
 <% end %>
 
 <% if @user.description.present? %>
-    <div class="mt-4 card rounded border-grey bg-light pl-3 pt-3 pr-3">
-        <label><strong><%= fa_icon "comment-alt", class: "mr-1" %> Description</strong></label>
-        <p><%= @user.description %></p>
+<div class="card">
+  <div class="card-body">
+      <label><strong><%= fa_icon "comment-alt", class: "mr-1" %> Description</strong></label><br />
+      <%= @user.description %>
     </div>
+  </div>
 <% end %>
 
 <% if @user.music.present? %>

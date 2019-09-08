@@ -17,8 +17,9 @@
 //= require popper
 //= require bootstrap
 //= require select2-full
+//= require turbolinks
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $('[data-toggle="tooltip"]').tooltip();
   var isPlaying = true
   $('#stop').on('click', function() {
@@ -32,4 +33,16 @@ $(document).ready(function() {
       $(this).children("i").attr("class", "fas fa-pause");
     }
   })
+  $('body').toggleClass(localStorage.toggled);
 })
+function darkLight() {
+  /*DARK CLASS*/
+  if (localStorage.toggled != 'dark') {
+    $('body').toggleClass('dark', true);
+    localStorage.toggled = "dark";
+     
+  } else {
+    $('body').toggleClass('dark', false);
+    localStorage.toggled = "";
+  }
+}

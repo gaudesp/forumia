@@ -45,7 +45,7 @@ module ApplicationHelper
       return "https://image.noelshack.com/fichiers/2019/34/4/1566466264-anonymous-user.png" if !user || !user.avatar.present?
       user.avatar
     else
-      return fa_icon("user-circle", class: "icon-md") if !user || !user.avatar.present?
+      return fa_icon("user-circle", class: "icon-md ml-3") if !user || !user.avatar.present?
       image_tag(user.avatar, class: "avatar")
     end
   end
@@ -60,7 +60,7 @@ module ApplicationHelper
   end
 
   def display_player(user)
-    return link_to "#", class: "float-right player", id: "stop" do fa_icon "pause" end if user.music.present?
+    return link_to "#", class: "float-right mr-3", id: "stop" do fa_icon "pause" end if user.music.present?
   end
 
 end

@@ -1,11 +1,7 @@
 class Role < ApplicationRecord
   has_many :users
-  belongs_to :permission, optional: true
+  has_one :permission, inverse_of: :role
 
-  before_create :link_permission
-
-  def link_permission
-    self.permission = Permission.create
-  end
+  accepts_nested_attributes_for :permission, allow_destroy: true
 
 end
