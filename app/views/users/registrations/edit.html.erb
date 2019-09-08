@@ -7,19 +7,21 @@
   <%= render partial: "users/shared/error_messages", locals: { f: f } %>
 
   <div class="card mb-4">
-    <h5 class="card-header card-header-l"><%= fa_icon "user-circle", class: "mr-1" %> Identifiants</h5>
-    
-    <div class="card-body card-body-l">
-      <%= f.input :username, prepend: fa_icon("user"), readonly: true, placeholder: "Nom d'utilisateur" %>
-      <%= f.input :email, prepend: fa_icon("at"), placeholder: "Adresse email" %>
-      <%= f.input :password, prepend: fa_icon("key"), placeholder: "Mot de passe" %>
-      <%= f.input :password_confirmation, prepend: fa_icon("check"), placeholder: "Confirmation du mot de passe" %>
+    <div class="card-body">
+      <h4 class="card-title"><%= fa_icon "user-circle", class:" mr-1" %> Identifiants</h4>
+      <div class="card-text mt-3">
+        <%= f.input :username, prepend: fa_icon("user"), readonly: true, placeholder: "Nom d'utilisateur" %>
+        <%= f.input :email, prepend: fa_icon("at"), placeholder: "Adresse email" %>
+        <%= f.input :password, prepend: fa_icon("key"), placeholder: "Mot de passe" %>
+        <%= f.input :password_confirmation, prepend: fa_icon("check"), placeholder: "Confirmation du mot de passe" %>
+      </div>
     </div>
   </div>
   
   <div class="card mb-4">
-    <h5 class="card-header card-header-l2"><%= fa_icon "address-card", class: "mr-1" %> Profil</h5>
-    <div class="card-body card-body-l2">
+    <div class="card-body">
+      <h4 class="card-title"><%= fa_icon "address-card", class:" mr-1" %> Profil</h4>
+      <div class="card-text mt-3">
       <%= f.input :birthdate, as: :date, include_blank: true, wrapper: :input_group_select, prepend: fa_icon("birthday-cake"), start_year: Time.current.year-80, end_year: Time.current.year-10, order: %i(day month year), input_html: { value: Time.current } %>
       <%= f.input :description, prepend: fa_icon("comment-alt"), placeholder: "Description" %>
       <%= f.input :avatar, label: "Photo de profil", as: :file, wrapper: :custom_file, hint: "Taille optimale : 130x130 pixel", prepend: fa_icon("id-card-alt") %>
@@ -27,9 +29,10 @@
       <%= f.input :music, prepend: fa_icon("music"), placeholder: "Musique (lien youtube)" %>
       <%= f.input :country, collection: ISO3166::Country.countries.sort_by(&:name).collect { |c| [ c.name, "#{c.name} #{c.emoji_flag}" ] }, as: :select, wrapper: :input_group_select, prepend: fa_icon("globe-europe"), include_blank: "Pays" %>
       <%= f.input :gender, :label_method => lambda { |gender| t("simple_form.options.user.gender.#{gender[0]}") }, collection: User.genders, as: :select, wrapper: :input_group_select, prepend: fa_icon("venus-mars"), include_blank: "Genre" %>
+      </div>
     </div>
   </div>
 
-  <%= f.button :submit, value: "Mettre à jour", class: "btn-secondary btn-block" %><br />
+  <%= f.button :submit, value: "Mettre à jour", class: "btn-primary btn-block" %><br />
 
 <% end %>

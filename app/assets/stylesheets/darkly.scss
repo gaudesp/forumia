@@ -20,7 +20,7 @@
     color: #fff;
     text-align: left;
     background-color: #222;
-    
+
  @import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
  :root {
    --blue: #375a7f;
@@ -2017,10 +2017,10 @@
    font-size: 0.9375rem;
    font-weight: 400;
    line-height: 1.5;
-   color: #444;
-   background-color: #fff;
+   color: #adb5bd;
+   background-color: #555;
    background-clip: padding-box;
-   border: 1px solid transparent;
+   border: 1px solid #444;
    border-radius: 0.25rem;
    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -2041,8 +2041,8 @@
  }
  
  .form-control:focus {
-   color: #444;
-   background-color: #fff;
+   color: #adb5bd;
+   background-color: #444;
    border-color: #739ac2;
    outline: 0;
    -webkit-box-shadow: 0 0 0 0.2rem rgba(55, 90, 127, 0.25);
@@ -2050,28 +2050,28 @@
  }
  
  .form-control::-webkit-input-placeholder {
-   color: #999;
+   color: #adb5bd;
    opacity: 1;
  }
  
  .form-control::-ms-input-placeholder {
-   color: #999;
+   color: #adb5bd;
    opacity: 1;
  }
  
  .form-control::placeholder {
-   color: #999;
+   color: #adb5bd;
    opacity: 1;
  }
  
  .form-control:disabled, .form-control[readonly] {
-   background-color: #ebebeb;
+   background-color: #444;
    opacity: 1;
  }
  
  select.form-control:focus::-ms-value {
-   color: #444;
-   background-color: #fff;
+   color: #adb5bd;
+   background-color: #555;
  }
  
  .form-control-file,
@@ -3999,10 +3999,10 @@
    font-size: 0.9375rem;
    font-weight: 400;
    line-height: 1.5;
-   color: #444;
+   color: #adb5bd;
    vertical-align: middle;
    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23303030' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
-   background-color: #fff;
+   background-color: #555;
    border: 1px solid transparent;
    border-radius: 0.25rem;
    -webkit-appearance: none;
@@ -4018,8 +4018,8 @@
  }
  
  .custom-select:focus::-ms-value {
-   color: #444;
-   background-color: #fff;
+   color: #adb5bd;
+   background-color: #555;
  }
  
  .custom-select[multiple], .custom-select[size]:not([size="1"]) {
@@ -4029,8 +4029,8 @@
  }
  
  .custom-select:disabled {
-   color: #999;
-   background-color: #ebebeb;
+   color: #adb5bd;
+   background-color: #555;
  }
  
  .custom-select::-ms-expand {
@@ -4099,7 +4099,7 @@
    font-weight: 400;
    line-height: 1.5;
    color: #adb5bd;
-   background-color: #fff;
+   background-color: #555;
    border: 1px solid #444;
    border-radius: 0.25rem;
  }
