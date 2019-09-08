@@ -20,6 +20,7 @@
 //= require turbolinks
 
 $(document).on('turbolinks:load', function() {
+  $('body').toggleClass(localStorage.toggled);
   $('[data-toggle="tooltip"]').tooltip();
   var isPlaying = true
   if ( isPlaying == true) {
@@ -36,11 +37,8 @@ $(document).on('turbolinks:load', function() {
       $(this).children("i").attr("class", "fas fa-pause");
     }
   })
-  ev.preventDefault();
-  $('body').toggleClass(localStorage.toggled);
 })
 function darkLight() {
-  /*DARK CLASS*/
   if (localStorage.toggled != 'dark') {
     $('body').toggleClass('dark', true);
     localStorage.toggled = "dark";
