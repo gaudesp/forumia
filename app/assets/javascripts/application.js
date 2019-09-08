@@ -20,6 +20,7 @@
 //= require turbolinks
 
 $(document).on('turbolinks:load', function() {
+  $('#popup-youtube-player').get(0).contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}','*');
   $('[data-toggle="tooltip"]').tooltip();
   var isPlaying = true
   $('#stop').on('click', function() {
@@ -40,7 +41,6 @@ function darkLight() {
   if (localStorage.toggled != 'dark') {
     $('body').toggleClass('dark', true);
     localStorage.toggled = "dark";
-     
   } else {
     $('body').toggleClass('dark', false);
     localStorage.toggled = "";
