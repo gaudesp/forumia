@@ -18,19 +18,21 @@
 //= require bootstrap
 //= require select2-full
 //= require turbolinks
+//= require jscolor
 
 $(document).on('turbolinks:load', function() {
-  $('[data-toggle="tooltip"]').tooltip();
-  $('body').toggleClass(localStorage.toggled);
+  jscolor.installByClassName('jscolor')
+  $('[data-toggle="tooltip"]').tooltip()
+  $('body').toggleClass(localStorage.toggled)
 })
 
 function darkLight() {
   if (localStorage.toggled != 'dark') {
-    $('body').toggleClass('dark', true);
-    localStorage.toggled = "dark";
+    $('body').toggleClass('dark', true)
+    localStorage.toggled = "dark"
   } else {
-    $('body').toggleClass('dark', false);
-    localStorage.toggled = "";
+    $('body').toggleClass('dark', false)
+    localStorage.toggled = ""
   }
 }
 

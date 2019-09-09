@@ -26,6 +26,22 @@ class User < ApplicationRecord
 
   before_create :set_default_role
 
+  def promote(role_id)
+    update(role_id: role_id)
+  end
+
+  def demote
+    update(role_id: 1)
+  end
+
+  def self.current
+    Thread.current[:user]
+  end
+  
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if username = conditions.delete(:username)
@@ -34,6 +50,8 @@ class User < ApplicationRecord
       where(conditions).first
     end
   end
+
+  private
 
   def set_default_role
     self.role = Role.find(1)
