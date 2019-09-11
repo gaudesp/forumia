@@ -47,7 +47,6 @@ if Role.count == 0
 end
 
 role = Role.create(label: "Webmaster", icon: "robot", color: "18BC9C")
-puts role
 permission = Permission.new(
   role: role,
   priority_permission: 100,

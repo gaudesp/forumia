@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     collection do
       post 'promote', to: 'staff#promote', as: :promote
       get 'demote/:id', to: 'staff#demote', as: :demote
+      get 'roles', to: 'staff#roles', as: :roles
     end
   end
   resources :users, path: "profile", param: :username, only: [:show]

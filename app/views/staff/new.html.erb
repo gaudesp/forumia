@@ -2,7 +2,7 @@
 <%= simple_form_for @role, url: staff_index_path, wrapper: :input_group do |f| %>
   <div class="card mb-4">
     <div class="card-body">
-      <h4 class="card-title"><%= fa_icon "user-graduate", class:" mr-1" %> Ajouter un rôle</h4>
+      <h4 class="card-title"><%= fa_icon "user-graduate", class:" mr-1" %> Rôle</h4>
       <div class="card-text mt-3">
         <%= f.input :label, prepend: fa_icon("graduation-cap"), placeholder: "Nom" %>
         <%= f.input :color, prepend: fa_icon("palette"), placeholder: "Couleur", input_html: { class: "jscolor pointer" } %>
@@ -12,7 +12,7 @@
   </div>
   <div class="card mb-4">
     <div class="card-body">
-      <h4 class="card-title"><%= fa_icon "balance-scale-right", class:" mr-1" %> Gérer les permissions</h4>
+      <h4 class="card-title"><%= fa_icon "balance-scale-right", class:" mr-1" %> Permissions</h4>
       <div class="card-text mt-3">
         <%= f.simple_fields_for :permission do |p| %>
           <%= p.input :priority_permission, prepend: fa_icon("universal-access"), placeholder: "Priorité", hint: 'Plus le chiffre est élevé, plus le rôle est important.' %>

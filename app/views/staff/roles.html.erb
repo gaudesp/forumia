@@ -1,0 +1,19 @@
+<%= link_to "Retour à liste du staff", staff_index_path, class: "btn btn-primary mb-3" %>
+<div class="card">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Rôle</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @roles.each do |role| %>
+        <tr>
+          <th><%= display_role_grade(role) %></th>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

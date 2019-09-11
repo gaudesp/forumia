@@ -29,6 +29,10 @@ class StaffController < ApplicationController
     end
   end
 
+  def roles
+    @roles = Role.joins(:permission).all.order(priority_permission: :desc)
+  end
+
   def promote
     if @user.promote(params[:user][:role_id])
       flash[:success] = "Le membre a été promu avec succès !"
@@ -56,7 +60,7 @@ class StaffController < ApplicationController
   end
 
   def can_promote_role
-    if params[:user][:id] == "" && params[:user][:role_id] == ""
+    if params[:user][:id] == "" || params[:user][:role_id] == ""
       flash[:error] = "Vous devez sélectionner un membre et un rôle pour promouvoir quelqu'un"
       redirect_to staff_index_path
     elsif !current_user || current_user.role.permission.promote_user == false || current_user.role.permission.priority_permission < @user.role.permission.priority_permission
