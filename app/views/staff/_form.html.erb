@@ -45,6 +45,8 @@
                   <div class="alert alert-info">
                     <%= fa_icon('info-circle', class: 'mr-1') %> L'utilisateur ne pourra jamais gérer son rôle ou un rôle ayant une plus forte priorité que le sien
                   </div>
+                  <%= p.input :promote_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut promouvoir aucune personne", label: "Donner la possibilité de promouvoir un utilisateur" %>
+                  <%= p.input :demote_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut déstituer aucune personne", label: "Donner la possibilité de déstituer un utilisateur" %>
                   <%= p.input :create_staff, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut créer aucun rôle", label: 'Donner la possibilité de créer un rôle' %>
                   <%= p.input :update_role, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier aucun rôle", label: 'Donner la possibilité de modifier un rôle' %>
                   <%= p.input :delete_role, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucun rôle", label: 'Donner la possibilité de supprimer un rôle' %>
@@ -74,8 +76,6 @@
                   <%= p.input :kill_message, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut détruire aucun message", label: 'Donner la possibilité de détruire un message' %>
                 </div>
                 <div class="tab-pane fade" id="utilisateur" role="tabpanel" aria-labelledby="utilisateur-tab">
-                  <%= p.input :promote_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut promouvoir aucune personne", label: "Donner la possibilité de promouvoir un utilisateur" %>
-                  <%= p.input :demote_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut déstituer aucune personne", label: "Donner la possibilité de déstituer un utilisateur" %>
                   <%= p.input :update_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier que son compte", label: "Donner la possibilité de modifier le compte d'un utilisateur" %>
                   <%= p.input :kick_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut kicker personne", label: 'Donner la possibilité de kicker un utilisateur' %>
                   <%= p.input :unkick_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut dékicker personne", label: 'Donner la possibilité de dékicker un utilisateur' %>
