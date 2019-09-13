@@ -101,8 +101,8 @@ class StaffController < ApplicationController
     elsif !current_user || current_user.role.permission.promote_user == false || current_user.role.permission.priority_permission < @user.role.permission.priority_permission
       flash[:error] = "Vous ne pouvez pas promouvoir cet utilisateur car il a un rôle supérieur au votre"
       redirect_to staff_index_path
-    elsif current_user.role.permission.priority_permission <= @role.permission.priority_permission
-      flash[:error] = "Vous ne pouvez pas promouvoir un utilisateur à un rôle supérieur ou égale au votre"
+    elsif current_user.role.permission.priority_permission < @role.permission.priority_permission
+      flash[:error] = "Vous ne pouvez pas promouvoir un utilisateur à un rôle supérieur au votre"
       redirect_to staff_index_path
     end
   end

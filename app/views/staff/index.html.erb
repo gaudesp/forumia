@@ -3,7 +3,7 @@
     <div class="card mb-4">
         <div class="card-body">
           <% if current_user %>
-            <% if current_user.role.permission.priority_permission > user.role.permission.priority_permission %>
+            <% if current_user.role.permission.priority_permission >= user.role.permission.priority_permission %>
               <%= link_to demote_staff_index_path(user.id), class: "float-right" do %>
                 <button class="btn btn-warning" data-toggle="tooltip" data-title="Rétrograder"><%= fa_icon "times" %></button>
               <% end %>
