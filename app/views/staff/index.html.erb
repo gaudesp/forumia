@@ -23,23 +23,20 @@
 
 <% if current_user %>
   <% if current_user.role.permission.update_role == true %> 
-    <%= link_to "Gérer les rôles", roles_staff_index_path, class: "btn btn-primary mb-4" %>
+    <%= link_to "Gestion des rôles", roles_staff_index_path, class: "btn btn-primary float-right mb-3" %>
   <% end %>
-  <% if current_user.role.permission.create_staff == true %> 
-    <%= link_to "Créer un nouveau rôle", new_staff_path, class: "btn btn-primary float-right mb-4" %>
-  <% end %>
-    <% if current_user.role.permission.promote_user == true %> 
-      <div class="card col-md-12 mb-4">
-        <div class="card-body">
-          <h4 class="card-title"><%= fa_icon "user-graduate", class:" mr-1" %> Promouvoir un membre</h4>
-          <div class="card-text mt-3">
-            <%= simple_form_for @user, url: promote_staff_index_path, wrapper: :input_group do |f| %>
-              <%= f.input :id, collection: User.all, label_method: :username, value_method: :id, as: :select, wrapper: :input_group_select, prepend: fa_icon("users"), include_blank: "Membre" %>
-              <%= f.input :role_id, collection: Role.all.where.not(id: 1), label_method: :label, value_method: :id, as: :select, wrapper: :input_group_select, prepend: fa_icon("graduation-cap"), include_blank: "Rôle" %>
-              <%= f.button :submit, value: "Valider", class: "btn-primary" %>
-            <% end %>
-          </div>
+  <% if current_user.role.permission.promote_user == true %> 
+    <div class="card col-md-12 mb-4">
+      <div class="card-body">
+        <h4 class="card-title"><%= fa_icon "user-graduate", class:" mr-1" %> Promouvoir un membre</h4>
+        <div class="card-text mt-3">
+          <%= simple_form_for @user, url: promote_staff_index_path, wrapper: :input_group do |f| %>
+            <%= f.input :id, collection: User.all, label_method: :username, value_method: :id, as: :select, wrapper: :input_group_select, prepend: fa_icon("users"), include_blank: "Membre" %>
+            <%= f.input :role_id, collection: Role.all.where.not(id: 1), label_method: :label, value_method: :id, as: :select, wrapper: :input_group_select, prepend: fa_icon("graduation-cap"), include_blank: "Rôle" %>
+            <%= f.button :submit, value: "Valider", class: "btn-primary" %>
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 <% end %>

@@ -60,20 +60,20 @@
 
 </div>
 
-<% if @user.music.present? %>
-  <div class="card mb-4">
-    <div class="card-body">
-      <label><%= fa_icon "music", class: "mr-1" %> <strong>Musique</strong></label><br />
-      <%= display_music(@user) %>
-    </div>
-  </div>
-<% end %>
-
 <% if @user.description.present? %>
 <div class="card mb-4">
   <div class="card-body">
       <label><strong><%= fa_icon "comment-alt", class: "mr-1" %> Description</strong></label><br />
       <%= @user.description %>
+    </div>
+  </div>
+<% end %>
+
+<% if @user.music.present? %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <label><%= fa_icon "music", class: "mr-1" %> <strong>Musique</strong></label><br />
+      <%= display_music(@user) %>
     </div>
   </div>
 <% end %>

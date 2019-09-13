@@ -2,8 +2,13 @@ class StaffController < ApplicationController
   before_action :find_user_on_demote, only: [:demote, :can_demote_role]
   before_action :find_user_on_promote, only: [:promote, :can_promote_role]
   before_action :find_role_on_promote, only: [:promote, :can_promote_role]
+  before_action :find_role_on_new, only: [:new, :create, :build_nested_permission]
+  before_action :find_role_on_edit, only: [:edit, :update, :build_nested_permission]
+  before_action :build_nested_permission, only: [:new, :create, :edit, :update]
 
+  before_action :can_manage_role, only: [:roles]
   before_action :can_create_role, only: [:new, :create]
+  before_action :can_update_role, only: [:edit, :update]
   before_action :can_promote_role, only: [:promote]
   before_action :can_demote_role, only: [:demote]
 
@@ -13,12 +18,9 @@ class StaffController < ApplicationController
   end
 
   def new
-    @role = Role.new
-    @role.build_permission
   end
 
   def create
-    @role = Role.new
     @role.assign_attributes(role_params)
     if @role.save
       flash[:success] = "Le rôle a été créé avec succès !"
@@ -26,6 +28,19 @@ class StaffController < ApplicationController
     else
       flash.now[:error] = "Veuillez résoudre les erreurs ci-dessous"
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @role.update_attributes(role_params)
+      flash[:success] = "Le rôle a été modifié avec succès !"
+      redirect_to roles_staff_index_path
+    else
+      flash.now[:error] = "Veuillez résoudre les erreurs ci-dessous"
+      render :edit
     end
   end
 
@@ -52,10 +67,30 @@ class StaffController < ApplicationController
 
   protected
 
+  def can_manage_role
+    if !current_user || current_user.role.permission.update_role == false
+      flash[:error] = "Vous ne pouvez pas gérer de rôle"
+      redirect_to staff_index_path
+    end
+  end
+
   def can_create_role
     if !current_user || current_user.role.permission.create_staff == false
       flash[:error] = "Vous ne pouvez pas créer de rôle"
       redirect_to staff_index_path
+    end
+  end
+
+  def can_update_role
+    if !current_user || current_user.role.permission.update_role == false
+      flash[:error] = "Vous ne pouvez pas modifier de rôle"
+      redirect_to roles_staff_index_path
+    elsif current_user.role == @role
+      flash[:error] = "Vous ne pouvez pas modifier votre rôle"
+      redirect_to roles_staff_index_path
+    elsif current_user.role.permission.priority_permission < @role.permission.priority_permission
+      flash[:error] = "Vous ne pouvez pas modifier un rôle qui est supérieur au votre"
+      redirect_to roles_staff_index_path
     end
   end
 
@@ -66,15 +101,15 @@ class StaffController < ApplicationController
     elsif !current_user || current_user.role.permission.promote_user == false || current_user.role.permission.priority_permission < @user.role.permission.priority_permission
       flash[:error] = "Vous ne pouvez pas promouvoir cet utilisateur car il a un rôle supérieur au votre"
       redirect_to staff_index_path
-    elsif current_user.role.permission.priority_permission < @role.permission.priority_permission
-      flash[:error] = "Vous ne pouvez pas promouvoir un utilisateur à un rôle supérieur au votre"
+    elsif current_user.role.permission.priority_permission <= @role.permission.priority_permission
+      flash[:error] = "Vous ne pouvez pas promouvoir un utilisateur à un rôle supérieur ou égale au votre"
       redirect_to staff_index_path
     end
   end
 
   def can_demote_role
     if !current_user || current_user.role.permission.demote_user == false || current_user.role.permission.priority_permission < @user.role.permission.priority_permission
-      flash[:error] = "Vous ne pouvez pas rétrograder cet utilisateur"
+      flash[:error] = "Vous ne pouvez pas rétrograder cet utilisateur car il a un rôle supérieur au votre"
       redirect_to staff_index_path
     end
   end
@@ -91,6 +126,18 @@ class StaffController < ApplicationController
 
   def find_role_on_promote
     @role = Role.find(params[:user][:role_id]) if params[:user][:role_id] != ""
+  end
+
+  def find_role_on_edit
+    @role = Role.find(params[:id])
+  end
+
+  def find_role_on_new
+    @role = Role.new
+  end
+
+  def build_nested_permission
+    @role.build_permission if @role.permission.nil?
   end
 
   def role_params
