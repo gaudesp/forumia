@@ -6,11 +6,11 @@ class StaffController < ApplicationController
   before_action :find_role_on_edit, only: [:edit, :update, :build_nested_permission]
   before_action :build_nested_permission, only: [:new, :create, :edit, :update]
 
-  before_action :can_manage_role, only: [:roles]
-  before_action :can_create_role, only: [:new, :create]
-  before_action :can_update_role, only: [:edit, :update]
-  before_action :can_promote_role, only: [:promote]
-  before_action :can_demote_role, only: [:demote]
+  before_action :can_manage_role, only: [:roles], if: :is_not_webmaster
+  before_action :can_create_role, only: [:new, :create], if: :is_not_webmaster
+  before_action :can_update_role, only: [:edit, :update], if: :is_not_webmaster
+  before_action :can_promote_role, only: [:promote], if: :is_not_webmaster
+  before_action :can_demote_role, only: [:demote], if: :is_not_webmaster
 
   def index
     @user = User.new
@@ -66,6 +66,10 @@ class StaffController < ApplicationController
   end
 
   protected
+
+  def is_not_webmaster
+    current_user.role.permission.priority_permission != 100
+  end
 
   def can_manage_role
     if !current_user || current_user.role.permission.update_role == false
