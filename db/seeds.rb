@@ -1,6 +1,6 @@
 puts "Create roles"
 if Role.count == 0
-  role = Role.create(label: "Membre", color: "#6c757d", icon: "user")
+  role = Role.create(label: "Membre", color: "6c757d", icon: "user")
   permission = Permission.new(
     role: role,
     priority_permission: 1,

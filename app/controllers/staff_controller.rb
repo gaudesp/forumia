@@ -6,11 +6,11 @@ class StaffController < ApplicationController
   before_action :find_role_on_edit, only: [:edit, :update, :build_nested_permission]
   before_action :build_nested_permission, only: [:new, :create, :edit, :update]
 
-  before_action :can_manage_role, only: [:roles], if: :is_not_webmaster
-  before_action :can_create_role, only: [:new, :create], if: :is_not_webmaster
-  before_action :can_update_role, only: [:edit, :update], if: :is_not_webmaster
-  before_action :can_promote_role, only: [:promote], if: :is_not_webmaster
-  before_action :can_demote_role, only: [:demote], if: :is_not_webmaster
+  before_action :check_if_can_manage_role, only: [:roles], if: :is_not_webmaster
+  before_action :check_if_can_create_role, only: [:new, :create], if: :is_not_webmaster
+  before_action :check_if_can_update_role, only: [:edit, :update], if: :is_not_webmaster
+  before_action :check_if_can_promote_role, only: [:promote], if: :is_not_webmaster
+  before_action :check_if_can_demote_role, only: [:demote], if: :is_not_webmaster
 
   def index
     @user = User.new
@@ -71,21 +71,21 @@ class StaffController < ApplicationController
     current_user.role.permission.priority_permission != 100
   end
 
-  def can_manage_role
+  def check_if_can_manage_role
     if !current_user || current_user.role.permission.update_role == false
       flash[:error] = "Vous ne pouvez pas gérer de rôle"
       redirect_to staff_index_path
     end
   end
 
-  def can_create_role
+  def check_if_can_create_role
     if !current_user || current_user.role.permission.create_staff == false
       flash[:error] = "Vous ne pouvez pas créer de rôle"
       redirect_to staff_index_path
     end
   end
 
-  def can_update_role
+  def check_if_can_update_role
     if !current_user || current_user.role.permission.update_role == false
       flash[:error] = "Vous ne pouvez pas modifier de rôle"
       redirect_to roles_staff_index_path
@@ -98,7 +98,7 @@ class StaffController < ApplicationController
     end
   end
 
-  def can_promote_role
+  def check_if_can_promote_role
     if params[:user][:id] == "" || params[:user][:role_id] == ""
       flash[:error] = "Vous devez sélectionner un membre et un rôle pour promouvoir quelqu'un"
       redirect_to staff_index_path
@@ -114,7 +114,7 @@ class StaffController < ApplicationController
     end
   end
 
-  def can_demote_role
+  def check_if_can_demote_role
     if !current_user || current_user.role.permission.demote_user == false
       flash[:error] = "Vous ne pouvez pas rétrograder d'utilisateur"
       redirect_to staff_index_path
