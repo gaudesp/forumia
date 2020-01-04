@@ -38,8 +38,6 @@
                   <%= p.input :create_article, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut créer aucun article", label: 'Donner la possibilité de créer un article' %>
                   <%= p.input :update_article, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier que les siens", label: 'Donner la possibilité de modifier un article' %>
                   <%= p.input :delete_article, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer que les siens", label: 'Donner la possibilité de supprimer un article' %>
-                  <%= p.input :undelete_article, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut restaurer que les siens", label: 'Donner la possibilité de restaurer un article' %>
-                  <%= p.input :kill_article, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut détruire aucun article", label: 'Donner la possibilité de détruire un article' %>
                 </div>
                 <div class="tab-pane fade" id="role" role="tabpanel" aria-labelledby="role-tab">
                   <div class="alert alert-info">
@@ -50,16 +48,12 @@
                   <%= p.input :create_staff, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut créer aucun rôle", label: 'Donner la possibilité de créer un rôle' %>
                   <%= p.input :update_role, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier aucun rôle", label: 'Donner la possibilité de modifier un rôle' %>
                   <%= p.input :delete_role, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucun rôle", label: 'Donner la possibilité de supprimer un rôle' %>
-                  <%= p.input :undelete_role, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut restaurer aucun rôle", label: 'Donner la possibilité de restaurer un rôle' %>
-                  <%= p.input :kill_role, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut détruire aucun rôle", label: 'Donner la possibilité de détruire un rôle' %>
                   <%= p.input :update_permission, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut gérer aucunes permissions", label: "Donner la possibilité de gérer les permissions d'un rôle" %>
                 </div>
                 <div class="tab-pane fade" id="forum" role="tabpanel" aria-labelledby="forum-tab">
                   <%= p.input :create_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut créer aucun forum", label: 'Donner la possibilité de créer un forum' %>
-                  <%= p.input :update_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier que les siens", label: 'Donner la possibilité de modifier un forum' %>
-                  <%= p.input :delete_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer que les siens", label: 'Donner la possibilité de supprimer un forum' %>
-                  <%= p.input :undelete_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut restaurer que les siens", label: 'Donner la possibilité de restaurer un forum' %>
-                  <%= p.input :kill_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut détruire aucun forum", label: 'Donner la possibilité de détruire un forum' %>
+                  <%= p.input :update_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier aucun forum", label: 'Donner la possibilité de modifier un forum' %>
+                  <%= p.input :delete_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucun forum", label: 'Donner la possibilité de supprimer un forum' %>
                   <hr />
                   <%= p.input :update_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier que les siens", label: 'Donner la possibilité de modifier un sujet' %>
                   <%= p.input :pin_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut épingler aucun sujet", label: "Donner la possibilité d'épingler un sujet" %>
@@ -67,13 +61,9 @@
                   <%= p.input :lock_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut locker aucun sujet", label: 'Donner la possibilité de locker un sujet' %>
                   <%= p.input :unlock_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut délocker aucun sujet", label: 'Donner la possibilité de délocker un sujet' %>
                   <%= p.input :delete_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucun sujet", label: 'Donner la possibilité de supprimer un sujet' %>
-                  <%= p.input :undelete_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut restaurer aucun sujet", label: 'Donner la possibilité de restaurer un sujet' %>
-                  <%= p.input :kill_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut détruire aucun sujet", label: 'Donner la possibilité de détruire un sujet' %>
                   <hr />
                   <%= p.input :update_message, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier que les siens", label: 'Donner la possibilité de modifier un message' %>
                   <%= p.input :delete_message, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucun message", label: 'Donner la possibilité de supprimer un message' %>
-                  <%= p.input :undelete_message, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut restaurer aucun message", label: 'Donner la possibilité de restaurer un message' %>
-                  <%= p.input :kill_message, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut détruire aucun message", label: 'Donner la possibilité de détruire un message' %>
                 </div>
                 <div class="tab-pane fade" id="utilisateur" role="tabpanel" aria-labelledby="utilisateur-tab">
                   <%= p.input :update_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier que son compte", label: "Donner la possibilité de modifier le compte d'un utilisateur" %>
@@ -83,7 +73,7 @@
                   <%= p.input :unban_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut débannir personne", label: 'Donner la possibilité de débannir un utilisateur' %>
                   <%= p.input :banip_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut bannir l'ip de personne", label: "Donner la possibilité de bannir l'ip d'un utilisateur" %>
                   <%= p.input :unbanip_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut débannir l'ip personne", label: "Donner la possibilité de débannir l'ip d'un utilisateur" %>
-                  <%= p.input :kill_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut détruire que son compte", label: 'Donner la possibilité de détruire un utilisateur' %>
+                  <%= p.input :delete_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer que son compte", label: 'Donner la possibilité de supprimer un utilisateur' %>
                 </div>
               </div>
             </div>

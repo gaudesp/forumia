@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_110743) do
+ActiveRecord::Schema.define(version: 2020_01_04_142034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,36 +19,25 @@ ActiveRecord::Schema.define(version: 2019_09_09_110743) do
     t.boolean "create_article", default: false
     t.boolean "update_article", default: false
     t.boolean "delete_article", default: false
-    t.boolean "undelete_article", default: false
-    t.boolean "kill_article", default: false
     t.boolean "lock_topic", default: false
     t.boolean "unlock_topic", default: false
     t.boolean "delete_topic", default: false
-    t.boolean "undelete_topic", default: false
-    t.boolean "kill_topic", default: false
     t.boolean "pin_topic", default: false
     t.boolean "unpin_topic", default: false
     t.boolean "delete_message", default: false
-    t.boolean "undelete_message", default: false
-    t.boolean "kill_message", default: false
     t.boolean "kick_user", default: false
     t.boolean "unkick_user", default: false
     t.boolean "ban_user", default: false
     t.boolean "unban_user", default: false
     t.boolean "banip_user", default: false
     t.boolean "unbanip_user", default: false
-    t.boolean "kill_user", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "create_forum", default: false
     t.boolean "update_forum", default: false
     t.boolean "delete_forum", default: false
-    t.boolean "undelete_forum", default: false
-    t.boolean "kill_forum", default: false
     t.boolean "update_role", default: false
     t.boolean "delete_role", default: false
-    t.boolean "undelete_role", default: false
-    t.boolean "kill_role", default: false
     t.boolean "update_permission", default: false
     t.integer "priority_permission"
     t.integer "role_id"
@@ -58,6 +47,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_110743) do
     t.boolean "create_staff", default: false
     t.boolean "promote_user", default: false
     t.boolean "demote_user", default: false
+    t.boolean "delete_user", default: false
     t.index ["role_id"], name: "index_permissions_on_role_id"
   end
 
