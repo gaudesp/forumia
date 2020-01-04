@@ -1,4 +1,5 @@
 class Permission < ApplicationRecord
+
   belongs_to :role, optional: true
   
   validates_presence_of :priority_permission, message: "Vous devez renseigner la priorité"

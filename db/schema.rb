@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_142034) do
+ActiveRecord::Schema.define(version: 2020_01_04_151146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.bigint "category_id"
+    t.bigint "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_forums_on_category_id"
+    t.index ["role_id"], name: "index_forums_on_role_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "message", null: false
+    t.bigint "user_id"
+    t.bigint "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_messages_on_topic_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
 
   create_table "permissions", force: :cascade do |t|
     t.boolean "create_article", default: false
@@ -59,6 +87,9 @@ ActiveRecord::Schema.define(version: 2020_01_04_142034) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "topics", force: :cascade do |t|
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -83,6 +114,10 @@ ActiveRecord::Schema.define(version: 2020_01_04_142034) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "forums", "categories", on_delete: :cascade
+  add_foreign_key "forums", "roles", on_delete: :cascade
+  add_foreign_key "messages", "topics", on_delete: :cascade
+  add_foreign_key "messages", "users", on_delete: :cascade
   add_foreign_key "permissions", "roles", on_delete: :cascade
   add_foreign_key "users", "roles", on_delete: :cascade
 end

@@ -1,7 +1,11 @@
 class User < ApplicationRecord
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable
 
   belongs_to :role, optional: true
+
+  has_many :topics
+  has_many :messages
 
   enum genders: [ :male, :female, :unknown ]
 
