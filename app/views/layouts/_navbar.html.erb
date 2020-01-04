@@ -25,7 +25,11 @@
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= display_avatar(current_user) %>
+            <% if current_user %>
+              <%= image_tag(current_user.avatar_url, class: "avatar") %>
+            <% else %>
+              <%= image_tag('/uploads/user/avatar/default.png', class: "avatar") %>
+            <% end %>
             <span class="account-nav <%= "username-nav" if current_user %>">
               <span><%= current_user ? current_user.username : "Mon compte" %></span>
             </span>

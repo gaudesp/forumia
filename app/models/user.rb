@@ -24,7 +24,18 @@ class User < ApplicationRecord
 
   attr_readonly :username, on: :update
 
+  mount_uploader :avatar, AvatarUploader
+  mount_uploader :background, BackgroundUploader
+
   before_create :set_default_role
+
+  def avatar_url
+    self.avatar.url(:avatar) || '/uploads/user/avatar/default.png'
+  end
+
+  def background_url
+    self.background.url(:background) || '/uploads/user/background/default.png'
+  end
 
   def promote(role_id)
     update(role_id: role_id)

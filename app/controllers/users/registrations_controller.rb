@@ -20,34 +20,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  def update
-    super
-
-    if params[:user][:avatar].present?
-      response = RestClient.post('https://www.noelshack.com/api.php', :fichier => File.new(params[:user][:avatar].tempfile, 'rb')).body
-      if response.include? "www.noelshack.com"
-        regex_url = response.split('/')[3].split('-')
-        correct_url = "https://image.noelshack.com/fichiers/#{regex_url[0..2].join('/')}/#{regex_url[3..-1].join('-')}"
-        @user.update(avatar: correct_url)
-      else
-        @user.update(avatar: current_user.avatar)
-        flash[:error] = "Votre photo de profil n'a pas été mise à jour car elle n'était pas valide"
-      end
-    end
-
-    if params[:user][:background].present?
-      response = RestClient.post('https://www.noelshack.com/api.php', :fichier => File.new(params[:user][:background].tempfile, 'rb')).body
-      if response.include? "www.noelshack.com"
-        regex_url = response.split('/')[3].split('-')
-        correct_url = "https://image.noelshack.com/fichiers/#{regex_url[0..2].join('/')}/#{regex_url[3..-1].join('-')}"
-        @user.update(background: correct_url)
-      else
-        @user.update(background: current_user.background)
-        flash[:error] = "Votre photo de couverture n'a pas été mise à jour car elle n'était pas valide"
-      end
-    end
-
-  end
+  # def update
+  #   super
+  # end
 
   # DELETE /resource
   # def destroy

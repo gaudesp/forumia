@@ -1,7 +1,7 @@
 <% @turbolinks_cache_control = 'no-cache' %>
 
-<header class="bg-image-full rounded-top rounded-bottom-0" style="padding-top: 19px;background-image: url(<%= display_background(@user) %>); width: 700; height: 170px; background-size: cover;">
-  <img class="img-fluid d-block ml-4 rounded" style="height: 130px; width: 130px;" src="<%= display_avatar(@user, "profile") %>" alt="">
+<header class="bg-image-full rounded-top rounded-bottom-0" style="padding-top: 19px;background-image: url(<%= @user.background_url %>); width: 700; height: 170px; background-size: cover;">
+  <img class="img-fluid d-block ml-4 rounded" style="height: 130px; width: 130px;" src="<%= @user.avatar_url %>" alt="">
 </header>
 
 <div class="card rounded-top-0 mb-4">
