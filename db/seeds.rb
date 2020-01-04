@@ -39,23 +39,24 @@ permission = Permission.new(
   update_message: true,
   create_staff: true,
   promote_user: true,
-  demote_user: true
+  demote_user: true,
+  update_user: true
 )
 permission.save(validate: false)
 puts permission
 
 puts "Create users"
 
-user = User.create(username: "Nox", password: "a", password_confirmation: "a", email: "nox@gmail.com")
+user = User.create(username: "Nox", password: "Sr84Ty12%*45", password_confirmation: "Sr84Ty12%*45", email: "gaudespro@gmail.com")
 puts user
-user = User.create(username: "Izys", password: "a", password_confirmation: "a", email: "izys@gmail.com")
-puts user
-user = User.create(username: "dadamdr", password: "a", password_confirmation: "a", email: "dadamdr@gmail.com")
-puts user
-user = User.create(username: "super-zen", password: "a", password_confirmation: "a", email: "super-zen@gmail.com")
-puts user
-user = User.create(username: "Drylex", password: "a", password_confirmation: "a", email: "drylex@gmail.com")
-puts user
+# user = User.create(username: "Izys", password: "a", password_confirmation: "a", email: "izys@gmail.com")
+# puts user
+# user = User.create(username: "dadamdr", password: "a", password_confirmation: "a", email: "dadamdr@gmail.com")
+# puts user
+# user = User.create(username: "super-zen", password: "a", password_confirmation: "a", email: "super-zen@gmail.com")
+# puts user
+# user = User.create(username: "Drylex", password: "a", password_confirmation: "a", email: "drylex@gmail.com")
+# puts user
 
 user = User.first.update(role: role)
 puts user
