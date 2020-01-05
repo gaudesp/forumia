@@ -7,13 +7,13 @@ class BackgroundUploader < CarrierWave::Uploader::Base
   version :background do
     process :resize_to_fill => [705, 170, :north]
   end
-  
+
   def extension_white_list
     %w(jpg jpeg gif png)
   end
 
   def public_id
-    "uploads/user/background/#{model.username}"
+    "forumia/#{Rails.env.development? ? "development" : "production"}/uploads/user/background/#{model.username}"
   end
 
 end
