@@ -51,6 +51,10 @@
                   <%= p.input :update_permission, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut gérer aucunes permissions", label: "Donner la possibilité de gérer les permissions d'un rôle" %>
                 </div>
                 <div class="tab-pane fade" id="forum" role="tabpanel" aria-labelledby="forum-tab">
+                  <%= p.input :create_category, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut créer aucune catégorie", label: 'Donner la possibilité de créer une catégorie' %>
+                  <%= p.input :update_category, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier aucune catégorie", label: 'Donner la possibilité de modifier une catégorie' %>
+                  <%= p.input :delete_category, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucune catégorie", label: 'Donner la possibilité de supprimer une catégorie' %>
+                  <hr />
                   <%= p.input :create_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut créer aucun forum", label: 'Donner la possibilité de créer un forum' %>
                   <%= p.input :update_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier aucun forum", label: 'Donner la possibilité de modifier un forum' %>
                   <%= p.input :delete_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucun forum", label: 'Donner la possibilité de supprimer un forum' %>

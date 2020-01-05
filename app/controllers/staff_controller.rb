@@ -6,7 +6,7 @@ class StaffController < ApplicationController
   before_action :find_role_on_edit, only: [:edit, :update, :build_nested_permission]
   before_action :build_nested_permission, only: [:new, :create, :edit, :update]
 
-  before_action :check_if_can_manage_role, only: [:roles], if: :is_not_webmaster
+  before_action :check_if_can_manage_role, only: [:panel], if: :is_not_webmaster
   before_action :check_if_can_create_role, only: [:new, :create], if: :is_not_webmaster
   before_action :check_if_can_update_role, only: [:edit, :update], if: :is_not_webmaster
   before_action :check_if_can_promote_role, only: [:promote], if: :is_not_webmaster
@@ -37,14 +37,14 @@ class StaffController < ApplicationController
   def update
     if @role.update_attributes(role_params)
       flash[:success] = "Le rôle a été modifié avec succès !"
-      redirect_to roles_staff_index_path
+      redirect_to panel_staff_index_path
     else
       flash.now[:error] = "Veuillez résoudre les erreurs ci-dessous"
       render :edit
     end
   end
 
-  def roles
+  def panel
     @roles = Role.joins(:permission).all.order(priority_permission: :desc)
   end
 
@@ -88,13 +88,13 @@ class StaffController < ApplicationController
   def check_if_can_update_role
     if !current_user || current_user.role.permission.update_role == false
       flash[:error] = "Vous ne pouvez pas modifier de rôle"
-      redirect_to roles_staff_index_path
+      redirect_to panel_staff_index_path
     elsif current_user.role == @role
       flash[:error] = "Vous ne pouvez pas modifier votre rôle"
-      redirect_to roles_staff_index_path
+      redirect_to panel_staff_index_path
     elsif current_user.role.permission.priority_permission < @role.permission.priority_permission
       flash[:error] = "Vous ne pouvez pas modifier un rôle qui est supérieur au votre"
-      redirect_to roles_staff_index_path
+      redirect_to panel_staff_index_path
     end
   end
 
@@ -195,7 +195,11 @@ class StaffController < ApplicationController
                                                          :update_message,
                                                          :update_user,
                                                          :promote_user,
-                                                         :demote_user
+                                                         :demote_user,
+                                                         :create_category,
+                                                         :update_category,
+                                                         :delete_category,
+                                                         :delete_user
       ]
     )
   end

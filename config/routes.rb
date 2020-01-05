@@ -6,12 +6,21 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
   resources :home, only: [:index]
-  resources :forums, only: [:index, :show, :new, :create, :edit, :update]
+  resources :forums, only: [:index, :show, :new, :create, :edit, :update] do
+    collection do
+      get 'panel', to: 'forums#panel', as: :panel
+    end
+  end
+  resources :categories do
+    collection do
+      get 'panel', to: 'categories#panel', as: :panel
+    end
+  end
   resources :staff, only: [:index, :new, :create, :edit, :update] do
     collection do
       post 'promote', to: 'staff#promote', as: :promote
       get 'demote/:id', to: 'staff#demote', as: :demote
-      get 'roles', to: 'staff#roles', as: :roles
+      get 'panel', to: 'staff#panel', as: :panel
     end
   end
   resources :users, path: "profile", param: :username, only: [:show]

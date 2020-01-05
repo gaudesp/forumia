@@ -1,0 +1,29 @@
+<% @categories.each do |category| %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h4 class="card-title"><%= fa_icon category.icon, class:" mr-1" %> <%= category.name %></h4>
+      <ul class="list-group list-group-flush">
+        <% category.forums.each do |forum| %>
+          <% if PermissionsService.can_access_to_forum?(current_user, forum) %>
+            <a href="/" class="list-group-item border-0">
+              <td>
+                <strong><%= fa_icon "chevron-circle-right", class:" mr-2" %> <%= forum.name %></strong><br />
+                <div class="text-primary"><%= forum.description %></div>
+                <div class="text-muted mt-1"><%= fa_icon "chart-line", class:" mr-2" %> <%= forum.count_topics %> sujets, <%= forum.count_messages %> messages</div>
+              </td>
+            </a>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<% if current_user %>
+  <% if current_user.role.permission.update_forum == true %> 
+    <%= link_to "Gestion des forums", panel_forums_path, class: "btn btn-primary float-right mb-3 ml-2" %>
+  <% end %>
+  <% if current_user.role.permission.update_category == true %> 
+    <%= link_to "Gestion des catégories", panel_categories_path, class: "btn btn-primary float-right mb-3" %>
+  <% end %>
+<% end %>

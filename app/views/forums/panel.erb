@@ -1,0 +1,40 @@
+<%= link_to "Retour à liste des forums", forums_path, class: "btn btn-primary mb-4" %>
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title mb-0"><%= fa_icon "cog", class:" mr-1" %> Gestion des forums</h4>
+    </div>
+    <div class="card-text">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Forum</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Accès</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @forums.each do |forum| %>
+            <tr>
+              <th><%= forum.name %></th>
+              <th><%= forum.category.name %></th>
+              <td><%= display_role_grade(forum.role) %></td>
+              <td>
+              <% if current_user %>
+                <% if current_user.role.permission.update_forum == true %>
+                  <%= link_to edit_forum_path(forum), class: "float-right" do %>
+                    <button class="btn btn-warning" data-toggle="tooltip" data-title="Modifier"><%= fa_icon "tools" %></button>
+                  <% end %>
+                <% end %>
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<% if current_user.role.permission.create_forum == true %> 
+<%= link_to "Créer un nouveau forum", new_forum_path, class: "btn btn-primary float-right mb-4" %>
+<% end %>

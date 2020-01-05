@@ -23,7 +23,7 @@
 
 <% if current_user %>
   <% if current_user.role.permission.update_role == true %> 
-    <%= link_to "Gestion des rôles", roles_staff_index_path, class: "btn btn-primary float-right mb-3" %>
+    <%= link_to "Gestion des rôles", panel_staff_index_path, class: "btn btn-primary float-right mb-3" %>
   <% end %>
   <% if current_user.role.permission.promote_user == true %> 
     <div class="card col-md-12 mb-4">
