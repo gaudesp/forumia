@@ -119,16 +119,16 @@ else
   puts "- Forum Suggestion & Réclamation déjà présent"
 end
 
-if !Forum.find_by_name("Webmaster Forum")
-  forum = Forum.new(name: "Webmaster Forum", description: "Forum pour réservé au grade Webmaster", role: Role.find(2), category: Category.find(1))
-  if forum.save
-    puts "- Forum #{forum.name} créé avec succès"
-  else
-    puts "- Erreur : #{forum.errors.full_messages}"
-  end
-else
-  puts "- Forum Webmaster Forum déjà présent"
-end
+# if !Forum.find_by_name("Webmaster Forum")
+#   forum = Forum.new(name: "Webmaster Forum", description: "Forum réservé au grade Webmaster", role: Role.find(2), category: Category.find(1))
+#   if forum.save
+#     puts "- Forum #{forum.name} créé avec succès"
+#   else
+#     puts "- Erreur : #{forum.errors.full_messages}"
+#   end
+# else
+#   puts "- Forum Webmaster Forum déjà présent"
+# end
 
 puts ""
 
