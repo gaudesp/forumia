@@ -1,25 +1,19 @@
 class BackgroundUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
-  process :fix_exif_rotation
+  include Cloudinary::CarrierWave
 
-  storage :file
-  
-  def store_dir
-    "uploads/user/background/#{model.username}"
-  end
+  process :convert => 'png'
+  process :tags => ['user_background']
 
   version :background do
-    process resize_to_limit: [705, 170]
+    process :resize_to_fill => [705, 170, :north]
   end
-
+  
   def extension_white_list
     %w(jpg jpeg gif png)
   end
 
-  def fix_exif_rotation
-    manipulate! do |img|
-      img.tap(&:auto_orient)
-    end
+  def public_id
+    "uploads/user/background/#{model.username}"
   end
 
 end

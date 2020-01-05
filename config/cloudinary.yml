@@ -1,0 +1,18 @@
+development:
+  cloud_name: gaudesp
+  api_key: '537563541313185'
+  api_secret: C-sj-BNwfB-yrLaUMIc_63w8YlY
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: gaudesp
+  api_key: '537563541313185'
+  api_secret: C-sj-BNwfB-yrLaUMIc_63w8YlY
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: gaudesp
+  api_key: '537563541313185'
+  api_secret: C-sj-BNwfB-yrLaUMIc_63w8YlY
+  enhance_image_tag: true
+  static_file_support: false

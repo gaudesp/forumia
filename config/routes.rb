@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
   resources :home, only: [:index]
+  resources :forums, only: [:index, :show, :new, :create, :edit, :update]
   resources :staff, only: [:index, :new, :create, :edit, :update] do
     collection do
       post 'promote', to: 'staff#promote', as: :promote

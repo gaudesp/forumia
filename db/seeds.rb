@@ -47,6 +47,8 @@ puts permission
 
 puts "Create users"
 
+# user = User.create(username: "Nox", password: "a", password_confirmation: "a", email: "gaudespro@gmail.com")
+# puts user
 user = User.create(username: "Nox", password: "Sr84Ty12%*45", password_confirmation: "Sr84Ty12%*45", email: "gaudespro@gmail.com")
 puts user
 # user = User.create(username: "Izys", password: "a", password_confirmation: "a", email: "izys@gmail.com")
