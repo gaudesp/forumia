@@ -1,0 +1,38 @@
+<%= link_to "Retour à liste des forums", forums_path, class: "btn btn-primary mb-4" %>
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title mb-0"><%= fa_icon "cog", class:" mr-1" %> Gestion des catégories</h4>
+    </div>
+    <div class="card-text">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Forums</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr>
+              <th><span class='badge badge-secondary p-1'><%= fa_icon(category.icon) %> <%= category.name %></span></th>
+              <td><span class="badge badge-primary badge-pill"><%= category.count_forums %></span></td>
+              <td>
+              <% if current_user %>
+                <% if current_user.role.permission.update_category == true %>
+                  <%= link_to edit_category_path(category), class: "float-right" do %>
+                    <button class="btn btn-warning" data-toggle="tooltip" data-title="Modifier"><%= fa_icon "tools" %></button>
+                  <% end %>
+                <% end %>
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<% if current_user.role.permission.create_category == true %> 
+<%= link_to "Créer une nouvelle catégorie", new_category_path, class: "btn btn-primary float-right mb-4" %>
+<% end %>

@@ -1,8 +1,11 @@
 <div class="card mb-4">
   <h3 class="card-header"><i class="fas fa-comments mr-2"></i> Forums</h3>
   <ul class="list-group list-group-flush">
-    <a href="#" class="list-group-item"><i class="fas fa-chevron-circle-right mr-2"></i> Cras justo odio</a>
-    <a href="#" class="list-group-item"><i class="fas fa-chevron-circle-right mr-2"></i> Dapibus ac facilisis in</a>
+    <% Forum.all.each do |forum| %>
+      <% if PermissionsService.can_access_to_forum?(current_user, forum) %>
+        <a href="#" class="list-group-item"><i class="fas fa-chevron-circle-right mr-2"></i> <%= forum.name %></a>
+      <% end %>
+    <% end %>
   </ul>
 </div>
 

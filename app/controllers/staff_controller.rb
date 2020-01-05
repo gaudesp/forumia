@@ -1,4 +1,7 @@
 class StaffController < ApplicationController
+
+  include CheckRole
+
   before_action :find_user_on_demote, only: [:demote, :can_demote_role]
   before_action :find_user_on_promote, only: [:promote, :can_promote_role]
   before_action :find_role_on_promote, only: [:promote, :can_promote_role]
@@ -67,13 +70,9 @@ class StaffController < ApplicationController
 
   protected
 
-  def is_not_webmaster
-    current_user.role.permission.priority_permission != 100
-  end
-
   def check_if_can_manage_role
     if !current_user || current_user.role.permission.update_role == false
-      flash[:error] = "Vous ne pouvez pas gérer de rôle"
+      flash[:error] = "Vous ne pouvez pas gérer les rôle"
       redirect_to staff_index_path
     end
   end
