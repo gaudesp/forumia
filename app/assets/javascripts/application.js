@@ -21,9 +21,9 @@
 //= require jscolor
 
 $(document).on('turbolinks:load', function() {
+  $('body').toggleClass(localStorage.toggled)
   jscolor.installByClassName('jscolor')
   $('[data-toggle="tooltip"]').tooltip()
-  $('body').toggleClass(localStorage.toggled)
 })
 
 function darkLight() {
@@ -35,4 +35,4 @@ function darkLight() {
     localStorage.toggled = ""
   }
 }
-
+t
