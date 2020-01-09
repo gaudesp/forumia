@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_05_165648) do
+ActiveRecord::Schema.define(version: 2020_01_09_214250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
-    t.string "description", null: false
+    t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "icon"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_01_05_165648) do
 
   create_table "forums", force: :cascade do |t|
     t.string "name", null: false
-    t.string "description", null: false
+    t.text "description", null: false
     t.bigint "category_id"
     t.bigint "role_id"
     t.datetime "created_at", null: false

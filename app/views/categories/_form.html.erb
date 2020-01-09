@@ -1,0 +1,10 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title"><%= fa_icon "layer-group", class:" mr-1" %> Catégorie</h4>
+    <div class="card-text mt-3">
+      <%= f.input :name, prepend: fa_icon("signature"), placeholder: "Nom" %>
+      <%= f.input :description, prepend: fa_icon("comment-alt"), placeholder: "Description" %>
+      <%= f.input :icon, prepend: fa_icon("icons"), placeholder: "Icône", hint: raw("Rechercher une icône #{link_to('à cette adresse', 'https://fontawesome.com/icons?d=gallery&m=free', target: '_blank') }.") %>
+    </div>
+  </div>
+</div>

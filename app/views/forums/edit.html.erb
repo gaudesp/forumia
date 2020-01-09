@@ -1,0 +1,5 @@
+<%= link_to "Retour à la gestion des forums", panel_forums_path, class: "btn btn-primary mb-4" %>
+<%= simple_form_for @forum, url: forum_path(@forum), wrapper: :input_group do |f| %>
+  <%= render partial: "form", locals: { f: f } %>
+  <%= f.button :submit, value: "Valider", class: "btn-primary btn-block" %><br />
+<% end %>

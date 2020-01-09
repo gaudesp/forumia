@@ -27,7 +27,7 @@ class StaffController < ApplicationController
     @role.assign_attributes(role_params)
     if @role.save
       flash[:success] = "Le rôle a été créé avec succès !"
-      redirect_to staff_index_path
+      redirect_to panel_staff_index_path
     else
       flash.now[:error] = "Veuillez résoudre les erreurs ci-dessous"
       render :new
@@ -87,7 +87,7 @@ class StaffController < ApplicationController
   def check_if_can_update_role
     if !current_user || current_user.role.permission.update_role == false
       flash[:error] = "Vous ne pouvez pas modifier de rôle"
-      redirect_to panel_staff_index_path
+      redirect_to staff_index_path
     elsif current_user.role == @role
       flash[:error] = "Vous ne pouvez pas modifier votre rôle"
       redirect_to panel_staff_index_path
@@ -109,7 +109,7 @@ class StaffController < ApplicationController
       redirect_to staff_index_path
     elsif current_user.role.permission.priority_permission < @role.permission.priority_permission
       flash[:error] = "Vous ne pouvez pas promouvoir un utilisateur à un rôle supérieur au votre"
-       redirect_to staff_index_path
+      redirect_to staff_index_path
     end
   end
 
@@ -137,12 +137,12 @@ class StaffController < ApplicationController
     @role = Role.find(params[:user][:role_id]) if params[:user][:role_id] != ""
   end
 
-  def find_role_on_edit
-    @role = Role.find(params[:id])
-  end
-
   def find_role_on_new
     @role = Role.new
+  end
+
+  def find_role_on_edit
+    @role = Role.find(params[:id])
   end
 
   def build_nested_permission
@@ -203,5 +203,4 @@ class StaffController < ApplicationController
     )
   end
 
-  
 end
