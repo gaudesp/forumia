@@ -21,8 +21,9 @@ module ApplicationHelper
     return date
   end
 
-  def display_datetime(date)
-    return date.strftime("%d/%m/%Y %H:%M:%S")
+  def display_datetime(date, text = nil)
+    format = text.nil? ? "%d/%m/%Y %H:%M:%S" : "le %d/%m/%Y à %H:%M:%S"
+    return date.strftime(format)
   end
 
   def display_gender(gender)

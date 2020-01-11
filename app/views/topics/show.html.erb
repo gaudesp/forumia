@@ -7,7 +7,20 @@
 <% @messages.each do |message| %>
   <div class="card mb-4">
     <div class="card-body">
-      <%= message.user.username %> : <%= message.content %>
+      <div class="row">
+        <div class="col-md-2">
+          <img class="rounded" style="height: 100px; width: 100px;" src="<%= message.user.avatar_url %>" alt="">
+          <div class="text-center mt-2">
+            <small><b>Messages</b> : <%= message.user.count_messages %></small>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <strong><%= message.user.username %></strong><br />
+          <small>Posté <%= display_datetime(message.created_at, "text") %></small>
+          <hr />
+          <%= message.content.bbcode_to_html.html_safe %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

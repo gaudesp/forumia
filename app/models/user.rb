@@ -41,6 +41,10 @@ class User < ApplicationRecord
     self.background.url(:background) || '/uploads/user/background/default.png'
   end
 
+  def count_messages
+    self.messages.count
+  end
+
   def promote(role_id)
     update(role_id: role_id)
   end
