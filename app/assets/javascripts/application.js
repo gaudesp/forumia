@@ -35,4 +35,3 @@ function darkLight() {
     localStorage.toggled = ""
   }
 }
-t

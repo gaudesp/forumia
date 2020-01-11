@@ -6,7 +6,7 @@ class StaffController < ApplicationController
   before_action :find_user_on_promote, only: [:promote, :can_promote_role]
   before_action :find_role_on_promote, only: [:promote, :can_promote_role]
   before_action :find_role_on_new, only: [:new, :create, :build_nested_permission]
-  before_action :find_role_on_edit, only: [:edit, :update, :build_nested_permission]
+  before_action :find_role_by_id, only: [:edit, :update, :build_nested_permission]
   before_action :build_nested_permission, only: [:new, :create, :edit, :update]
 
   before_action :check_if_can_manage_role, only: [:panel], if: :is_not_webmaster
@@ -141,8 +141,8 @@ class StaffController < ApplicationController
     @role = Role.new
   end
 
-  def find_role_on_edit
-    @role = Role.find(params[:id])
+  def find_role_by_id
+    @role = Role.find_by_id(params[:id])
   end
 
   def build_nested_permission

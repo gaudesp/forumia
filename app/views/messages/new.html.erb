@@ -1,0 +1,3 @@
+<%= simple_form_for @message, url: forum_topic_messages_path(@forum, @topic), wrapper: :input_group do |f| %>
+  <%= render partial: "/messages/form", locals: { f: f } %><br />
+<% end %>

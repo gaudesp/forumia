@@ -1,0 +1,16 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title"><%= fa_icon "comment-dots", class:" mr-1" %> Poster un sujet</h4>
+    <div class="card-text mt-3">
+      <% if @current_user %>
+        <%= f.input :title, prepend: fa_icon("signature"), placeholder: "Title" %>
+        <%= f.simple_fields_for :messages do |m| %>
+          <%= m.input :content, as: :text, prepend: fa_icon("comment-alt"), placeholder: "Message" %>
+        <% end %>
+        <%= f.button :submit, value: "Valider", class: "btn-primary" %>
+      <% else %>
+        <div class="alert alert-warning">Vous devez être <b><%= link_to "inscris", new_user_registration_path %></b> et <b><%= link_to "connecté", new_user_session_path %></b> pour poster un sujet</div>
+      <% end %>
+    </div>
+  </div>
+</div>

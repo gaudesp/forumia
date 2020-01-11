@@ -17,7 +17,12 @@ module ApplicationHelper
   end
 
   def display_date(date)
-    return date.strftime("%d/%m/%Y")
+    date = date.strftime("%d/%m/%Y")
+    return date
+  end
+
+  def display_datetime(date)
+    return date.strftime("%d/%m/%Y %H:%M:%S")
   end
 
   def display_gender(gender)

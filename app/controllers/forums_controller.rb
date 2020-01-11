@@ -3,7 +3,7 @@ class ForumsController < ApplicationController
   include CheckRole
 
   before_action :find_forum_on_new, only: [:new, :create]
-  before_action :find_forum_on_edit, only: [:edit, :update]
+  before_action :find_forum_by_id, only: [:edit, :update, :show]
 
   before_action :check_if_can_manage_forum, only: [:panel], if: :is_not_webmaster
   before_action :check_if_can_create_forum, only: [:new, :create], if: :is_not_webmaster
@@ -38,6 +38,12 @@ class ForumsController < ApplicationController
       flash.now[:error] = "Veuillez résoudre les erreurs ci-dessous"
       render :edit
     end
+  end
+
+  def show
+    @topics = @forum.topics.order(last_message: :desc)
+    @topic = Topic.new
+    @topic.messages.build
   end
 
   def panel
@@ -76,8 +82,13 @@ class ForumsController < ApplicationController
     @forum = Forum.new
   end
 
-  def find_forum_on_edit
-    @forum = Forum.find(params[:id])
+  def find_forum_by_id
+    @forum = Forum.find_by_id(params[:id])
+  end
+
+  def find_topics_by_forum
+    @forum = Forum.find_by_id(params[:id])
+    @topics = @forum.topics
   end
 
   def forum_params

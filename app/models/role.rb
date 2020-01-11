@@ -16,11 +16,20 @@ class Role < ApplicationRecord
   validates_uniqueness_of :icon, message: "Cette icône est déjà utilisé"
 
   before_save :set_color
+  after_validation :set_slug
+
+  def to_param
+    "#{id}-#{slug}"
+  end
 
   private
 
   def set_color
     self.color = color.insert(0, '#')
+  end
+
+  def set_slug
+    self.slug = label.to_s.parameterize
   end
 
 end
