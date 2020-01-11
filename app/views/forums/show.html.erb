@@ -19,7 +19,7 @@
           </thead>
           <tbody>
             <% @topics.each do |topic| %>
-              <tr onclick="window.location='<%= forum_topic_path(@forum, topic) %>';" class="pointer">
+              <tr onclick="Turbolinks.visit('<%= forum_topic_path(@forum, topic) %>');" class="pointer">
                 <th class="text-center"><%= display_topic_status(topic.status) %></th>
                 <th><%= topic.title %></th>
                 <td class="text-center"><%= display_role_user(topic.user) %></td>
