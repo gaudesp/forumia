@@ -7,7 +7,7 @@
       <div class="alert alert-info ml-4 mr-4">Aucun sujet n'a été posté</div>
     <% else %>
       <div class="table-responsive">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped">
           <thead class="text-center">
             <tr>
               <th scope="col" class="status"></th>
@@ -21,7 +21,7 @@
             <% @topics.each do |topic| %>
               <tr onclick="Turbolinks.visit('<%= forum_topic_path(@forum, topic) %>');" class="pointer">
                 <th class="text-center"><%= display_topic_status(topic.status) %></th>
-                <td><%= topic.title %></td>
+                <td class="title"><%= topic.title %></td>
                 <td class="text-center"><%= display_role_user(topic.user) %></td>
                 <td class="text-center"><%= topic.count_messages-1 %></td>
                 <td class="text-center"><%= display_datetime(topic.last_message, nil, "short") %></td>
