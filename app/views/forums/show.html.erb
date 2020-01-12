@@ -23,7 +23,7 @@
                 <th class="text-center"><%= display_topic_status(topic.status) %></th>
                 <td><%= topic.title %></td>
                 <td class="text-center"><%= display_role_user(topic.user) %></td>
-                <td class="text-center"><%= topic.count_messages %></td>
+                <td class="text-center"><%= topic.count_messages-1 %></td>
                 <td class="text-center"><%= display_datetime(topic.last_message, nil, "short") %></td>
               </tr>
             <% end %>
