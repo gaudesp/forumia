@@ -1,5 +1,8 @@
 <div class="card mb-4">
   <div class="card-body">
+    <%= content_tag(:span,
+          content_tag(:button, fa_icon("sync-alt"), class: "btn btn-primary"
+        ), class: "float-right", onclick: "Turbolinks.visit('#{request.original_url}');") %>
     <h4 class="card-title mb-0"><%= fa_icon "comment", class:" mr-1" %> <%= @forum.name %></h4>
   </div>
   <div class="card-text topics">

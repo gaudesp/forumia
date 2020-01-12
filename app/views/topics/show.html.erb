@@ -1,7 +1,11 @@
 <div class="card mb-4">
   <div class="card-body">
     <h4 class="card-title"><%= fa_icon "comment-dots", class:" mr-1" %> « <%= @topic.title %> »</h4>
+    <%= content_tag(:a, "Répondre", href: "#reply", class: "btn btn-primary") %>
     <%= link_to "Liste des sujets", forum_path(@forum), class: "btn btn-primary" %>
+    <%= content_tag(:span,
+          content_tag(:button, fa_icon("sync-alt"), class: "btn btn-primary"
+        ), class: "float-right", onclick: "Turbolinks.visit('#{request.original_url}');") %>
   </div>
 </div>
 
