@@ -24,6 +24,14 @@ $(document).on('turbolinks:load', function() {
   $('body').toggleClass(localStorage.toggled)
   jscolor.installByClassName('jscolor')
   $('[data-toggle="tooltip"]').tooltip()
+  $('#user_avatar').on('change',function() {
+    var fileName = $(this).val()
+    $(this).next('.custom-file-label').html(fileName.replace('C:\\fakepath\\', " "))
+  })
+  $('#user_background').on('change',function() {
+    var fileName = $(this).val()
+    $(this).next('.custom-file-label').html(fileName.replace('C:\\fakepath\\', " "))
+  })
 })
 
 function darkLight() {
