@@ -48,7 +48,6 @@ gem 'rollbar'
 gem 'rest-client'
 gem 'carrierwave', '1.3.1'
 gem 'cloudinary'
-gem 'bb-ruby'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
 

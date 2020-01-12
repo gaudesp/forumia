@@ -7,8 +7,9 @@
     <div class="card-text mt-3">
       <% if @current_user %>
         <%= f.input :title, prepend: fa_icon("signature"), placeholder: "Titre" %>
+        <%= render partial: '/shared/bbcoder' %>
         <%= f.simple_fields_for :messages do |m| %>
-          <%= m.input :content, as: :text, prepend: fa_icon("comment-alt"), placeholder: "Message" %>
+          <%= m.input :content, as: :text, prepend: fa_icon("comment-alt"), placeholder: "Message", input_html: { rows: 5, id: "bbcoder" } %>
         <% end %>
         <%= f.button :submit, value: "Valider", class: "btn-primary" %>
       <% else %>

@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
 
   include CheckRole
+  include BbcoderService
 
   before_action :find_forum_by_id, only: [:new, :create, :show]
   before_action :find_topic_on_new, only: [:new, :create]
