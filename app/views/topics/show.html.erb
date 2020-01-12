@@ -1,7 +1,7 @@
 <div class="card mb-4">
   <div class="card-body">
-    <%= link_to "Liste des sujets", forum_path(@forum), class: "btn btn-primary float-right" %>
     <h4 class="card-title"><%= fa_icon "comment-dots", class:" mr-1" %> <%= @topic.title %></h4>
+    <%= link_to "Liste des sujets", forum_path(@forum), class: "btn btn-primary" %>
   </div>
 </div>
 <% @messages.each do |message| %>
