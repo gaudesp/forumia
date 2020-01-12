@@ -13,7 +13,7 @@ class Topic < ApplicationRecord
 
   after_validation :set_slug
   after_validation :set_last_message
-  before_validation :set_user
+  before_validation :set_user, on: :create
 
   def to_param
     "#{id}-#{slug}"
