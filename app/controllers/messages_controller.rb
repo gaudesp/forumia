@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
       @message.assign_attributes(message_params)
       if @message.save
         flash[:success] = "Le message a été créé avec succès !"
-        redirect_to forum_topic_path(@forum, @topic)
+        redirect_to request.referrer
       else
         flash.now[:error] = "Veuillez résoudre les erreurs ci-dessous"
         render :new
