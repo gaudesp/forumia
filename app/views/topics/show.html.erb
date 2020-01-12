@@ -12,16 +12,23 @@
     <div class="card mb-4">
       <div class="card-body">
         <div class="row">
-          <div class="col-md-2" id="sidebar-avatar">
-            <div class="text-center">
-              <img class="rounded" style="height: 100px; width: 100px;" src="<%= message.user.avatar_url %>" alt="">
-              <small class="mt-2"><b>Messages</b> : <%= message.user.count_messages %></small>
-            </div>
+          <div class="col-lg-2" id="sidebar-avatar">
+            <span id="small">
+              <img class="rounded mb-2" style="height: 100px; width: 100px;" src="<%= message.user.avatar_url %>" alt="">
+              <div id="avatar-messages">
+                <small>
+                  <%= fa_icon "comment-alt", class: "mr-1" %> Messages : <%= message.user.count_messages %>5467
+                </small><br />
+                <small>
+                  <%= fa_icon "coins", class: "mr-1" %> Argent : <%= sprintf("%g", message.user.coin) %>554 €
+                </small>
+              </div>
+            </span>
           </div>
-          <div class="col-md-10" id="col-avatar">
+          <div class="col-lg-10" id="col-avatar">
             <img class="rounded float-left mr-3" id="navbar-avatar" style="height: 50px; width: 50px;" src="<%= message.user.avatar_url %>" alt="">
             <div>
-              <strong><%= message.user.username %></strong><br />
+              <strong><%= link_to display_role_user(message.user), user_path(message.user.username) %></strong><br />
               <small>Posté <%= display_datetime(message.created_at, "text") %></small>
             </div>
             <hr />
