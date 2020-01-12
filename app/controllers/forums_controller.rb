@@ -41,7 +41,7 @@ class ForumsController < ApplicationController
   end
 
   def show
-    @topics = @forum.topics.order(last_message: :desc).paginate(page: params[:page], per_page: 2)
+    @topics = @forum.topics.order(last_message: :desc).paginate(page: params[:page], per_page: 20)
     @topic = Topic.new
     @topic.messages.build
   end
