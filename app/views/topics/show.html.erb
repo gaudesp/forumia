@@ -4,6 +4,9 @@
     <%= link_to "Liste des sujets", forum_path(@forum), class: "btn btn-primary" %>
   </div>
 </div>
+
+<%= will_paginate @messages, list_classes: %w(pagination justify-content-center) %>
+
 <% @messages.each do |message| %>
   <div class="card mb-4">
     <div class="card-body">
