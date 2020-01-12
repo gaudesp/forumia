@@ -25,4 +25,6 @@
   </div>
 <% end %>
 
+<%= will_paginate @messages, list_classes: %w(pagination justify-content-center) %>
+
 <%= render file: '/messages/new' %>
