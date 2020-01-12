@@ -1,18 +1,36 @@
+.page-link {
+    background-color: #95a5a6!important;
+    border-color: #95a5a6!important;
+}
+.page-item.active .page-link {
+    background-color: #809395!important;
+    border-color: #798d8f!important;
+}
 .topics {
 	.status {
 		width: 5%;
 	}
 	.subject {
-		width: 50%;
+		width: 55%;
 	}
 	.author {
-		width: 10%;
+		width: 15%;
 	}
 	.nb {
 		width: 5%;
 	}
 	.last {
-		width: 30%;
+		width: 20%;
+	}
+	tbody th {
+		padding: 0 0 0 10px;
+		font-size: 20px;
+	}
+
+	tbody td {
+		padding-top: 6px;
+		padding-bottom: 6px;
+		font-size: 14px;
 	}
 }
 a {

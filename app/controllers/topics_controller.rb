@@ -23,7 +23,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @messages = @topic.messages.order(created_at: :asc)
+    @messages = @topic.messages.order(created_at: :asc).paginate(page: params[:page], per_page: 20)
     @message = Message.new
   end
 

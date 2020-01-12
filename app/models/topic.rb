@@ -10,7 +10,7 @@ class Topic < ApplicationRecord
   enum status: [ :normal, :locked, :pinned, :pinlocked]
 
   validates_presence_of :title, message: "Vous devez renseigner le titre du sujet"
-  validates_length_of :title, message: "Le titre doit être compris entre 1 et 70 caractères", minimum: 1, maximum: 70, allow_blank: false
+  validates_length_of :title, message: "Le titre doit être compris entre 1 et 60 caractères", minimum: 1, maximum: 60, allow_blank: false
 
   after_validation :set_slug
   after_validation :set_last_message
