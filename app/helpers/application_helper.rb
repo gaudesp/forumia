@@ -46,8 +46,9 @@ module ApplicationHelper
   def display_distance_between(date)
     return date ? distance_of_time_in_words(date, Time.now) : "Non renseigné"
   end
+  
   def display_music(user)
-    return "<div class='mt-2 embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item'' id='popup-youtube-player' style='width:100%;height:400px' src='https://www.youtube.com/embed/#{VideoInfo.new(user.music).video_id}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&autoplay=1' frameborder='0' allowfullscreen='true' allowscriptaccess='always'></iframe></div>".html_safe if user.music.present?
+    return "<div class='mt-2 embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item'' id='popup-youtube-player' style='width:100%;height:380px' src='https://www.youtube.com/embed/#{VideoInfo.new(user.music).video_id}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&autoplay=1' frameborder='0' allowfullscreen='true' allowscriptaccess='always'></iframe></div>".html_safe if user.music.present?
   end
   
 end
