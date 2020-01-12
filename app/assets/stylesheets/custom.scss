@@ -10,16 +10,16 @@
 	.status {
 		width: 5%;
 	}
-	.subject {
+	th.subject {
 		width: 55%;
 	}
-	.author {
+	th.author {
 		width: 15%;
 	}
-	.nb {
+	th.nb {
 		width: 5%;
 	}
-	.last {
+	th.last {
 		width: 20%;
 	}
 	tbody th {
@@ -47,6 +47,11 @@ pre{
 }
 	body>.navbar-transparent .navbar-nav>.open>a{
 		box-shadow:none
+}
+.messages {
+	#navbar-avatar {
+		display: none;
+	}
 }
 }
 #home,#help{
@@ -240,6 +245,17 @@ pre{
 	margin-bottom:2em
 }
 @media (max-width: 767px){
+	.topics {
+		.nb {
+			display: none;
+		}
+		.last {
+			display: none;
+		}
+	}
+	.messages #col-avatar {
+		padding-left: 15px!important;
+	}
 	.section-preview .image img{
 		width:100%
 }
@@ -262,6 +278,12 @@ pre{
 	font-size:10px
 }
 @media (max-width: 767px){
+
+	.messages {
+		#sidebar-avatar {
+			display: none;
+		}
+	}
 	.splash{
 		padding-top:8em
 }
@@ -323,6 +345,9 @@ h3, .h3 {
 	cursor: pointer;
 }
 @media (max-width: 992px) {
+	#col-avatar {
+		padding-left: 20px!important;
+	}
 	ul.navbar-nav.mr-auto li a {
 		margin-right: 16px;
 	}
@@ -343,5 +368,11 @@ h3, .h3 {
 
 	span.account-nav.username-nav {
 		display: none!important;
+	}
+}
+
+@media (max-width: 1200px) {
+	#col-avatar {
+		padding-left: 35px;
 	}
 }

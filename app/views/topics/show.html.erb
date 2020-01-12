@@ -7,26 +7,31 @@
 
 <%= will_paginate @messages, list_classes: %w(pagination justify-content-center) %>
 
-<% @messages.each do |message| %>
-  <div class="card mb-4">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-2">
-          <img class="rounded" style="height: 100px; width: 100px;" src="<%= message.user.avatar_url %>" alt="">
-          <div class="text-center mt-2">
-            <small><b>Messages</b> : <%= message.user.count_messages %></small>
+<div class="messages">
+  <% @messages.each do |message| %>
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2" id="sidebar-avatar">
+            <div class="text-center">
+              <img class="rounded" style="height: 100px; width: 100px;" src="<%= message.user.avatar_url %>" alt="">
+              <small class="mt-2"><b>Messages</b> : <%= message.user.count_messages %></small>
+            </div>
           </div>
-        </div>
-        <div class="col-md-10">
-          <strong><%= message.user.username %></strong><br />
-          <small>Posté <%= display_datetime(message.created_at, "text") %></small>
-          <hr />
-          <%= message.content.bbcode_to_html.html_safe %>
+          <div class="col-md-10" id="col-avatar">
+            <img class="rounded float-left mr-3" id="navbar-avatar" style="height: 50px; width: 50px;" src="<%= message.user.avatar_url %>" alt="">
+            <div>
+              <strong><%= message.user.username %></strong><br />
+              <small>Posté <%= display_datetime(message.created_at, "text") %></small>
+            </div>
+            <hr />
+            <%= message.content.bbcode_to_html.html_safe %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <%= will_paginate @messages, list_classes: %w(pagination justify-content-center) %>
 

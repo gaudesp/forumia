@@ -21,10 +21,10 @@
             <% @topics.each do |topic| %>
               <tr onclick="Turbolinks.visit('<%= forum_topic_path(@forum, topic) %>');" class="pointer">
                 <th class="text-center"><%= display_topic_status(topic.status) %></th>
-                <td class="title"><%= topic.title %></td>
-                <td class="text-center"><%= display_role_user(topic.user) %></td>
-                <td class="text-center"><%= topic.count_messages-1 %></td>
-                <td class="text-center"><%= display_datetime(topic.last_message, nil, "short") %></td>
+                <td class="subject"><%= topic.title %></td>
+                <td class="author text-center"><%= display_role_user(topic.user) %></td>
+                <td class="nb text-center"><%= topic.count_messages-1 %></td>
+                <td class="last text-center"><%= display_datetime(topic.last_message, nil, "short") %></td>
               </tr>
             <% end %>
           </tbody>
