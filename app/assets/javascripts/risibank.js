@@ -708,5 +708,6 @@ function hideRisitas() {
     $("#risibank-stickers").css("display", "none");
     $("#risibank-search").css("display", "initial");
     $("#risiback").css("display", "initial");
+    $('#risibank-search').focus();
 }
 //# sourceMappingURL=risibank.js.map
