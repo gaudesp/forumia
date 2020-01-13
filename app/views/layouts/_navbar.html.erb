@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4">
   <div class="container">
-  <%= link_to "ForuMia", root_path, class: "navbar-brand" %>
+  <%= link_to "ForuMia", Role.find(1) ? forum_path(Forum.first) : root_path, class: "navbar-brand" %>
     
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
