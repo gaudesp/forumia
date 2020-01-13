@@ -985,6 +985,12 @@ h3, .h3 {
 	.risibank-navigation input {
 		width: 120px!important;
 	}
+	#topics-list span {
+		display: none;
+	}
+	#topics-list:after {
+		content: 'Retour';
+	}
 }
 #risibank-stickers {
 	width: 100%!important;
