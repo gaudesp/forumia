@@ -17,6 +17,7 @@
 #risibank-banner {
     position: relative;
     height: 50px;
+    margin-bottom: -10px;
     width: 100%;
     padding-top: 10px;
 }
@@ -44,12 +45,10 @@
     .risibank-sticker {
         width: 68px;
         height: 51px;
-        border: 1px solid #e0e0e0;
         display: inline-block;
         margin: 4px;
         cursor: pointer;
         vertical-align: top;
-        background-color: white;
     }
         .risibank-sticker img {
             max-width: 100%;
@@ -72,20 +71,13 @@
     }
     .risibank-navigation {
         display: inline;
-        padding: .5rem .75rem;
-        color: #0275d8;
-        background-color: #fff;
-        border: 1px solid #ddd;
     }
     .risibank-navigation > a {
-        color: #0275d8;
         text-decoration: none;
+        padding: .5rem .75rem;
     }
     .risibank-navigation.selected {
-        background-color: #0275d8;
-    }
-    .risibank-navigation.selected > a {
-        color: white;
+        color: #18BC9C;
     }
     .risibank-navigation > a > img {
         height: 18px;

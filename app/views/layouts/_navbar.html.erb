@@ -35,7 +35,7 @@
             <% else %>
               <%= image_tag('/uploads/user/avatar/default.png', class: "avatar") %>
             <% end %>
-            <span class="account-nav <%= "username-nav" if current_user %>">
+            <span class="account-nav <%= current_user ? "username-nav" : "visitor-nav" %>">
               <span><%= current_user ? current_user.username : "Mon compte" %></span>
             </span>
           </a>

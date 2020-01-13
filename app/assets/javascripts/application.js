@@ -12,15 +12,17 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap
 //= require select2-full
-//= require turbolinks
 //= require jscolor
+//= require risibank
+//= require turbolinks
+//= require_tree .
 
 $(document).on('turbolinks:load', function() {
+  RisiBank.activate('bbcoder')
   $('body').toggleClass(localStorage.toggled)
   jscolor.installByClassName('jscolor')
   $('[data-toggle="tooltip"]').tooltip()
