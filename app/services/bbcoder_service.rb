@@ -38,7 +38,7 @@ module BbcoderService
       :link],
     'Image' => [
       /\[img(:.+)?\]([^\[\]].*?)\.(#{@@imageformats})\[\/img\1?\]/im,
-      '<img src="\2.\3" class="img-fluid" />',
+      '<img src="\2.\3" class="img-fluid" style="height: 260px;" />',
       'Display an image',
       'Check out this crazy cat: [img]http://catsweekly.com/crazycat.jpg[/img]',
       :image],
