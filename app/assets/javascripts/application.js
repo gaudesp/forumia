@@ -21,7 +21,11 @@
 //= require turbolinks
 //= require_tree .
 
+
 $(document).on('turbolinks:load', function() {
+  $('#btn-preview').on('click',function(){
+    process();
+  });
   RisiBank.activate('bbcoder')
   $('body').toggleClass(localStorage.toggled)
   jscolor.installByClassName('jscolor')
@@ -35,6 +39,20 @@ $(document).on('turbolinks:load', function() {
     $(this).next('.custom-file-label').html(fileName.replace('C:\\fakepath\\', " "))
   })
 })
+
+var content="";
+function process()
+{
+  if (content != $("#bbcoder").val()) {
+    content = $("#bbcoder").val();
+    $.get('/preview', {
+      content: content
+    },
+    function(txt) {
+      $("#preview").html(txt);
+    })
+  }
+}
 
 function darkLight() {
   if (localStorage.toggled != 'dark') {

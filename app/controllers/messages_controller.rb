@@ -1,6 +1,10 @@
 class MessagesController < ApplicationController
 
   include CheckRole
+  include BbcoderService
+
+  skip_before_action :verify_authenticity_token, only: [:preview]
+
   before_action :find_forum_by_id, only: [:new, :create, :show, :check_if_can_create_message]
   before_action :find_topic_by_id, only: [new, :create, :show, :check_if_can_create_message]
   before_action :find_message_on_new, only: [:new, :create]
@@ -21,6 +25,11 @@ class MessagesController < ApplicationController
       flash.now[:error] = "Veuillez résoudre les erreurs ci-dessous"
       render :new
     end
+  end
+
+  def preview
+    @bbcode_to_html = params[:content].bbcode_to_html.gsub(/\n/, '<br/>').html_safe if params[:content]
+    render inline: !params[:content].blank? ? "<pre>#{@bbcode_to_html}</pre>" : "" 
   end
 
   protected
