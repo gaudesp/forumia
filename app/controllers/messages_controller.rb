@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
 
   def preview
     @bbcode_to_html = params[:content].bbcode_to_html.gsub(/\n/, '<br/>').html_safe if params[:content]
-    render inline: !params[:content].blank? ? "<pre>#{@bbcode_to_html}</pre>" : "" 
+    render inline: !params[:content].blank? ? "<div id='preview-content'>#{@bbcode_to_html}</div>" : "" 
   end
 
   protected

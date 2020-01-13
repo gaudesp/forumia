@@ -67,12 +67,12 @@ module BbcoderService
       'Aligns contents along the right side',
       '[right]Right-aligned content[/right]',
       :right],
-      'NoelShack' => [
-        %r{(\A|\s)(https?://image.noelshack.com[^\s<\[]+)},
-        '<img src="\2" class="smiley" />',
-        'Aligns contents along the right side',
-        '[right]Right-aligned content[/right]',
-        :right]
+    'NoelShack' => [
+      %r{(\A|\s)(https?://image.noelshack.com[^\s<\[]+)},
+      '<img src="\2" class="smiley" />',
+      'Aligns contents along the right side',
+      '[right]Right-aligned content[/right]',
+      :noelshack]
   }
 
   class << self
