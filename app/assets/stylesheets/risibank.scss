@@ -79,6 +79,9 @@
     .risibank-navigation.selected {
         color: #18BC9C;
     }
+    .risibank-navigation.selected > a{
+        color: #18BC9C;
+    }
     .risibank-navigation > a > img {
         height: 18px;
     }
