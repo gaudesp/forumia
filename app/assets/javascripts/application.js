@@ -24,6 +24,7 @@
 
 $(document).on('turbolinks:load', function() {
   $('#btn-preview').on('click',function(){
+    $("#preview-bloc").css("display", "block");
     process();
   });
   $('#close-preview').on('click',function(){
@@ -69,7 +70,6 @@ function process() {
       content: content
     },
     function(txt) {
-      $("#preview-bloc").css("display", "block");
       $("#preview").html(txt);
       document.location = "#preview"
     })
