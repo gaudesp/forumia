@@ -27,6 +27,10 @@ $(document).on('turbolinks:load', function() {
     $("#preview-bloc").css("display", "block");
     process();
   });
+  $('#btn-refresh').on('click',function(){
+    refresh();
+    console.log('onclick !!')
+  });
   $('#close-preview').on('click',function(){
     $("#preview-bloc").css("display", "none");
   });
@@ -74,6 +78,11 @@ function process() {
       document.location = "#preview"
     })
   }
+}
+
+function refresh() {
+  Turbolinks.visit(window.location.href);
+  $('#icon-refresh').toggleClass("down");
 }
 
 function darkLight() {
