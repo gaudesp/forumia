@@ -11,7 +11,6 @@
         <%= f.simple_fields_for :messages do |m| %>
           <%= m.input :content, as: :text, prepend: fa_icon("comment-alt"), placeholder: "Message", input_html: { rows: 6, id: "bbcoder" } %>
         <% end %>
-        <div id="preview"></div>
         <%= f.button :submit, value: "Valider", class: "btn-primary" %> <%= content_tag(:button, "Prévisualiser", type: "button", class: "btn btn-primary ml-1", id: "btn-preview") %>
       <% else %>
         <div class="alert alert-warning">Vous devez être <b><%= link_to "inscris", new_user_registration_path %></b> et <b><%= link_to "connecté", new_user_session_path %></b> pour poster un sujet</div>
