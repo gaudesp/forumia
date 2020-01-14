@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   include CheckRole
   include BbcoderService
 
-  skip_before_action :verify_authenticity_token, only: [:preview]
+  skip_before_action :verify_authenticity_token, only: [:preview, :quote]
 
   before_action :find_forum_by_id, only: [:new, :create, :show, :check_if_can_create_message]
   before_action :find_topic_by_id, only: [new, :create, :show, :check_if_can_create_message]
@@ -28,8 +28,14 @@ class MessagesController < ApplicationController
   end
 
   def preview
-    @bbcode_to_html = params[:content].bbcode_to_html.gsub(/\n/, '<br/>').html_safe if params[:content]
-    render inline: !params[:content].blank? ? "<div id='preview-content'>#{@bbcode_to_html}</div>" : "" 
+    bbcode_to_html = params[:content].bbcode_to_html.gsub(/\n/, '<br/>').html_safe if params[:content]
+    render inline: !params[:content].blank? ? bbcode_to_html : "" 
+  end
+
+  def quote
+    quote = params[:content].to_i if params[:content] && !params[:content].blank?
+    message = Message.find(quote)
+    render inline: message ? "[quote]Citation de #{message.user.username} :\n#{message.content}[/quote]\n" : "" 
   end
 
   protected

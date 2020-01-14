@@ -1006,3 +1006,18 @@ h3, .h3 {
 #risiback {
 	display: none;
 }
+.link:hover {
+    color: #18BC9C;
+    text-decoration: none;
+}
+.link {
+    color: #212529;
+    text-decoration: none;
+    background-color: transparent;
+}
+#preview-bloc {
+	display: none
+}
+#close-preview {
+	color: #000000;
+}

@@ -28,6 +28,11 @@ class TopicsController < ApplicationController
     @message = Message.new
   end
 
+  def quote
+    @quote_to_bbcode = params[:quote].bbcode_to_html.gsub(/\n/, '<br/>').html_safe if params[:content]
+    render inline: !params[:quote].blank? ? "" : "" 
+  end
+
   protected
 
   def check_if_can_create_topic

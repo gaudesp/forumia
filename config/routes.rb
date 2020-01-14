@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
   get '/preview', to: 'messages#preview'
+  get '/quote', to: 'messages#quote'
   resources :home, only: [:index]
   resources :forums, path: "forum", only: [:index, :show, :new, :create, :edit, :update] do
     collection do

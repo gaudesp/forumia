@@ -26,6 +26,27 @@ $(document).on('turbolinks:load', function() {
   $('#btn-preview').on('click',function(){
     process();
   });
+  $('#close-preview').on('click',function(){
+    $("#preview-bloc").css("display", "none");
+  });
+  $('#btn-quote').on('click',function(){
+    console.log('onclick !!')
+    var msg_id = ""
+    msg_id = $(this).parents(".topic-message").attr("id")
+    $.get('/quote', {
+      content: msg_id
+    },
+    function(txt) {
+      var tmp = $("#bbcoder").val();
+      var space = ""
+      if ($.trim(tmp)) {
+        space = "\n"
+      }
+      $("#bbcoder").val(tmp + space + txt);
+      document.location = "#reply"
+      $("#bbcoder").focus()
+    })
+  })
   RisiBank.activate('bbcoder')
   $('body').toggleClass(localStorage.toggled)
   jscolor.installByClassName('jscolor')
@@ -40,16 +61,17 @@ $(document).on('turbolinks:load', function() {
   })
 })
 
-var content="";
-function process()
-{
+var content = "";
+function process() {
   if (content != $("#bbcoder").val()) {
     content = $("#bbcoder").val();
     $.get('/preview', {
       content: content
     },
     function(txt) {
+      $("#preview-bloc").css("display", "block");
       $("#preview").html(txt);
+      document.location = "#preview"
     })
   }
 }

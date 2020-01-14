@@ -8,10 +8,16 @@ module BbcoderService
     # tag name => [regex, replace, description, example, enable/disable symbol]
     'Bold' => [
       /\[b(:.*)?\](.*?)\[\/b\1?\]/mi,
-      '<strong>\2</strong>', #Proc alternative for example: lambda{ |e| "<strong>#{e[2]}</strong>" }
+      '<strong>\2</strong>',
       'Embolden text',
       'Look [b]here[/b]',
       :bold],
+    'Quote' => [
+      /\[quote(:.*)?\](.*?)\[\/quote\1?\]/mi,
+      '<div class="quote">\2</div>',
+      'Quote text',
+      'Look [quote]here[/quote]',
+      :quote],
     'Italics' => [
       /\[i(:.+)?\](.*?)\[\/i\1?\]/mi,
       '<em>\2</em>',
