@@ -23,6 +23,7 @@
           <div class="col-lg-10" id="col-avatar">
             <img class="rounded float-left mr-3" id="navbar-avatar" style="height: 50px; width: 50px;" src="<%= message.user.avatar_url %>" alt="">
             <div>
+              <%= content_tag(:span, fa_icon("quote-right"), class: "link pointer btn-quote float-right") %>
               <strong id="author"><%= link_to display_role_user(message.user), user_path(message.user.username) %></strong><br />
               <small>Posté <%= display_datetime(message.created_at, "text") %></small>
             </div>

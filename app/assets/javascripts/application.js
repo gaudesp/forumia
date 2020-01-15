@@ -29,15 +29,14 @@ $(document).on('turbolinks:load', function() {
   });
   $('#btn-refresh').on('click',function(){
     refresh();
-    console.log('onclick !!')
   });
   $('#close-preview').on('click',function(){
     $("#preview-bloc").css("display", "none");
   });
-  $('#btn-quote').on('click',function(){
-    console.log('onclick !!')
+  $('body').on('click', '.btn-quote', function(){
     var msg_id = ""
     msg_id = $(this).parents(".topic-message").attr("id")
+    console.log(msg_id)
     $.get('/quote', {
       content: msg_id
     },
@@ -45,10 +44,9 @@ $(document).on('turbolinks:load', function() {
       var tmp = $("#bbcoder").val();
       var space = ""
       if ($.trim(tmp)) {
-        space = "\n"
+        space = "\n\n"
       }
       $("#bbcoder").val(tmp + space + txt);
-      document.location = "#reply"
       $("#bbcoder").focus()
     })
   })
@@ -82,7 +80,6 @@ function process() {
 
 function refresh() {
   Turbolinks.visit(window.location.href);
-  $('#icon-refresh').toggleClass("down");
 }
 
 function darkLight() {

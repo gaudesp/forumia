@@ -35,7 +35,7 @@ class MessagesController < ApplicationController
   def quote
     quote = params[:content].to_i if params[:content] && !params[:content].blank?
     message = Message.find(quote)
-    render inline: message ? "[quote]Citation de #{message.user.username} :\n#{message.content}[/quote]\n" : "" 
+    render inline: message ? "[quote][b]Citation de #{message.user.username}[/b]\r#{message.content.gsub(/\[quote].*\[\/quote]/m, '')}[/quote]\r" : "" 
   end
 
   protected

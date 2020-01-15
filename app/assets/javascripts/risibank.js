@@ -697,6 +697,7 @@ $(document).on('turbolinks:load', function() {
 function displayRisitasOnEnter() {
     if(event.key === 'Enter') {
         $("#risibank-stickers").css("display", "block");
+        $('#risibank-search').focus();
     }
 }
 function displayRisitas() {
