@@ -42,11 +42,7 @@ $(document).on('turbolinks:load', function() {
     },
     function(txt) {
       var tmp = $("#bbcoder").val();
-      var space = ""
-      if ($.trim(tmp)) {
-        space = "\n\n"
-      }
-      $("#bbcoder").val(tmp + space + txt);
+      $("#bbcoder").val(tmp + "" + txt);
       $("#bbcoder").focus()
     })
   })

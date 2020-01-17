@@ -14,7 +14,7 @@ module BbcoderService
       :bold],
     'Quote' => [
       /\[quote(:.*)?\](.*?)\[\/quote\1?\]/mi,
-      '<div class="quote">\2</div>',
+      '<blockquote class="quote">\2</blockquote>',
       'Quote text',
       'Look [quote]here[/quote]',
       :quote],
