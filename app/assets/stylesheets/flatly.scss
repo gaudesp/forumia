@@ -10746,4 +10746,10 @@
 .quote {
 	background-color: #f7f7f9!important;
 	color: #a0a7ae;
+	margin: 0;
+	padding: 10px;
+	border-left-style: solid;
+	border-left-width: 5px;
+	background: var(--quote-primary-background);
+	color: var(--quote-color);
 }
