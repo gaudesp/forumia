@@ -13,11 +13,18 @@ module BbcoderService
       'Look [b]here[/b]',
       :bold],
     'Quote' => [
-      /\[quote(:.*)?\](.*?)\[\/quote\1?\]/mi,
+      /\[q(:.*)?\](.*?)\[\/q\1?\]/mi,
       '<blockquote class="quote">\2</blockquote>',
       'Quote text',
-      'Look [quote]here[/quote]',
+      'Look [q]here[/q]',
       :quote],
+    'Notify' => [
+      /@+\b(\w+)\b/mi,
+      '<a href="/profile/\1" target="_blank"><b>\1</b></a>',
+      'Notify user',
+      '@Username',
+      :notify
+    ],
     'Italics' => [
       /\[i(:.+)?\](.*?)\[\/i\1?\]/mi,
       '<em>\2</em>',
@@ -82,6 +89,24 @@ module BbcoderService
   }
 
   class << self
+
+    def quote_message(message)
+      if message.content.include? "[q]@"
+        if message.content.squish[/[^\/q\]]+$/].blank?
+          quote_message = message.content
+        else
+          quote_message = "[q]@#{message.user.username}\r#{message.content.gsub(/\[q\].*\[\/q\]/m, '')}[/q]\n"
+        end
+      else
+        if message.content.include? "[q]"
+          quote_message = message.content.gsub(/\[q\]|\[\/q\]/, '')
+        else
+          quote_message = message.content
+        end
+        quote_message = "[q]@#{message.user.username}\r#{quote_message}[/q]\n"
+      end
+      quote_message
+    end
     # Convert a string with BBCode markup into its corresponding HTML markup
     #
     # === Basic Usage

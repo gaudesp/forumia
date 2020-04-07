@@ -33,18 +33,10 @@ class MessagesController < ApplicationController
   end
 
   def quote
-    quote = params[:content].to_i if params[:content] && !params[:content].blank?
+    quote = params[:content].to_i if params[:content]
     message = Message.find(quote)
-    if message.content.include? "[b]Citation de "
-      message_bbcode = message.content.gsub(/\[quote].*\[\/quote]/m, '')
-    else
-      if message.content.include? "[quote]"
-        message_bbcode = message.content.gsub(/\[quote]|\[\/quote]/, '')
-      else
-        message_bbcode = message.content
-      end
-    end
-    render inline: message ? "[quote][b]Citation de #{message.user.username}[/b]\r#{message_bbcode}[/quote]\r" : "" 
+    quote_message = BbcoderService.quote_message(message)
+    render inline: message ? quote_message : "" 
   end
 
   protected
