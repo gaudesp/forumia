@@ -17,7 +17,7 @@ class Message < ApplicationRecord
 
   def recipients
     recipients = []
-    content.scan(/@+\b(\w+)\b/).each do |recipient|
+    content.scan(/@+\b(\w+)\b/).uniq.each do |recipient|
       recipients << recipient[0] if User.find_by_username(recipient[0]) != User.current
     end
     recipients

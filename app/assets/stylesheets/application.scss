@@ -22,6 +22,16 @@
   scroll-behavior: smooth;
 }
 
+.scrollable-menu {
+  height: auto;
+  max-height: 300px;
+  overflow-x: hidden;
+}
+
+.mark-all {
+  height: auto!important;
+}
+
 .notification[data-count]:after {
   position:absolute;
   right:5%;
@@ -49,12 +59,12 @@
 }
 
 .edit_notification {
-  height: 52px!important;
+  height: 52px;
 }
 
 .dropdown-notification .dropdown-item {
   white-space: unset;
-  height: 52px!important;
+  height: 52px;
 }
 
 .dropdown-notification a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {

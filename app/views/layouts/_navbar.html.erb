@@ -35,7 +35,7 @@
                 <%= fa_icon "bell" %>
               <% end %>
             </a>
-            <div class="dropdown-menu dropdown-notification" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-notification scrollable-menu" aria-labelledby="navbarDropdown">
 
               <% if current_user.notifications.unread.empty? %>
                 <span class="ml-3">Vous n'avez pas de notification pour le moment.</span>
