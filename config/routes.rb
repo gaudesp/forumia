@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   get '/preview', to: 'messages#preview'
   get '/quote', to: 'messages#quote'
   resources :home, only: [:index]
+  resources :notifications do
+    member do
+      patch 'mark_as_read', to: 'notifications#mark_as_read'
+    end
+  end
   resources :forums, path: "forum", only: [:index, :show, :new, :create, :edit, :update] do
     collection do
       get 'panel', to: 'forums#panel', as: :panel

@@ -7,9 +7,31 @@ class Message < ApplicationRecord
   validates_presence_of :topic
 
   after_validation :set_last_message
+  after_create :create_notifications
   before_validation :set_user
 
+  def page(order = :id, per_page = 20)
+    position = Message.find(id).topic.messages.count
+    (position.to_f/per_page).ceil
+  end
+
+  def recipients
+    recipients = []
+    content.scan(/@+\b(\w+)\b/).each do |recipient|
+      recipients << recipient[0] if User.find_by_username(recipient[0]) != User.current
+    end
+    recipients
+  end
+  
   private
+
+  def create_notifications
+    recipients.each do |recipient|
+      recipient = User.find_by_username(recipient)
+      Notification.create(recipient: recipient, actor: self.user,
+        action: 'quote_message', notifiable: self)
+    end
+  end
 
   def set_last_message
     self.topic.update(last_message: Time.now)

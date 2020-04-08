@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :topics
   has_many :messages
+  has_many :notifications, foreign_key: :recipient_id
 
   enum genders: [ :male, :female, :unknown ]
 

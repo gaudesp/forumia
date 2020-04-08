@@ -4,7 +4,7 @@
 
 <div class="messages">
   <% @messages.each do |message| %>
-    <div class="card mb-4 topic-message" id="<%= message.id %>">
+    <div class="card mb-4 topic-message" name="<%= message.id %>" id="<%= message.id %>">
       <div class="card-body">
         <div class="row">
           <div class="col-lg-2" id="sidebar-avatar">

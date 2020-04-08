@@ -26,6 +26,33 @@
         <li class="nav-item">
             <input type="checkbox" class="custom-control-input" onclick="darkLight()" id="checkBox" checked="">
         </li>
+        <% if current_user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if current_user.notifications.unread.any? %>
+                <%= fa_icon "bell", class: "notification", data: { count: current_user.notifications.unread.count } %>
+              <% else %>
+                <%= fa_icon "bell" %>
+              <% end %>
+            </a>
+            <div class="dropdown-menu dropdown-notification" aria-labelledby="navbarDropdown">
+
+              <% if current_user.notifications.unread.empty? %>
+                <span class="ml-3">Vous n'avez pas de notification pour le moment.</span>
+              <% end %>
+
+              <% current_user.notifications.unread.order(created_at: :desc).each do |notification| %>
+                <%= simple_form_for notification, url: mark_as_read_notification_path(notification) do |f| %>
+                  <div class="dropdown-item pointer" onclick="event.target.parentNode.submit();">
+                    <%= image_tag(notification.actor.avatar_url, class: "avatar-notification") %> 
+                    <strong><%= notification.actor.username %></strong> vous a notifié sur le sujet « <i><%= notification.notifiable.topic.title %></i> »
+                    <span class="date-notification"><%= notification.notifiable.created_at.strftime("le %d/%m/%y à %H:%M:%S") %></span>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item dropdown">
