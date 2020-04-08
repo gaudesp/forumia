@@ -27,7 +27,7 @@ class Message < ApplicationRecord
 
   def create_notifications
     recipients.each do |recipient|
-      recipient = User.find_by_username(recipient)
+      recipient = User.where('lower(username) = ?', recipient.downcase).first
       Notification.create(recipient: recipient, actor: self.user,
         action: 'quote_message', notifiable: self)
     end
