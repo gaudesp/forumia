@@ -7,7 +7,7 @@ class Topic < ApplicationRecord
 
   accepts_nested_attributes_for :messages, allow_destroy: true
 
-  enum status: [ :normal, :locked, :pinned, :pinlocked]
+  enum :status, { normal: 0, locked: 1, pinned: 2, pinlocked: 3 }
 
   validates_presence_of :title, message: "Vous devez renseigner le titre du sujet"
   validates_length_of :title, message: "Le titre doit être compris entre 1 et 60 caractères", minimum: 1, maximum: 60, allow_blank: false

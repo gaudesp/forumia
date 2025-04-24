@@ -1,4 +1,4 @@
-<%= render partial: "/topics/header" %>
+<%= render partial: "topics/header" %>
 
 <%= will_paginate @messages, list_classes: %w(pagination justify-content-center) %>
 
@@ -38,6 +38,6 @@
 
 <%= will_paginate @messages, list_classes: %w(pagination justify-content-center) %>
 
-<%= render partial: "/topics/header" %>
+<%= render partial: "topics/header" %>
 
-<%= render file: '/messages/new' %>
+<%= render template: 'messages/new' %>

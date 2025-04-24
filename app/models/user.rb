@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :notifications, foreign_key: :recipient_id
 
-  enum genders: [ :male, :female, :unknown ]
+  enum :gender, { male: 0, female: 1, unknown: 2 }
 
   validates_presence_of :username, message: "Vous devez choisir un nom d'utilisateur", on: :create
   validates_uniqueness_of :username, case_sensitive: false, message: "Ce nom d'utilisateur n'est pas disponible", on: :create
