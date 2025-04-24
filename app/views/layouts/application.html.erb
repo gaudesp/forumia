@@ -4,30 +4,27 @@
     <title>Forumia</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="turbolinks-cache-control" content="no-cache">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application', media: 'all', "data-turbolinks-track" => true %>
+    <%= javascript_include_tag 'application', "data-turbolinks-track" => true %>
   </head>
 
   <body>
     <%= render "layouts/navbar" %>
 
     <div class="container">
-      <div class="card">
-        <div class="card-body card-container">
-          <div class="row">
-            <div class="col-lg-8">
-              <% flash.each do |key, value| %>
-                <div class="<%= flash_class key %>">
-                  <%= fa_icon flash_icon(key), class: "mr-1" %> <%= value %>
-                </div>
-              <% end %>
-              <%= yield %>
+      <div class="row">
+        <div class="col-lg-8">
+          <% flash.each do |key, value| %>
+            <div class="<%= flash_class key %>">
+              <%= fa_icon flash_icon(key), class: "mr-1" %> <%= value %>
             </div>
-            <div class="col-lg-4">
-              <%= render "layouts/sidebar" %>
-            </div>
-          </div>
+          <% end %>
+          <%= yield %>
+        </div>
+        <div class="col-lg-4">
+          <%= render "layouts/sidebar" %>
         </div>
       </div>
     </div>

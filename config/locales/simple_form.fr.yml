@@ -4,7 +4,7 @@ fr:
       user:
         gender:
           male: Homme
-          female: Femelle
+          female: Femme
           unknown: Autre
     "yes": 'Oui'
     "no": 'Non'

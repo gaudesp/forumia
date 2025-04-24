@@ -1,0 +1,11 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title"><%= fa_icon "comments", class:" mr-1" %> Forum</h4>
+    <div class="card-text mt-3">
+      <%= f.input :name, prepend: fa_icon("signature"), placeholder: "Nom" %>
+      <%= f.input :description, prepend: fa_icon("comment-alt"), placeholder: "Description" %>
+      <%= f.input :category_id, collection: Category.all, label_method: :name, value_method: :id, as: :select, wrapper: :input_group_select, prepend: fa_icon("layer-group"), include_blank: "Catégorie" %>
+      <%= f.input :role_id, collection: Role.all, label_method: :label, value_method: :id, as: :select, wrapper: :input_group_select, prepend: fa_icon("graduation-cap"), include_blank: "Accès" %>
+    </div>
+  </div>
+</div>

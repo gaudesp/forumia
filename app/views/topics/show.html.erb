@@ -1,0 +1,43 @@
+<%= render partial: "/topics/header" %>
+
+<%= will_paginate @messages, list_classes: %w(pagination justify-content-center) %>
+
+<div class="messages">
+  <% @messages.each do |message| %>
+    <div class="card mb-4 topic-message" name="<%= message.id %>" id="<%= message.id %>">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-2" id="sidebar-avatar">
+            <span id="small">
+              <img class="rounded mb-2" style="height: 100px; width: 100px;" src="<%= message.user.avatar_url %>" alt="">
+              <div id="avatar-messages">
+                <small>
+                  <%= fa_icon "comment-alt", class: "mr-1" %> Messages : <%= message.user.count_messages %>
+                </small><br />
+                <small>
+                  <%= fa_icon "coins", class: "mr-1" %> Argent : <%= sprintf("%g", message.user.coin) %> €
+                </small>
+              </div>
+            </span>
+          </div>
+          <div class="col-lg-10" id="col-avatar">
+            <img class="rounded float-left mr-3" id="navbar-avatar" style="height: 50px; width: 50px;" src="<%= message.user.avatar_url %>" alt="">
+            <div>
+              <%= content_tag(:span, fa_icon("quote-right"), class: "link pointer btn-quote float-right") %>
+              <strong id="author"><%= link_to display_role_user(message.user), user_path(message.user.username) %></strong><br />
+              <small>Posté <%= display_datetime(message.created_at, "text") %></small>
+            </div>
+            <hr />
+            <%= message.content.bbcode_to_html.gsub(/\n/, '<br/>').html_safe %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= will_paginate @messages, list_classes: %w(pagination justify-content-center) %>
+
+<%= render partial: "/topics/header" %>
+
+<%= render file: '/messages/new' %>

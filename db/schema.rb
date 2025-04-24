@@ -10,46 +10,112 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_23_100712) do
+ActiveRecord::Schema.define(version: 2020_04_07_164755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "icon"
+    t.string "slug", null: false
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.bigint "category_id"
+    t.bigint "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug", null: false
+    t.index ["category_id"], name: "index_forums_on_category_id"
+    t.index ["role_id"], name: "index_forums_on_role_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "user_id"
+    t.bigint "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_messages_on_topic_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "actor_id"
+    t.datetime "read_at"
+    t.string "action"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "permissions", force: :cascade do |t|
     t.boolean "create_article", default: false
     t.boolean "update_article", default: false
     t.boolean "delete_article", default: false
-    t.boolean "undelete_article", default: false
-    t.boolean "kill_article", default: false
     t.boolean "lock_topic", default: false
     t.boolean "unlock_topic", default: false
     t.boolean "delete_topic", default: false
-    t.boolean "undelete_topic", default: false
-    t.boolean "kill_topic", default: false
     t.boolean "pin_topic", default: false
     t.boolean "unpin_topic", default: false
     t.boolean "delete_message", default: false
-    t.boolean "undelete_message", default: false
-    t.boolean "kill_message", default: false
     t.boolean "kick_user", default: false
     t.boolean "unkick_user", default: false
     t.boolean "ban_user", default: false
     t.boolean "unban_user", default: false
     t.boolean "banip_user", default: false
     t.boolean "unbanip_user", default: false
-    t.boolean "kill_user", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "create_forum", default: false
+    t.boolean "update_forum", default: false
+    t.boolean "delete_forum", default: false
+    t.boolean "update_role", default: false
+    t.boolean "delete_role", default: false
+    t.boolean "update_permission", default: false
+    t.integer "priority_permission"
+    t.integer "role_id"
+    t.boolean "update_topic", default: false
+    t.boolean "update_message", default: false
+    t.boolean "update_user", default: false
+    t.boolean "create_staff", default: false
+    t.boolean "promote_user", default: false
+    t.boolean "demote_user", default: false
+    t.boolean "delete_user", default: false
+    t.boolean "create_category", default: false
+    t.boolean "update_category", default: false
+    t.boolean "delete_category", default: false
+    t.index ["role_id"], name: "index_permissions_on_role_id"
   end
 
   create_table "roles", force: :cascade do |t|
     t.string "label"
     t.string "color"
     t.string "icon"
-    t.bigint "permission_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["permission_id"], name: "index_roles_on_permission_id"
+    t.string "slug", null: false
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "title", null: false
+    t.bigint "user_id"
+    t.bigint "forum_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug", null: false
+    t.integer "status", default: 0
+    t.datetime "last_message", null: false
+    t.index ["forum_id"], name: "index_topics_on_forum_id"
+    t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,6 +142,12 @@ ActiveRecord::Schema.define(version: 2019_08_23_100712) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "roles", "permissions", on_delete: :cascade
+  add_foreign_key "forums", "categories", on_delete: :cascade
+  add_foreign_key "forums", "roles", on_delete: :cascade
+  add_foreign_key "messages", "topics", on_delete: :cascade
+  add_foreign_key "messages", "users", on_delete: :cascade
+  add_foreign_key "permissions", "roles", on_delete: :cascade
+  add_foreign_key "topics", "forums", on_delete: :cascade
+  add_foreign_key "topics", "users", on_delete: :cascade
   add_foreign_key "users", "roles", on_delete: :cascade
 end

@@ -1,0 +1,38 @@
+<%= link_to "Retour à liste du staff", staff_index_path, class: "btn btn-primary mb-4" %>
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title mb-0"><%= fa_icon "cog", class:" mr-1" %> Gestion des rôles</h4>
+    </div>
+    <div class="card-text">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Rôle</th>
+            <th scope="col">Priorité</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @roles.each do |role| %>
+            <tr>
+              <th><%= display_role_grade(role) %></th>
+              <td><%= role.permission.priority_permission %></td>
+              <td>
+              <% if current_user %>
+                <% if current_user.role.permission.update_role == true %>
+                  <%= link_to edit_staff_path(role), class: "float-right" do %>
+                    <button class="btn btn-warning" data-toggle="tooltip" data-title="Modifier"><%= fa_icon "tools" %></button>
+                  <% end %>
+                <% end %>
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<% if current_user.role.permission.create_staff == true %> 
+<%= link_to "Créer un nouveau rôle", new_staff_path, class: "btn btn-primary float-right mb-4" %>
+<% end %>

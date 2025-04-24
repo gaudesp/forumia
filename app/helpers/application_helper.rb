@@ -17,7 +17,14 @@ module ApplicationHelper
   end
 
   def display_date(date)
-    return date.strftime("%d/%m/%Y")
+    date = date.strftime("%d/%m/%Y")
+    return date
+  end
+
+  def display_datetime(date, text = nil, short = nil)
+    year = short.nil? ? "/%Y" : ""
+    format = text.nil? ? "%d/%m#{year} %H:%M:%S" : "le %d/%m#{year} à %H:%M:%S"
+    return date.strftime(format)
   end
 
   def display_gender(gender)
@@ -37,30 +44,11 @@ module ApplicationHelper
   end
 
   def display_distance_between(date)
-    return distance_of_time_in_words(date, Time.now)
+    return date ? distance_of_time_in_words(date, Time.now) : "Non renseigné"
   end
-
-  def display_avatar(user, page = nil)
-    if page == "profile"
-      return "https://image.noelshack.com/fichiers/2019/34/4/1566466264-anonymous-user.png" if !user || !user.avatar.present?
-      user.avatar
-    else
-      return fa_icon("user-circle", class: "icon-md") if !user || !user.avatar.present?
-      image_tag(user.avatar, class: "avatar")
-    end
-  end
-
-  def display_background(user)
-    return "https://image.noelshack.com/fichiers/2019/34/4/1566466131-default-background.png" if !user || !user.background.present?
-    user.background
-  end
-
+  
   def display_music(user)
-    return "<iframe id='popup-youtube-player' width='0' height='0' src='https://www.youtube.com/embed/#{VideoInfo.new(user.music).video_id}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&autoplay=1' frameborder='0' allowfullscreen='true' allowscriptaccess='always'></iframe>".html_safe if user.music.present?
+    return "<div class='mt-2 embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item'' id='popup-youtube-player' style='width:100%;height:380px' src='https://www.youtube.com/embed/#{VideoInfo.new(user.music).video_id}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&autoplay=1' frameborder='0' allowfullscreen='true' allowscriptaccess='always'></iframe></div>".html_safe if user.music.present?
   end
-
-  def display_player(user)
-    return link_to "#", class: "float-right player", id: "stop" do fa_icon "pause" end if user.music.present?
-  end
-
+  
 end

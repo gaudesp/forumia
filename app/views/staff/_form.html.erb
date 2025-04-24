@@ -1,0 +1,89 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="card-title"><%= fa_icon "user-graduate", class:" mr-1" %> Rôle</h4>
+    <div class="card-text mt-3">
+      <%= f.input :label, prepend: fa_icon("graduation-cap"), placeholder: "Nom" %>
+      <%= f.input :color, prepend: fa_icon("palette"), placeholder: "Couleur", input_html: { class: "jscolor pointer" } %>
+      <%= f.input :icon, prepend: fa_icon("icons"), placeholder: "Icône", hint: raw("Rechercher une icône #{link_to('à cette adresse', 'https://fontawesome.com/icons?d=gallery&m=free', target: '_blank') }.") %>
+    </div>
+  </div>
+</div>
+<% if current_user.role.permission.update_permission %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h4 class="card-title"><%= fa_icon "balance-scale-right", class:" mr-1" %> Permissions</h4>
+      <div class="card-text mt-3">
+        <%= f.simple_fields_for :permission do |p| %>
+          <%= p.input :priority_permission, prepend: fa_icon("universal-access"), placeholder: "Priorité", hint: 'Plus le chiffre est élevé, plus le rôle est important.' %>
+          <div class="card">
+            <div class="card-header">
+              <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">Général</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="role-tab" data-toggle="tab" href="#role" role="tab" aria-controls="role" aria-selected="false">Rôle</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="forum-tab" data-toggle="tab" href="#forum" role="tab" aria-controls="forum" aria-selected="false">Forum</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="utilisateur-tab" data-toggle="tab" href="#utilisateur" role="tab" aria-controls="utilisateur" aria-selected="false">Utilisateur</a>
+                </li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                  <%= p.input :create_article, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut créer aucun article", label: 'Donner la possibilité de créer un article' %>
+                  <%= p.input :update_article, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier que les siens", label: 'Donner la possibilité de modifier un article' %>
+                  <%= p.input :delete_article, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer que les siens", label: 'Donner la possibilité de supprimer un article' %>
+                </div>
+                <div class="tab-pane fade" id="role" role="tabpanel" aria-labelledby="role-tab">
+                  <div class="alert alert-info">
+                    <%= fa_icon('info-circle', class: 'mr-1') %> L'utilisateur ne pourra jamais gérer son rôle ou un rôle ayant une plus forte priorité que le sien
+                  </div>
+                  <%= p.input :promote_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut promouvoir aucune personne", label: "Donner la possibilité de promouvoir un utilisateur" %>
+                  <%= p.input :demote_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut déstituer aucune personne", label: "Donner la possibilité de déstituer un utilisateur" %>
+                  <%= p.input :create_staff, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut créer aucun rôle", label: 'Donner la possibilité de créer un rôle' %>
+                  <%= p.input :update_role, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier aucun rôle", label: 'Donner la possibilité de modifier un rôle' %>
+                  <%= p.input :delete_role, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucun rôle", label: 'Donner la possibilité de supprimer un rôle' %>
+                  <%= p.input :update_permission, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut gérer aucunes permissions", label: "Donner la possibilité de gérer les permissions d'un rôle" %>
+                </div>
+                <div class="tab-pane fade" id="forum" role="tabpanel" aria-labelledby="forum-tab">
+                  <%= p.input :create_category, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut créer aucune catégorie", label: 'Donner la possibilité de créer une catégorie' %>
+                  <%= p.input :update_category, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier aucune catégorie", label: 'Donner la possibilité de modifier une catégorie' %>
+                  <%= p.input :delete_category, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucune catégorie", label: 'Donner la possibilité de supprimer une catégorie' %>
+                  <hr />
+                  <%= p.input :create_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut créer aucun forum", label: 'Donner la possibilité de créer un forum' %>
+                  <%= p.input :update_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier aucun forum", label: 'Donner la possibilité de modifier un forum' %>
+                  <%= p.input :delete_forum, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucun forum", label: 'Donner la possibilité de supprimer un forum' %>
+                  <hr />
+                  <%= p.input :update_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier que les siens", label: 'Donner la possibilité de modifier un sujet' %>
+                  <%= p.input :pin_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut épingler aucun sujet", label: "Donner la possibilité d'épingler un sujet" %>
+                  <%= p.input :unpin_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut désépinglé aucun sujet", label: 'Donner la possibilité de désépinglé un sujet' %>
+                  <%= p.input :lock_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut locker aucun sujet", label: 'Donner la possibilité de locker un sujet' %>
+                  <%= p.input :unlock_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut délocker aucun sujet", label: 'Donner la possibilité de délocker un sujet' %>
+                  <%= p.input :delete_topic, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucun sujet", label: 'Donner la possibilité de supprimer un sujet' %>
+                  <hr />
+                  <%= p.input :update_message, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier que les siens", label: 'Donner la possibilité de modifier un message' %>
+                  <%= p.input :delete_message, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer aucun message", label: 'Donner la possibilité de supprimer un message' %>
+                </div>
+                <div class="tab-pane fade" id="utilisateur" role="tabpanel" aria-labelledby="utilisateur-tab">
+                  <%= p.input :update_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut modifier que son compte", label: "Donner la possibilité de modifier le compte d'un utilisateur" %>
+                  <%= p.input :kick_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut kicker personne", label: 'Donner la possibilité de kicker un utilisateur' %>
+                  <%= p.input :unkick_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut dékicker personne", label: 'Donner la possibilité de dékicker un utilisateur' %>
+                  <%= p.input :ban_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut bannir personne", label: 'Donner la possibilité de bannir un utilisateur' %>
+                  <%= p.input :unban_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut débannir personne", label: 'Donner la possibilité de débannir un utilisateur' %>
+                  <%= p.input :banip_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut bannir l'ip de personne", label: "Donner la possibilité de bannir l'ip d'un utilisateur" %>
+                  <%= p.input :unbanip_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut débannir l'ip personne", label: "Donner la possibilité de débannir l'ip d'un utilisateur" %>
+                  <%= p.input :delete_user, as: :boolean, wrapper: :custom_boolean_switch, hint: "Par défaut, l'utilisateur ne peut supprimer que son compte", label: 'Donner la possibilité de supprimer un utilisateur' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

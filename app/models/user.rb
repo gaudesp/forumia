@@ -1,7 +1,12 @@
 class User < ApplicationRecord
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable
 
   belongs_to :role, optional: true
+
+  has_many :topics
+  has_many :messages
+  has_many :notifications, foreign_key: :recipient_id
 
   enum genders: [ :male, :female, :unknown ]
 
@@ -24,7 +29,38 @@ class User < ApplicationRecord
 
   attr_readonly :username, on: :update
 
+  mount_uploader :avatar, AvatarUploader
+  mount_uploader :background, BackgroundUploader
+
   before_create :set_default_role
+
+  def avatar_url
+    self.avatar.url(:avatar) || '/uploads/user/avatar/default.png'
+  end
+
+  def background_url
+    self.background.url(:background) || '/uploads/user/background/default.png'
+  end
+
+  def count_messages
+    self.messages.count
+  end
+
+  def promote(role_id)
+    update(role_id: role_id)
+  end
+
+  def demote
+    update(role_id: 1)
+  end
+
+  def self.current
+    Thread.current[:user]
+  end
+  
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -34,6 +70,8 @@ class User < ApplicationRecord
       where(conditions).first
     end
   end
+
+  private
 
   def set_default_role
     self.role = Role.find(1)

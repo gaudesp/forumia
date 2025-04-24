@@ -1,93 +1,55 @@
 <div class="card mb-4">
-  <h5 class="card-header card-header-l"><%= fa_icon "door-open", class: "mr-1" %> Bienvenue sur ForuMia !</h5>
-  <div class="card-body card-body-l">
-
-    <p>ForuMia est un forum en développement depuis le 17 Août 2019. Créé par Nox (anciennement Cinox), ancien membre assidu de JeuxVideo.Com et créateur de multiples JVC-Likes entre 2010 et 2012.</p>
-
-    <p>Le but de ce forum est de créer une communauté libre, unie et conviviale, où le staff se veut attentif et à l'écoute des membres. Si tu souhaites participer à ce projet, n'hésites pas à nous rejoindre !</p>
-
+  <div class="card-body">
+    <h4 class="card-title"><%= fa_icon "door-open", class:" mr-1" %> Bienvenue sur ForuMia</h4>
+    <p class="card-text">
+      ForuMia est un forum de discussion en développement depuis fin Août 2019.
+      Il a été créé par Nox, anciemment Cinox, créateur de multiples 
+      JVC-Like entre 2010 et 2012.
+    </p>
+    <p class="card-text">
+      Le but de ce forum est de créer une communauté libre, unie et conviviale,
+      où le staff se veut attentif et à l'écoute des membres. Si tu souhaites
+      participer à ce projet, n'hésites pas à nous rejoindre !
+    </p>
+    <% if !current_user %>
+      <%= link_to new_user_registration_path, class: "btn btn-primary" do %>
+        <%= fa_icon "user-plus", class:" mr-1" %> Rejoindre ForuMia
+      <% end %>
+    <% end %>
   </div>
-  </div>
+</div>
 
-  <div class="row">
+<div class="row">
 
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <div class="card mb-4">
-      <h5 class="card-header card-header-l2"><%= fa_icon "signal", class: "mr-1" %> Statistiques diverses</h5>
-      <div class="card-body card-body-l2">
-        <div class="float-right"><%= @user_count %></div>
-        Nombre de membres inscrits<br />
-        <div class="float-right">?</div>
-        Nombre d'articles publié<br />
-        <div class="float-right">?</div>
-        Nombre de forums créé<br />
-        <div class="float-right">?</div>
-        Nombre de topics créé<br />
-        <div class="float-right">?</div>
-        Nombre de message posté<br />
+        <div class="card-body">
+          <div class="row">
+            <div class="col mr-2">
+              <div class="font-weight-bold text-uppercase mb-1 float-right">Messages postés</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-300">0</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-comments fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <div class="card mb-4">
-      <h5 class="card-header card-header-l2"><%= fa_icon "users", class: "mr-1" %> Derniers inscrits</h5>
-      <div class="card-body card-body-l2" id="last-users">
-        <% @users.each do |u| %>
-          <div class="float-right">le <%= display_date u.created_at %></div>
-          <%= link_to display_role_user(u), user_path(u.username) %><br />
-        <% end %>
+        <div class="card-body">
+          <div class="row">
+            <div class="col mr-2">
+              <div class="font-weight-bold text-uppercase mb-1 float-right">Membres inscrits</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-300"><%= @user_count %></div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-users fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
-
-  </div>
-
-  <div class="row">
-
-  <div class="col-lg-4">
-    <a href="article.html" class="card zoom mb-4">
-      <img src="http://placehold.it/600x200" class="img-responsive article-img img-fluid" />
-      <h5 class="card-header card-header-l3 article-title">Lorem ipsum dolor sit amet</h5>
-      <div class="card-body card-article card-body-l3">
-
-        <p class="article-body">
-        Proin dui diam, vestibulum non scelerisque ut, tincidunt eu odio.
-        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-        </p>
-
-      </div>
-    </a>
-  </div>
-
-  <div class="col-lg-4">
-    <a href="article.html" class="card zoom mb-4">
-      <img src="http://placehold.it/600x200" class="img-responsive article-img img-fluid" />
-      <h5 class="card-header card-header-l3 article-title">Lorem ipsum dolor sit amet</h5>
-      <div class="card-body card-article card-body-l3">
-
-        <p class="article-body">
-        Proin dui diam, vestibulum non scelerisque ut, tincidunt eu odio.
-        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-        </p>
-
-      </div>
-    </a>
-  </div>
-
-  <div class="col-lg-4">
-    <a href="article.html" class="card zoom mb-4">
-      <img src="http://placehold.it/600x200" class="img-responsive article-img img-fluid" />
-      <h5 class="card-header card-header-l3 article-title">Lorem ipsum dolor sit amet</h5>
-      <div class="card-body card-article card-body-l3">
-
-        <p class="article-body">
-        Proin dui diam, vestibulum non scelerisque ut, tincidunt eu odio.
-        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-        </p>
-
-      </div>
-    </a>
-  </div>
-
 </div>

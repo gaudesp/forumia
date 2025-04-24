@@ -1,43 +1,92 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4">
   <div class="container">
-    <%= link_to "ForuMia", root_path, class: "navbar-brand" %>
-    <ul class="nav navbar-nav mr-auto">
-      <li class="nav-item zoom nav-zoom active">
-        <%= link_to root_path, class: "nav-link" do %>
-          <%= fa_icon "home" %> <span>Accueil</span>
+  <%= link_to "ForuMia", Role.find(1) ? forum_path(Forum.first) : root_path, class: "navbar-brand" %>
+    
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to home_index_path, class: "nav-link" do %>
+            <%= fa_icon "home" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to staff_index_path, class: "nav-link" do %>
+            <%= fa_icon "users" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to forums_path, class: "nav-link" do %>
+            <%= fa_icon "comments" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link pointer" onclick="darkLight()" id="checkBox">
+            <%= fa_icon "lightbulb" %>
+          </a>
+        </li>
+        <li class="nav-item">
+            <input type="checkbox" class="custom-control-input" onclick="darkLight()" id="checkBox" checked="">
+        </li>
+        <% if current_user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if current_user.notifications.unread.any? %>
+                <%= fa_icon "bell", class: "notification", data: { count: current_user.notifications.unread.count } %>
+              <% else %>
+                <%= fa_icon "bell" %>
+              <% end %>
+            </a>
+            <div class="dropdown-menu dropdown-notification scrollable-menu" aria-labelledby="navbarDropdown">
+
+              <% if current_user.notifications.unread.empty? %>
+                <span class="ml-3">Vous n'avez pas de notification pour le moment.</span>
+              <% end %>
+
+              <% current_user.notifications.unread.order(created_at: :desc).each do |notification| %>
+                <%= simple_form_for notification, url: mark_as_read_notification_path(notification) do |f| %>
+                  <div class="dropdown-item pointer" onclick="event.target.parentNode.submit();">
+                    <%= image_tag(notification.actor.avatar_url, class: "avatar-notification") %> 
+                    <strong><%= notification.actor.username %></strong> vous a notifié sur le sujet « <i><%= notification.notifiable.topic.title %></i> »
+                    <span class="date-notification"><%= notification.notifiable.created_at.strftime("le %d/%m/%y à %H:%M:%S") %></span>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </li>
         <% end %>
-        </a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav ml-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= display_avatar(current_user) %>
-          <span class="account-nav <%= "username-nav" if current_user %>">
-            <span><%= current_user ? current_user.username : "Mon compte" %></span>
-          </span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% if !current_user %>
-            <%= link_to new_user_session_path, class: "dropdown-item" do %>
-              <%= fa_icon "sign-in-alt" %> Connexion
+      </ul>
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <% if current_user %>
+              <%= image_tag(current_user.avatar_url, class: "avatar") %>
+            <% else %>
+              <%= image_tag('/uploads/user/avatar/default.png', class: "avatar") %>
             <% end %>
-            <%= link_to new_user_registration_path, class: "dropdown-item" do %>
-              <%= fa_icon "user-plus" %> Inscription
+            <span class="account-nav <%= current_user ? "username-nav" : "visitor-nav" %>">
+              <span><%= current_user ? current_user.username : "Mon compte" %></span>
+            </span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% if !current_user %>
+              <%= link_to new_user_session_path, class: "dropdown-item" do %>
+                <%= fa_icon "sign-in-alt", class: "mr-1" %> Connexion
+              <% end %>
+              <%= link_to new_user_registration_path, class: "dropdown-item" do %>
+                <%= fa_icon "user-plus", class: "mr-1" %> Inscription
+              <% end %>
+            <% else %>
+            <%= link_to user_path(current_user.username), class: "dropdown-item" do %>
+              <%= fa_icon "address-card", class: "mr-1" %> Profil
             <% end %>
-          <% else %>
-          <%= link_to user_path(current_user.username), class: "dropdown-item" do %>
-            <%= fa_icon "address-card" %> Profil
-          <% end %>
-          <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
-            <%= fa_icon "cog" %> Paramètre
-          <% end %>
-            <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-              <%= fa_icon "sign-out-alt" %> Déconnexion
+            <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+              <%= fa_icon "cog", class: "mr-1" %> Paramètre
             <% end %>
-          <% end %>
-        </div>
-      </li>
-    </ul>
+              <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+                <%= fa_icon "sign-out-alt", class: "mr-1" %> Déconnexion
+              <% end %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
   </div>
 </nav>

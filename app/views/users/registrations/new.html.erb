@@ -10,14 +10,17 @@
   <%= render partial: "users/shared/error_messages", locals: { f: f } %>
 
   <div class="card mb-4">
-    <h5 class="card-header card-header-l2"><%= fa_icon "user-plus", class: "mr-1" %> Inscription</h5>
-    
-    <div class="card-body card-body-l2">
+    <div class="card-body">
+      <h4 class="card-title"><%= fa_icon "user-plus", class:" mr-1" %> Inscription</h4>
+      <div class="card-text mt-3">
       <%= f.input :username, prepend: fa_icon("user"), placeholder: "Nom d'utilisateur" %>
-      <%= f.input :email, prepend: fa_icon("at"), placeholder: "Adresse email" %>
+      <div id="color-picker-1">
+        <%= f.input :email, prepend: fa_icon("at"), placeholder: "Adresse email" %>
+      </div>
       <%= f.input :password, prepend: fa_icon("key"), placeholder: "Mot de passe" %>
       <%= f.input :password_confirmation, prepend: fa_icon("check"), placeholder: "Confirmation du mot de passe" %>
-      <%= f.button :submit, value: "S'inscrire", class: "btn-info btn-size" %>
+      <%= f.button :submit, value: "S'inscrire", class: "btn-primary btn-size" %>
+      </div>
     </div>
   </div>
 

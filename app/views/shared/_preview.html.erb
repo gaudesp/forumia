@@ -1,0 +1,28 @@
+<div class="messages topic-message card mb-4" id="preview-bloc">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-2" id="sidebar-avatar">
+        <span id="small">
+          <img class="rounded mb-2" style="height: 100px; width: 100px;" src="<%= current_user.avatar_url %>" alt="">
+          <div id="avatar-messages">
+            <small>
+              <%= fa_icon "comment-alt", class: "mr-1" %> Messages : <%= current_user.count_messages %>
+            </small><br />
+            <small>
+              <%= fa_icon "coins", class: "mr-1" %> Argent : <%= sprintf("%g", current_user.coin) %> €
+            </small>
+          </div>
+        </span>
+      </div>
+      <div class="col-lg-10" id="col-avatar">
+        <img class="rounded float-left mr-3" id="navbar-avatar" style="height: 50px; width: 50px;" src="<%= current_user.avatar_url %>" alt="">
+        <div>
+          <%= content_tag(:button, fa_icon("times"), type: "button", class: "close float-right", id: "close-preview") %>
+          <strong id="author"><%= link_to display_role_user(current_user), user_path(current_user.username) %></strong><br />
+        </div>
+        <hr />
+        <div id="preview"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,32 +1,24 @@
-<div class="card">
-  <h5 class="card-header card-header-r"><i class="fas fa-comments mr-2"></i> Forums</h5>
-  <div class="card-body card-body-r card-body-ul">
-  <ul class="list-group">
-    <a href="blabla-general.html" class="list-group-item"><i class="fas fa-chevron-circle-right mr-2"></i> Morbi nec est sit amet</a>
-    <a href="Suggestions-reclamations.html" class="list-group-item list-group-item-b"><i class="fas fa-chevron-circle-right mr-2"></i> Duis semper rutrum molestie</a>
+<div class="card mb-4">
+  <h3 class="card-header"><i class="fas fa-comments mr-2"></i> Forums</h3>
+  <ul class="list-group list-group-flush">
+    <% Forum.all.each do |forum| %>
+      <% if PermissionsService.can_access_to_forum?(current_user, forum) %>
+        <%= link_to forum_path(forum), class: "list-group-item" do %>
+          <%= fa_icon "chevron-circle-right", class: "mr-2" %> <%= forum.name %>
+        <% end %>
+      <% end %>
+    <% end %>
   </ul>
-  </div>
-  </div>
+</div>
 
-  <div class="card my-4">
-    <h5 class="card-header card-header-r"><i class="fas fa-globe mr-2"></i> En ligne (<%= @users_online.count %>)</h5>
-    <div class="card-body card-body-r">
-      <% if @users_online.count == 0 %>
-        Aucun utilisateur n'est connecté.
-      <% end %>
-      <% @users_online.each do |u| %>
-        <%= link_to display_role_user(u), user_path(u.username) %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="card my-4">
-  <h5 class="card-header card-header-r"><i class="fas fa-newspaper mr-2"></i> Derniers articles</h5>
-  <div class="card-body card-body-r card-body-ul">
-    <ul class="list-group">
-      <a href="article.html" class="list-group-item"><i class="fas fa-arrow-right mr-2"></i> Lorem ipsum dolor sit amet</a>
-      <a href="article.html" class="list-group-item"><i class="fas fa-arrow-right mr-2"></i> Lorem ipsum dolor sit amet</a>
-      <a href="article.html" class="list-group-item list-group-item-b"><i class="fas fa-arrow-right mr-2"></i> Lorem ipsum dolor sit amet</a>
-    </ul>
+<div class="card mb-4">
+  <h3 class="card-header"><i class="fas fa-globe mr-2"></i> En ligne (<%= @users_online.count %>)</h3>
+  <div class="card-body">
+    <% if @users_online.count == 0 %>
+      Aucun utilisateur n'est connecté.
+    <% end %>
+    <% @users_online.each do |u| %>
+      <%= link_to display_role_user(u), user_path(u.username) %>
+    <% end %>
   </div>
 </div>

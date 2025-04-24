@@ -2,9 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_last_seen_at 
+  before_action :set_current_user
   before_action :get_users_logged_in
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  
   def get_users_logged_in
     @users_online = User.where('last_seen_at > ?', 5.minutes.ago) 
   end
@@ -24,4 +25,8 @@ class ApplicationController < ActionController::Base
     current_user.update_attribute(:last_seen_at, Time.now) if current_user
   end
 
+  def set_current_user
+    User.current = current_user
+  end
+  
 end

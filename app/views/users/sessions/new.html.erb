@@ -8,12 +8,14 @@
   <% end %>
 
   <div class="card mb-4">
-    <h5 class="card-header card-header-l"><%= fa_icon "link", class: "mr-1" %> Connexion</h5>
-    <div class="card-body card-body-l">
-      <%= f.input :username, prepend: fa_icon("user"), placeholder: "Nom d'utilisateur" %>
-      <%= f.input :password, prepend: fa_icon("key"), placeholder: "Mot de passe" %>
-      <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean, wrapper: :custom_boolean_switch %>
-      <%= f.button :submit, value: "Se connecter", class: "btn-success btn-size" %>
+    <div class="card-body">
+      <h4 class="card-title"><%= fa_icon "link", class:" mr-1" %> Connexion</h4>
+      <div class="card-text mt-3">
+        <%= f.input :username, prepend: fa_icon("user"), placeholder: "Nom d'utilisateur" %>
+        <%= f.input :password, prepend: fa_icon("key"), placeholder: "Mot de passe" %>
+        <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean, wrapper: :custom_boolean_switch %>
+        <%= f.button :submit, value: "Se connecter", class: "btn-primary btn-size" %>
+      </div>
     </div>
   </div>
 

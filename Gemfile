@@ -46,6 +46,10 @@ gem 'video_info'
 gem 'countries'
 gem 'rollbar'
 gem 'rest-client'
+gem 'carrierwave', '1.3.1'
+gem 'cloudinary'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
