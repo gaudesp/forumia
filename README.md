@@ -1,24 +1,57 @@
-# README
+# Forumia 🎙️📝
+**Forumia** est une application web type forum de discussion (orienté [*JVC-Like*](https://jvflux.fr/JV-like)) développée en **Ruby** avec **Rails**, permettant aux utilisateurs de créer et participer à des discussions en ligne.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## ⚙️ Prérequis
+- **Ruby** (*version* : `3.4.3`)
+- **Rails** (*version* : `8.0.2`)
+- **PostgreSQL** (*version* : `12.22`)
+- **Bundler** (*version* : `2.6.8`)
+- Un **terminal** compatible **Bash** (*sur WSL ou Unix-like*)
 
-Things you may want to cover:
+> 💡 Forumia utilise `importmap-rails` pour gérer les dépendances JavaScript, vous n'avez donc pas besoin de Node.js ou Yarn.
 
-* Ruby version
+## 🚀 Setup
 
-* System dependencies
+1. **Clonez le repository**  
+```bash
+git clone git@github.com:gaudesp/forumia.git
+cd forumia
+```
 
-* Configuration
+2. **Installez les gems**  
+```bash
+bundle install
+```
 
-* Database creation
+3. **Préparez la base de données**  
+Ouvrez `config/database.yml` et ajustez `username`, `password` et `host` selon votre environnement.
 
-* Database initialization
+Créez, migrez et chargez les données de seed en une seule commande :
+```bash
+bundle exec rails db:setup
+```
 
-* How to run the test suite
+4. **Lancez l'application en développement**  
+```bash
+bundle exec rails server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+5. **Accédez à l'application localement**  
+- APP accessible via : [http://localhost:3000](http://localhost:3000)
 
-* Deployment instructions
+## 📦 Dépendances
+- `rails` : Framework web MVC.
+- `pg` : Adaptateur PostgreSQL.
+- `puma` : Serveur web.
+- `importmap-rails` : Gestion des modules JavaScript sans bundler.
+- `turbo-rails` : Accélération des interactions en Hotwire.
+- `stimulus-rails` : Framework JS léger pour composants.
+- `sass-rails` : Préprocesseur SCSS.
+- `jbuilder` : Construction de JSON pour API.
+- `devise` : Authentification et gestion des utilisateurs.
+- `carrierwave` & `cloudinary` : Uploads et stockage de fichiers.
+- `will_paginate` : Pagination des listes.
+- `rspec-rails`, `capybara`, `selenium-webdriver` : Tests et intégration continue.
 
-* ...
+## 🤝 Contribution
+Lead developer : [@gaudesp](https://github.com/gaudesp)
