@@ -2,7 +2,5 @@
 {
   "name": "forumia",
   "private": true,
-  "devDependencies": {
-    "@types/rails__actioncable": "^6.1.11"
-  }
+  "dependencies": {}
 }
