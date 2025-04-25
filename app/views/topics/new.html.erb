@@ -1,4 +1,4 @@
-<%= simple_form_for @topic, url: forum_topics_path(@forum), wrapper: :input_group do |f| %>
+<%= simple_form_for @topic, url: forum_topics_path(@forum), wrapper: :input_group, data: { turbo: false } do |f| %>
   <%= render partial: "topics/form", locals: { f: f } %>
   <%= render partial: '/shared/preview' if @current_user %>
 <% end %>

@@ -71,4 +71,4 @@ export function darkLight() {
   }
 }
 
-window.darkLight = darkLight
+window.darkLight = window.darkLight || darkLight

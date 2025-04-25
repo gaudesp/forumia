@@ -38,7 +38,7 @@ class StaffController < ApplicationController
   end
 
   def update
-    if @role.update_attributes(role_params)
+    if @role.update(role_params)
       flash[:success] = "Le rôle a été modifié avec succès !"
       redirect_to panel_staff_index_path
     else

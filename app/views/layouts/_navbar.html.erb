@@ -42,7 +42,7 @@
               <% end %>
 
               <% current_user.notifications.unread.order(created_at: :desc).each do |notification| %>
-                <%= simple_form_for notification, url: mark_as_read_notification_path(notification) do |f| %>
+                <%= simple_form_for notification, url: mark_as_read_notification_path(notification), data: { turbo: false } do |f| %>
                   <div class="dropdown-item pointer" onclick="event.target.parentNode.submit();">
                     <%= image_tag(notification.actor.avatar_url, class: "avatar-notification") %> 
                     <strong><%= notification.actor.username %></strong> vous a notifié sur le sujet « <i><%= notification.notifiable.topic.title %></i> »
