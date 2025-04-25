@@ -31,7 +31,7 @@ class ForumsController < ApplicationController
   end
 
   def update
-    if @forum.update_attributes(forum_params)
+    if @forum.update(forum_params)
       flash[:success] = "Le forum a été modifié avec succès !"
       redirect_to panel_forums_path
     else

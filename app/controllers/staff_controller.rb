@@ -2,11 +2,11 @@ class StaffController < ApplicationController
 
   include CheckRole
 
-  before_action :find_user_on_demote, only: [:demote, :can_demote_role]
-  before_action :find_user_on_promote, only: [:promote, :can_promote_role]
-  before_action :find_role_on_promote, only: [:promote, :can_promote_role]
-  before_action :find_role_on_new, only: [:new, :create, :build_nested_permission]
-  before_action :find_role_by_id, only: [:edit, :update, :build_nested_permission]
+  before_action :find_user_on_demote, only: [:demote]
+  before_action :find_user_on_promote, only: [:promote]
+  before_action :find_role_on_promote, only: [:promote]
+  before_action :find_role_on_new, only: [:new, :create]
+  before_action :find_role_by_id, only: [:edit, :update]
   before_action :build_nested_permission, only: [:new, :create, :edit, :update]
 
   before_action :check_if_can_manage_role, only: [:panel], if: :is_not_webmaster
@@ -38,7 +38,7 @@ class StaffController < ApplicationController
   end
 
   def update
-    if @role.update_attributes(role_params)
+    if @role.update(role_params)
       flash[:success] = "Le rôle a été modifié avec succès !"
       redirect_to panel_staff_index_path
     else

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4">
   <div class="container">
-  <%= link_to "ForuMia", Role.find(1) ? forum_path(Forum.first) : root_path, class: "navbar-brand" %>
+  <%= link_to "ForuMia", Role.exists?(1) ? forum_path(Forum.first) : root_path, class: "navbar-brand" %>
     
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -42,7 +42,7 @@
               <% end %>
 
               <% current_user.notifications.unread.order(created_at: :desc).each do |notification| %>
-                <%= simple_form_for notification, url: mark_as_read_notification_path(notification) do |f| %>
+                <%= simple_form_for notification, url: mark_as_read_notification_path(notification), data: { turbo: false } do |f| %>
                   <div class="dropdown-item pointer" onclick="event.target.parentNode.submit();">
                     <%= image_tag(notification.actor.avatar_url, class: "avatar-notification") %> 
                     <strong><%= notification.actor.username %></strong> vous a notifié sur le sujet « <i><%= notification.notifiable.topic.title %></i> »
@@ -81,7 +81,7 @@
             <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
               <%= fa_icon "cog", class: "mr-1" %> Paramètre
             <% end %>
-              <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+              <%= button_to destroy_user_session_path, method: :delete, class: "dropdown-item", form: { "data-turbo" => false } do %>
                 <%= fa_icon "sign-out-alt", class: "mr-1" %> Déconnexion
               <% end %>
             <% end %>

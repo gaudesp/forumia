@@ -59,7 +59,7 @@ puts ""
 puts "Créations des utilisateurs :"
 
 if !User.find_by_username("Nox")
-  user = User.create(username: "Nox", password: "Sr84Ty12%*45", password_confirmation: "Sr84Ty12%*45", email: "gaudespro@gmail.com")
+  user = User.create(username: "Nox", password: "password", password_confirmation: "password", email: "gaudespro@gmail.com")
   puts "- Utilisateur Nox créé avec succès"
   user = User.first.update(role: role)
   puts "- Role Webmaster ajouté à l'utilisateur Nox"

@@ -1,5 +1,5 @@
 <%= link_to "Retour à la gestion des catégories", panel_categories_path, class: "btn btn-primary mb-4" %>
-<%= simple_form_for @category, url: categories_path, wrapper: :input_group do |f| %>
+<%= simple_form_for @category, url: categories_path, wrapper: :input_group, data: { turbo: false } do |f| %>
   <%= render partial: "form", locals: { f: f } %>
   <%= f.button :submit, value: "Valider", class: "btn-primary btn-block" %><br />
 <% end %>

@@ -1,4 +1,4 @@
-<%= simple_form_for resource, as: resource_name, url: session_path(resource_name), wrapper: :input_group do |f| %>
+<%= simple_form_for resource, as: resource_name, url: session_path(resource_name), wrapper: :input_group, data: { turbo: false } do |f| %>
 
   <% if !params[:commit] %>
     <div class="alert alert-info">
@@ -9,7 +9,7 @@
 
   <div class="card mb-4">
     <div class="card-body">
-      <h4 class="card-title"><%= fa_icon "link", class:" mr-1" %> Connexion</h4>
+      <h4 class="card-title"><%= fa_icon "link", class:" mr-1" %> Connexions</h4>
       <div class="card-text mt-3">
         <%= f.input :username, prepend: fa_icon("user"), placeholder: "Nom d'utilisateur" %>
         <%= f.input :password, prepend: fa_icon("key"), placeholder: "Mot de passe" %>

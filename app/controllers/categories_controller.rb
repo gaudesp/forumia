@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update_attributes(category_params)
+    if @category.update(category_params)
       flash[:success] = "La catégorie a été modifiée avec succès !"
       redirect_to panel_categories_path
     else
